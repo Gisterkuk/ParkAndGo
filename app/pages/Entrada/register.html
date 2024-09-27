@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300..900&display=swap" rel="stylesheet">  
+    
+       
+    <link type="text/css" rel="stylesheet" href="/StyleEntrada/StyleRegister.css">
+    <link type="text/css" rel="stylesheet" href="/Normalize.css">
+    <script src="/JS/ScriptRegister.js" defer></script>
+    <script src="/JS/registroCliente.js"></script>
+    <script src="/JS/loginCliente.js"></script>
+
+    <title>Path and Go Registro</title>
+</head>
+<body>
+    <div class="Padre-Container">
+        <div class="Formulario-Container">    
+            <div class="Form-Container">  
+                <div class="Head-Container">
+                    <div class="Logo-Container">
+                        <img class="Logo-Spotify" src="image/Path_and_Go_Logo_Transparent.png" alt="No se pudo cargar la imagen">
+                    </div>
+                    <div class="Title-Container">
+                        <h1>PathAndGo</h1>
+                    </div>  
+                </div>
+                <form action="/VerificarRegister"  method="post" class="input-Container" id="formul" >
+                    <div class="form-error" id="error">
+                        <label class="error" id="labelerror" for="">Ya existe una cuenta con ese correo o documento</label>
+                    </div>
+
+                    <div class="Form-Input">
+                        <label><input type="text" class="input" autocomplete="off"  maxlength="30" name="Nom" id="Nom" placeholder=" " required><span>Nombre</span></label>
+                    </div>
+
+                    <div class="Form-Input">
+                        <label><input type="text" class="input" autocomplete="off" maxlength="30" name="Apell" id="Apell" placeholder=" " required><span>Apellido</span></label>
+                    </div>
+
+                    <div class="Form-Input" id="email-container" >
+                        <label><input type="email" class="input"  autocomplete="off" maxlength="30" name="Email" id="Email" placeholder=" " required ><span>Correo Electronico</span></label>
+                    </div>
+
+                    <div class="Form-Input" >
+                        <label><input type="password" class="input"  autocomplete="off" maxlength="30" name="Pass" id="Pass" placeholder=" " required><span>Contraseña</span></label>
+                    </div>     
+
+                    <div class="Form-Buttom">
+                        <div class="Buttom-Input">
+                            <input type="submit" value="Acceder">
+                        </div>
+
+                        <div class="Buttom-Text">
+                            <a id="tengocuenta" href="/login">Ya tengo cuenta.</a>
+                        </div>
+
+                    </div>            
+                </form>               
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,208 @@
+.Padre-Container{
+    display: flex;
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    margin: auto;
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+       
+}
+.Formulario-Container{
+    border-radius: 5%;
+    display: flex;
+    height: 33%;
+    width: 32%;
+    min-width: 350px;
+    min-height: 494px;
+    box-shadow: 0px 3px 39px 1px rgba(0,0,0,0.80);
+    background: linear-gradient(to right, #172e38, #203a43, #2c5364); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */;
+    
+
+}
+.Form-Container{
+    display: flex;
+    flex-direction: column;
+    flex: 1.5;
+
+}
+/*STYLE DE HEAD/LOGO/TITLE DE SPOTIFY */
+.Head-Container{
+    display: flex;
+    flex: .2;
+    background-color: transparent;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+
+}
+    .Logo-Container{
+        background-color: transparent;
+        flex: .4;
+        display: flex;
+        justify-content: right;
+    }
+        .Logo-Spotify{
+            max-width: 90px;
+            max-height: 90px;
+            object-fit: contain;
+            margin: 0px 5px;
+            transform: translateY(-4px);
+        }
+    .Title-Container{
+        flex: 1;
+        background-color: transparent;
+        text-align: left;;
+        
+    }
+        .Title-Container > h1{
+            font-family: "Rubik", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 700;
+            font-style: normal;
+            color: #fff;
+        }
+
+/*DISEÑO INPUTS*/
+.input-Container{
+    flex:8;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-18px);
+    
+}
+.Form-Input{
+    display: flex;
+    width: 80%;
+    margin: 1em 0px;
+    font-family: "Rubik", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    position: relative;
+    right: 10px;
+    justify-content: center;
+    
+}
+.Form-Input > label{
+    display: flex;
+    flex-direction: column;
+    font-family: "Rubik", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    color: aliceblue;
+    text-align: center;
+    align-items: center;
+    position: relative;
+
+}
+label > input{
+    display: block;
+    width: 70%;
+    min-height: 47px;
+    font-size: 27px;
+    border-style: none;
+    outline: none;
+    background-color: transparent;
+    border-bottom: 1px solid #777171;
+    color: aliceblue;
+    font-size: 20px;
+    text-align: center;
+    transition: width 1.1s, border-bottom 1.1s;
+    
+}
+
+label{
+    width: 100%;
+    font-size: 17px;
+}
+span{
+    position: absolute;
+    top: 25px;
+    transition: all .5s;
+    width: 100%;
+    height: 100%;
+}
+
+label > input:focus::placeholder{
+    color: transparent;
+}   
+label > input:focus, label > input:not(:placeholder-shown)
+{
+    border-bottom: 1px solid rgb(209, 232, 252);
+    width: 100%;
+}
+
+
+label > input:focus ~ span,
+label > input:not(:placeholder-shown) ~ span {
+    top: 5px;
+    font-size: 0.85em;
+    color: rgb(178, 178, 179);
+    transform: translateY(-20px);
+}
+
+
+.Form-Buttom {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.Buttom-Input > input{
+    font-family: "Rubik", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    border: none;
+    border-radius: 50px;
+    padding: .85em 8em;  
+    margin-bottom: 9px;
+    transition: scale 0.5s;
+    box-shadow: 0px 0px 37px -6px rgba(0,0,0,.50);
+    text-align: center;
+}
+
+.Buttom-Input > input:active{
+    transform: scale(.95);
+}
+
+.Buttom-Text > a{
+    color: aliceblue;
+    font-family: "Rubik", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-size: 1em;  
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
+.Buttom-Text > a:hover{
+    text-decoration: underline;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #ffffff;
+    transition: background-color 5000s ease-in-out 0s;
+    box-shadow: inset 0 0 20px 20px #23232300;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.form-error{
+    display: none;
+}
+.error{
+    color: red;
+}

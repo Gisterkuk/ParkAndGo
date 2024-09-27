@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Login</title>
+    <link rel="stylesheet" href="StyleEntrada/StyleLogin.css">
+    <link rel="stylesheet" href="Normalize.css">
+
+    <script src="/JS/LoginCliente.js"></script>
+</head>
+<body>
+    <div class="padre-container">
+        <div class="hijo-container">
+            <form action="/VerificarLogin" class="form-container" method="post">
+                <div class="Head-Container">
+                    <div class="Logo-Container">
+                        <img class="Logo-Spotify" src="/image/Path_and_Go_Logo_Transparent.png" alt="No se pudo cargar la imagen">
+                    </div>
+                    <div class="Title-Container">
+                        <h1>PathAndGo</h1>
+                    </div>  
+                </div>
+                <div class="form-error" id="error"><label for=""></label></div>
+                <div class="input-container">
+                    <label for="" class="email-container"><input placeholder=" " class="email-input" type="text" name="correologin" id="correologin"><span>Correo Electronico</span></label>
+                </div>
+
+                <div class="input-container">
+                    <label for=""><input placeholder=" " class="pass-input" type="password" name="passlogin" id="passlogin"><span>Contraseña</span></label>
+                </div>
+                <div class="botton-container">
+                    <input type="submit" value="Acceder" name="" id="">
+                </div>
+                <div class="label-container">
+                    <label for=""><a class="olvide-button" href="">¡olvide mi contraseña!</a></label>
+                    <label for="">¿No tienes una cuenta?<a href="/registro">Registrate</a> </label>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
