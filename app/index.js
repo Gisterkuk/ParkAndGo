@@ -33,6 +33,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser());
 
+
+// O define una ruta específica para servir el archivo geojson
+app.use(express.static(path.join(__dirname, '/')));
+
 app.set("port", 8000);
 app.listen(app.get("port"), function () {
     console.log("El servidor se inició en http://localhost:8000");
