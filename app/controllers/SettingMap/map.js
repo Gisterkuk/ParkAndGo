@@ -12,13 +12,35 @@ window.onload = function() {
     map.on('load', function() {
         map.addSource('rutas', {
             'type': 'geojson',
-            'data': '/app/controllers/rutas.geojson'    
+            'data': './controllers/rutas.geojson'    
         });
-        map.addSource('rutas', {
+        map.addSource('puntos', {
             'type': 'geojson',
-            'data': '/app/controllers/puntos.geojson'    
+            'data': './controllers/puntos.geojson'    
         });
-
-        
+        fetch('/api/puntos-interes')
+        .then(response =>{
+            if(!response.ok){
+                throw new Error('La respuesta a la api no funciono');
+            }
+            return response.json()
+        })
+        .then(data =>{
+            data.forEach(punto => {
+                const coordinates = [punto.longitud,punto.latitud];
+                
+                const marker = new mapboxgl.Marker()
+                .setLngLat(coordinates)
+                .setPopup(new mapboxgl.Popup().setHTML(`
+                    <h3>${punto.name}</h3>
+                    <p>${punto.descrip}</p>
+                    <img src="${punto.imagen_url}" alt="${punto.name}" style="width:100px;">`
+                ))
+                .addTo(map);
+            });
+        })
+        .catch(error => {
+            console.error('Error al cargar los puntos de interés:', error);
+        });
     });
 };

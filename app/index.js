@@ -37,20 +37,23 @@ app.use(cookieParser());
 
 // O define una ruta específica para servir el archivo geojson
 app.use(express.static(path.join(__dirname, '/')));
-
+ 
 app.set("port", 8000);
 app.listen(app.get("port"), function () {
     console.log("El servidor se inició en http://localhost:8000");
 });
-
-app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "/pages/home/map.html"));
+app.get("/login", function (req, res) {
+    res.sendFile(path.join(__dirname, "pages/Entrada/login.html"));
 });
-
+app.post("/VerificarLogin", async (req, res) => {
+    loguearse(pool,req, res);
+});
 app.get("/registro", function (req, res) {
     res.sendFile(path.join(__dirname, "/pages/Entrada/register.html"));
 });
-
+app.get("/", function (req, res) {
+    res.sendFile(path.join(__dirname, "/pages/home/map.html"));
+});
 app.get("/CorreoValido", async function (req, res) {
     const tokenValido = req.query.token;
     const correo = req.query.correo;
@@ -93,17 +96,27 @@ app.get("/CorreoValido", async function (req, res) {
         return res.redirect(`/?error=${encodeURIComponent('Error en la base de datos')}`);
     }
 });
-app.post("/VerificarLogin", async (req, res) => {
-    loguearse(pool,req, res);
-});
+
 app.get("/ValidarCorreo", function (req, res) {
     res.sendFile(path.join(__dirname, "/pages/Email/validarEmail.html"));
 });
 
-app.get("/login", function (req, res) {
-    res.sendFile(path.join(__dirname, "pages/Entrada/login.html"));
-});
 app.post("/Insertar-puntos", insertPuntos);
+
+app.get('/api/puntos-interes', async (req, res) => {
+    const query = 'SELECT name, descrip, latitud, longitud, categoria, sector, imagen_url FROM puntos_interes';
+
+    try {
+        const [results] = await pool.query(query); // Usa await para la consulta
+        res.json(results);
+    } catch (err) {
+        console.error('Error en la consulta:', err);
+        res.status(500).json({ error: 'Error en el servidor' });
+    }
+});
+
+
+
 
 
 
