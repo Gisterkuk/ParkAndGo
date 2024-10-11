@@ -46,7 +46,7 @@ app.get("/registro", function (req, res) {
     res.sendFile(path.join(__dirname, "/pages/Entrada/register.html"));
 });
 app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "/pages/home/home.html"));
+    res.sendFile(path.join(__dirname, "/pages/home/map.html"));
 });
 
 app.get("/CorreoValido", async function (req, res) {

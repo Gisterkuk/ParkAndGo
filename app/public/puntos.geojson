@@ -1,0 +1,1179 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "teatro",
+          "categoria": "pabellon",
+          "lat": -25.6819,
+          "lon": -54.4544,
+          "descrip": ""
+        },
+        "geometry": {
+          "coordinates": [
+            -54.454422236725065,
+            -25.681923770074505
+          ],
+          "type": "Point"
+        },
+        "id": 0
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "La Selva",
+          "categoria": "Restaurante",
+          "lat": "-25.6810",
+          "lon": -54.4545,
+          "descrip": "Restaurante la selva",
+          "sector": "Comercios"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.454501703522595,
+            -25.680974556856313
+          ],
+          "type": "Point"
+        },
+        "id": 1
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Yvyrá Retá",
+          "categoria": "museo",
+          "lat": -25.6824,
+          "lon": -54.4538,
+          "descrip": "atencion para visitantes"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.45381136009571,
+            -25.68240363130154
+          ],
+          "type": "Point"
+        },
+        "id": 2
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "EmbarquePaseoNautico",
+          "categoria": "Jungle Iguazu",
+          "lat": -25.6806,
+          "lon": -54.4542,
+          "descrip": "Embarque del paseo gran aventura",
+          "sector": "Embarque"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.45419566927525,
+            -25.680624621597246
+          ],
+          "type": "Point"
+        },
+        "id": 3
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "StandJungle",
+          "categoria": "Jungle Iguazu",
+          "lat": -25.6818,
+          "lon": -54.4537,
+          "descrip": "punto de venta de paseos nauticos",
+          "sector": "Entrada"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.453710896457494,
+            -25.68183342250083
+          ],
+          "type": "Point"
+        },
+        "id": 4
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Artesania",
+          "categoria": "tienda",
+          "lat": -25.6808,
+          "lon": -54.4533,
+          "descrip": "artesanias guarani",
+          "sector": "Comercios"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.45329351909045,
+            -25.680788820101682
+          ],
+          "type": "Point"
+        },
+        "id": 5
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "havanna",
+          "categoria": "tienda",
+          "lat": -25.6809,
+          "lon": "-54.4530",
+          "descrip": "Tienda de productos havanna",
+          "sector": "Comercios"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.453042783016585,
+            -25.680853860554095
+          ],
+          "type": "Point"
+        },
+        "id": 6
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "PiedrasPreciosas",
+          "categoria": "tiendas",
+          "lat": -25.6811,
+          "lon": "-54.4530",
+          "descrip": "Tienda para comprar piedras preciosas",
+          "sector": "Comercios"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.45302726040525,
+            -25.68105275582934
+          ],
+          "type": "Point"
+        },
+        "id": 7
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "comercio 2",
+          "categoria": "tienda",
+          "lat": -25.6807,
+          "lon": "-54.4530",
+          "descrip": "",
+          "sector": "Comercios"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.453039217582884,
+            -25.680690699658555
+          ],
+          "type": "Point"
+        },
+        "id": 8
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "MiradorArrechea",
+          "categoria": "Saltos",
+          "lat": -25.6552,
+          "lon": -54.4574,
+          "descrip": "",
+          "sector": "Macuco"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.45739604644338,
+            -25.655204771667144
+          ],
+          "type": "Point"
+        },
+        "id": 9
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "FrontJungle",
+          "categoria": "Jungle Iguazu",
+          "lat": "-25.6830",
+          "lon": -54.4545,
+          "descrip": "venta paseos nauticos",
+          "sector": "Front"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.45450646144451,
+            -25.682973724519783
+          ],
+          "type": "Point"
+        },
+        "id": 11
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Taxi",
+          "categoria": "transporte",
+          "lat": -25.6833,
+          "lon": -54.4542,
+          "descrip": "Taxistas",
+          "sector": "Front"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.45419729380879,
+            -25.683323788742086
+          ],
+          "type": "Point"
+        },
+        "id": 12
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Bus",
+          "categoria": "transporte",
+          "lat": "-25.6830",
+          "lon": -54.4551,
+          "descrip": "",
+          "sector": "Front"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.45509761185271,
+            -25.682954283074537
+          ],
+          "type": "Point"
+        },
+        "id": 13
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "ventanillas-izquierda",
+          "categoria": "VentaTicket",
+          "lat": -25.6829,
+          "lon": "-54.4550",
+          "descrip": "",
+          "sector ": "Front"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.45495266304384,
+            -25.68288589635266
+          ],
+          "type": "Point"
+        },
+        "id": 14
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Oficina APN",
+          "categoria": "Atencion APN",
+          "lat": -25.6828,
+          "lon": -54.4547,
+          "descrip": "atencion de guarda parques"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.45467122266645,
+            -25.68283181831201
+          ],
+          "type": "Point"
+        },
+        "id": 19
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "fotografos",
+          "categoria": "Fotografia",
+          "lat": -25.6826,
+          "lon": -54.4546,
+          "descrip": "",
+          "sector": "Entrada"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.45456244191766,
+            -25.682596101887384
+          ],
+          "type": "Point"
+        },
+        "id": 16
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "oficina IGARG",
+          "categoria": "atencion al publico",
+          "lat": -25.6829,
+          "lon": -54.4545,
+          "descrip": "atencion para personas discapacitadas o jubiladas"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.454456039374804,
+            -25.682856428163362
+          ],
+          "type": "Point"
+        },
+        "id": 21
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Souvenirs",
+          "categoria": "tiendas",
+          "lat": -25.6812,
+          "lon": -54.4537,
+          "descrip": "Tienda para comprar recuerdos de las cataratas",
+          "sector": "Comercios"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.45367041662196,
+            -25.68121661850229
+          ],
+          "type": "Point"
+        },
+        "id": 18
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "selva",
+          "categoria": "tienda",
+          "lat": -25.6807,
+          "lon": "-54.4540",
+          "descrip": "Tienda cerca del restaurante la selva",
+          "sector": "Comercios"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.45402423647141,
+            -25.680748449444295
+          ],
+          "type": "Point"
+        },
+        "id": 19
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Verde",
+          "categoria": "sendero",
+          "lat": -25.6798,
+          "lon": -54.4527,
+          "descrip": "Sendero de unos 600mts, finaliza en la estacion cataratas",
+          "sector": "SenderoVerde"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.45269868314267,
+            -25.679822214063364
+          ],
+          "type": "Point"
+        },
+        "id": 20
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "TrenCataratas",
+          "categoria": "Tren",
+          "lat": -25.6838,
+          "lon": "-54.4490",
+          "descrip": "",
+          "sector": "EstacionCataratas"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.448999251832305,
+            -25.68379802044484
+          ],
+          "type": "Point"
+        },
+        "id": 20
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "BañoCataratas",
+          "categoria": "Sanitarios",
+          "lat": -25.6836,
+          "lon": -54.4491,
+          "descrip": "Sanitarios de la estacion cataratas",
+          "sector": "EstacionCataratas"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.44906312858308,
+            -25.683594099463164
+          ],
+          "type": "Point"
+        },
+        "id": 22
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "TiendaCataratas",
+          "categoria": "Tiendas",
+          "lat": -25.6838,
+          "lon": -54.4488,
+          "descrip": "",
+          "sector": "EstacionCataratas"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.448793485147974,
+            -25.683822037207605
+          ],
+          "type": "Point"
+        },
+        "id": 23
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "tienda-izquierda",
+          "categoria": "tiendas",
+          "lat": -25.6829,
+          "lon": -54.4549,
+          "descrip": "",
+          "sector": "Front"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.45487426223549,
+            -25.682877694944594
+          ],
+          "type": "Point"
+        },
+        "id": 25
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "tienda-derecha",
+          "categoria": "tiendas",
+          "lat": "-25.6830",
+          "lon": -54.4543,
+          "descrip": "",
+          "sector": "Front"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.45430020141721,
+            -25.683007534441742
+          ],
+          "type": "Point"
+        },
+        "id": 26
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Comercio",
+          "categoria": "Sanitarios",
+          "lat": -25.6809,
+          "lon": "-54.4530",
+          "descrip": "",
+          "sector": "Comercios"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.45295172846623,
+            -25.680880855915916
+          ],
+          "type": "Point"
+        },
+        "id": 26
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "CIES",
+          "categoria": "Museo",
+          "lat": -25.6818,
+          "lon": -54.4462,
+          "descrip": "Centro de investigaciones ecologicas subtropicales",
+          "sector": "ViejoHotel"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.44619397385139,
+            -25.681756445648617
+          ],
+          "type": "Point"
+        },
+        "id": 27
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Melía",
+          "categoria": "Hoteles",
+          "lat": "-25.6800",
+          "lon": -54.4453,
+          "descrip": "Hotel Melia",
+          "sector": "Melía"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.44534793695885,
+            -25.679965151141474
+          ],
+          "type": "Point"
+        },
+        "id": 28
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "San Martin",
+          "categoria": "Saltos",
+          "lat": -25.6887,
+          "lon": -54.4442,
+          "descrip": "Salto San Martin"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.44423977181924,
+            -25.688744579314104
+          ],
+          "type": "Point"
+        },
+        "id": 28
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Mbigua",
+          "categoria": "Saltos",
+          "lat": -25.6874,
+          "lon": -54.4454,
+          "descrip": "Salto Mbigua",
+          "sector": "Superior"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.44538501457657,
+            -25.687447386369882
+          ],
+          "type": "Point"
+        },
+        "id": 29
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Bernade Mendez",
+          "categoria": "Saltos",
+          "lat": "-25.6870",
+          "lon": -54.4457,
+          "descrip": "Salto Bernade Mendez",
+          "sector": "Superior"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.44574382815068,
+            -25.686975501492455
+          ],
+          "type": "Point"
+        },
+        "id": 30
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Dos Hermanas",
+          "categoria": "Saltos",
+          "lat": -25.6842,
+          "lon": -54.4458,
+          "descrip": "",
+          "sector": "Superior"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.445796829921775,
+            -25.684239639794
+          ],
+          "type": "Point"
+        },
+        "id": 31
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Chico",
+          "categoria": "Saltos",
+          "lat": -25.6849,
+          "lon": -54.4459,
+          "descrip": "Salto Chico",
+          "sector": "Superior"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.445883123867745,
+            -25.6848613233403
+          ],
+          "type": "Point"
+        },
+        "id": 32
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Bosetti",
+          "catergoria": "Saltos",
+          "lat": -25.6856,
+          "lon": -54.4462,
+          "descrip": "Salto Bosetti",
+          "sector": "Superior",
+          "categoria": "Saltos"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.44618078641943,
+            -25.685576061173947
+          ],
+          "type": "Point"
+        },
+        "id": 33
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Eva",
+          "categoria": "Saltos",
+          "lat": "-25.6860",
+          "lon": -54.4462,
+          "descrip": "Salto Eva",
+          "sector": "Superior"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.446202285375065,
+            -25.686008960731357
+          ],
+          "type": "Point"
+        },
+        "id": 34
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Lanusse",
+          "categoria": "Saltos",
+          "lat": -25.6831,
+          "lon": -54.4427,
+          "descrip": "Salto Lanusse",
+          "sector": "Inferior"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.442697269020144,
+            -25.683069451800037
+          ],
+          "type": "Point"
+        },
+        "id": 35
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Álvar Nuñez",
+          "categoria": "Saltos",
+          "lat": -25.6838,
+          "lon": -54.4428,
+          "descrip": "Salto Alvar Nuñez",
+          "sector": "Inferior"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.44278285728457,
+            -25.683786098352513
+          ],
+          "type": "Point"
+        },
+        "id": 36
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Chico",
+          "categoria": "Saltos",
+          "lat": -25.6849,
+          "lon": -54.4455,
+          "descrip": "Salto Chico",
+          "sector": "Inferior"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.4454765942542,
+            -25.68490613490647
+          ],
+          "type": "Point"
+        },
+        "id": 41
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "TrenGarganta",
+          "categoria": "Tren",
+          "lat": -25.7014,
+          "lon": -54.4449,
+          "descrip": "Estacion de Tren en Gargante del Diablo",
+          "sector": "Garganta"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.44490415060095,
+            -25.70142685350433
+          ],
+          "type": "Point"
+        },
+        "id": 38
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "BañosGarganta",
+          "categoria": "sanitarios",
+          "lat": -25.7016,
+          "lon": -25.7016,
+          "descrip": "",
+          "sector": "Garganta"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.444457556782666,
+            -25.701619637741786
+          ],
+          "type": "Point"
+        },
+        "id": 39
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "GargantaJungle",
+          "categoria": "Jungle Iguazu",
+          "lat": -25.7014,
+          "lon": -54.4444,
+          "descrip": "Paseos Nauticos (paseo ecologico)",
+          "sector": "Garganta"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.44441826955784,
+            -25.701418332525662
+          ],
+          "type": "Point"
+        },
+        "id": 40
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "CentralJungle",
+          "categoria": "IguazuJungle",
+          "lat": -25.6812,
+          "lon": -54.4468,
+          "descrip": "Oficina principal de los paseos nauticos",
+          "sector": "CentralJungle"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.44676502437056,
+            -25.681206662730062
+          ],
+          "type": "Point"
+        },
+        "id": 48
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "ventanillas-derecha",
+          "categoria": "VentaTicket",
+          "lat": -25.6831,
+          "lon": -54.4542,
+          "descrip": "venta de ticket para ingresar al parque",
+          "sector": "Front"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.45420507951209,
+            -25.683060518960772
+          ],
+          "type": "Point"
+        },
+        "id": 54
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "TerritorioYaguarete",
+          "categoria": "museo",
+          "lat": -25.6807,
+          "lon": -54.4537,
+          "descrip": "Museo sobre el felino yaguarete",
+          "sector": "Comercio"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.453740967491086,
+            -25.68071066573576
+          ],
+          "type": "Point"
+        },
+        "id": 55
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "comercio 1",
+          "categoria": "tienda",
+          "lat": -25.6806,
+          "lon": -54.4533,
+          "descrip": "",
+          "sector": "Comercios"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.45328139873354,
+            -25.68055685054526
+          ],
+          "type": "Point"
+        },
+        "id": 56
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "TicketCentral",
+          "categoria": "TicketTren",
+          "lat": -25.6805,
+          "lon": -54.4531,
+          "descrip": "Aqui se retiran los ticket para el tren",
+          "sector": "Comercios"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.453124116254926,
+            -25.680468150121555
+          ],
+          "type": "Point"
+        },
+        "id": 56
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Central",
+          "categoria": "AtencionMedica",
+          "lat": -25.6792,
+          "lon": -54.4534,
+          "descrip": "Atencion medica",
+          "sector": "EstacionCentral"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.4533536763832,
+            -25.679208667259218
+          ],
+          "type": "Point"
+        },
+        "id": 46
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Estacion Central 1",
+          "categoria": "tiendas",
+          "lat": -25.6793,
+          "lon": -54.4533,
+          "descrip": "",
+          "sector": "EstacionCentral"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.45326943761903,
+            -25.67926448985405
+          ],
+          "type": "Point"
+        },
+        "id": 47
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "EstacionCentral 2",
+          "categoria": "tiendas",
+          "lat": -25.6792,
+          "lon": "-54.4530",
+          "descrip": "",
+          "sector": "EstacionCentral"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.453001759363886,
+            -25.679242488658062
+          ],
+          "type": "Point"
+        },
+        "id": 48
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "TrenCentral",
+          "categoria": "Tren",
+          "lat": -25.6793,
+          "lon": -54.4531,
+          "descrip": "Estacion de Tren ",
+          "sector": "EstacionCentral"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.453125342236206,
+            -25.679305530213625
+          ],
+          "type": "Point"
+        },
+        "id": 49
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Cajero",
+          "categoria": "CajeroAutomatico",
+          "lat": -25.6829,
+          "lon": -54.4547,
+          "descrip": "",
+          "sector": "Front"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.45473862707455,
+            -25.682864582413586
+          ],
+          "type": "Point"
+        },
+        "id": 62
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Macuco",
+          "categoria": "Sendero",
+          "lat": -25.6788,
+          "lon": -54.4502,
+          "descrip": "Entrada al sendero macuco",
+          "sector": "Macuco"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.450225979660104,
+            -25.678785547892048
+          ],
+          "type": "Point"
+        },
+        "id": 59
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "CaminoMacuco",
+          "categoria": "sendero",
+          "lat": "-25.6790",
+          "lon": -54.4529,
+          "descrip": "Entrada al camino para dirigirse a la entrada del sendero macuco",
+          "sector": "Estacion Central"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.45289346177529,
+            -25.679010354713853
+          ],
+          "type": "Point"
+        },
+        "id": 64
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Arrechea",
+          "categoria": "Saltos",
+          "lat": -25.6552,
+          "lon": -54.4573,
+          "descrip": "Salto 'Escondido' Arrechea",
+          "sector": "Macuco"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.45732525073619,
+            -25.655167648347003
+          ],
+          "type": "Point"
+        },
+        "id": 60
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "TicketCataratas",
+          "categoria": "TicketTren",
+          "lat": -25.6838,
+          "lon": -54.4489,
+          "descrip": "Tickets para el tren",
+          "sector": "EstacionCataratas"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.44888994841763,
+            -25.683783977909613
+          ],
+          "type": "Point"
+        },
+        "id": 64
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Superior",
+          "categoria": "Sendero",
+          "lat": "-25.6840",
+          "lon": -54.4468,
+          "descrip": "Entrada al circuito superior",
+          "sector": "Superior"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.44683431510205,
+            -25.683951813682185
+          ],
+          "type": "Point"
+        },
+        "id": 62
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Fortin",
+          "categoria": "Restaurante",
+          "lat": -25.6822,
+          "lon": -54.4474,
+          "descrip": "Buffets, Helado, Comida, etc",
+          "sector": "Fortin"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.44741250621628,
+            -25.6822036964914
+          ],
+          "type": "Point"
+        },
+        "id": 64
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Ramirez",
+          "categoria": "Saltos",
+          "lat": "-25.6850",
+          "lon": "-54.4460",
+          "descrip": "Salto Bosetti",
+          "sector": "Superior"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.44604611000774,
+            -25.684981614834967
+          ],
+          "type": "Point"
+        },
+        "id": 62
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Adam",
+          "categoria": "Saltos",
+          "lat": -25.6865,
+          "lon": "-54.4460",
+          "descrip": "Saltos Adam",
+          "sector": "Superior"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.446041676029424,
+            -25.68648105695725
+          ],
+          "type": "Point"
+        },
+        "id": 63
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Dos Hermanas",
+          "categoria": "Saltos",
+          "lat": -25.6837,
+          "lon": " -54.4455",
+          "descrip": "Salto Dos Hermanas desde inferior",
+          "sector": "Inferior"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.44546159857521,
+            -25.6836556142907
+          ],
+          "type": "Point"
+        },
+        "id": 63
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "TiendaGarganta",
+          "categoria": "tiendas",
+          "lat": -25.7011,
+          "lon": "-54.4450",
+          "descrip": "Tienda en garganta",
+          "sector": "Garganta"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.44500613908771,
+            -25.70114926768072
+          ],
+          "type": "Point"
+        },
+        "id": 60
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Garganta Del Diablo",
+          "categoria": "Saltos",
+          "lat": -25.6955,
+          "lon": -54.4374,
+          "descrip": "Salto mas famoso, Garganta del diablo",
+          "sector": "Garganta"
+        },
+        "geometry": {
+          "coordinates": [
+            -54.43736886446776,
+            -25.695504696349133
+          ],
+          "type": "Point"
+        },
+        "id": 61
+      }
+    ]
+  }

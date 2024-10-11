@@ -11,6 +11,7 @@
 body {
   background: var(--color-background);
   font-family: "Open Sans", sans-serif;
+  margin: 0; /* Asegúrate de que no haya márgenes en el body */
 }
 
 .navbar {
@@ -19,10 +20,13 @@ body {
   left: 1rem;
   background: var(--color-border);
   border-radius: 10px;
-  padding: auto;
+  padding: 0; /* Cambiado de auto a 0 */
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.03);
   height: calc(100vh - 4rem);
   min-height: 728px;
+  display: flex;
+  flex-direction: column; /* Asegura que los elementos se alineen verticalmente */
+  justify-content: space-between; /* Distribuye el espacio entre los elementos */
 }
 
 .navbar__link {
@@ -60,9 +64,11 @@ body {
 }
 
 .navbar__menu {
-  position: relative;
+  flex-grow: 1; /* Permite que el menú ocupe el espacio disponible */
+  display: flex;
+  flex-direction: column; /* Asegura que los elementos del menú se alineen en columna */
+  padding: 0; /* Asegúrate de que no haya padding adicional */
   list-style-type: none;
-  padding: 0px;
 }
 
 .navbar__item:last-child:before {
@@ -78,11 +84,12 @@ body {
   border-radius: 17.5px;
   transition: 250ms cubic-bezier(1, 0.2, 0.1, 1.2) all;
 }
-#logout{
-  transform: translate(-5px, 250px);
+
+#logout-container {
+  margin-top: auto; /* Empuja el botón hacia la parte inferior */
 }
 
-.mapa-container{
-  width: 500vw;
-  height: 500vh;
+#mapa {
+  width: 100vw;
+  height: 100vh;
 }
