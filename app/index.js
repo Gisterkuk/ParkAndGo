@@ -2,10 +2,11 @@ import mysql from 'mysql2/promise';
 import nodemailer from 'nodemailer';
 import express from 'express';
 import path from 'path';
+import { insertPuntos } from './controllers/data/EndPoints/PuntosInsert.js';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import { Registrarse } from './controllers/ControllerRegistro.js';
-import { loguearse } from './controllers/ControllerLogin.js';
+import { Registrarse } from './controllers/Authentication/ControllerRegistro.js';
+import { loguearse } from './controllers/Authentication/ControllerLogin.js';
 import { validateEmail, validateNombre, transporter, MensajeCorreo,  generadorToken, linktoken } from './public/JS/ScriptValideEmail.js';
 import bcrypt from "bcryptjs";
 import JsonWebToken from 'jsonwebtoken';
@@ -14,7 +15,7 @@ import cookieParser from 'cookie-parser';
 import { SoloUsuarios } from './Middlewares/authorization.js';
 
 dotenv.config();
-const pool = mysql.createPool({
+export const pool = mysql.createPool({
     host: 'localhost',
     user: 'Alan',
     password: 'Camara020672',
@@ -42,11 +43,12 @@ app.listen(app.get("port"), function () {
     console.log("El servidor se inició en http://localhost:8000");
 });
 
-app.get("/registro", function (req, res) {
-    res.sendFile(path.join(__dirname, "/pages/Entrada/register.html"));
-});
 app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "/pages/home/map.html"));
+});
+
+app.get("/registro", function (req, res) {
+    res.sendFile(path.join(__dirname, "/pages/Entrada/register.html"));
 });
 
 app.get("/CorreoValido", async function (req, res) {
@@ -101,6 +103,7 @@ app.get("/ValidarCorreo", function (req, res) {
 app.get("/login", function (req, res) {
     res.sendFile(path.join(__dirname, "pages/Entrada/login.html"));
 });
+app.post("/Insertar-puntos", insertPuntos);
 
 
 

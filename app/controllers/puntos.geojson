@@ -1,0 +1,1121 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "teatro",
+        "categoria": "pabellon",
+        "descrip": "Anfiteatro",
+        "sector": "Principal",
+        "Imagen_url": "https://i.ibb.co/fxbzfXv/anfiteatro.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.454422236725065,
+          -25.681923770074505
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "La Selva",
+        "categoria": "Restaurante",
+        "descrip": "Restaurante la selva",
+        "sector": "Comercios",
+        "Imagen_url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/12/16/c4/4d/la-selva-restaurante.jpg?w=1000&h=600&s=1"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.454501703522595,
+          -25.680974556856313
+        ],
+        "type": "Point"
+      },
+      "id": 1
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Yvyrá Retá",
+        "categoria": "museo",
+        "descrip": "atencion para visitantes",
+        "sector": "Principal",
+        "Imagen_url": "https://iguazuargentina.com/images/hacer/centrodevisitantes/img1.jpg"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.45381136009571,
+          -25.68240363130154
+        ],
+        "type": "Point"
+      },
+      "id": 2
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "EmbarquePaseoNautico",
+        "categoria": "Jungle Iguazu",
+        "descrip": "Embarque del paseo gran aventura",
+        "sector": "Embarque",
+        "Imagen_url": "https://i.ibb.co/tqjnTCx/Captura-de-pantalla-2024-10-10-224924.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.45419566927525,
+          -25.680624621597246
+        ],
+        "type": "Point"
+      },
+      "id": 3
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "StandJungle",
+        "categoria": "Jungle Iguazu",
+        "descrip": "punto de venta de paseos nauticos",
+        "sector": "Principal",
+        "Imagen_url": "https://www.iguazujungle.com/esp/web2/media/widgetkit/FAQ03-5d604ec6ace519f899b9c674ecf2b265.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.453710896457494,
+          -25.68183342250083
+        ],
+        "type": "Point"
+      },
+      "id": 4
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Artesania",
+        "categoria": "tienda",
+        "descrip": "artesanias guarani",
+        "sector": "Comercios",
+        "Imagen_url": "https://i.ibb.co/JrSZbpK/Captura-de-pantalla-2024-10-10-225240.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.45329351909045,
+          -25.680788820101682
+        ],
+        "type": "Point"
+      },
+      "id": 5
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "havanna",
+        "categoria": "tienda",
+        "descrip": "Tienda de productos havanna",
+        "sector": "Comercios",
+        "Imagen_url": "https://i.ibb.co/HdRQr2m/Captura-de-pantalla-2024-10-10-225406.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.453042783016585,
+          -25.680853860554095
+        ],
+        "type": "Point"
+      },
+      "id": 6
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "PiedrasPreciosas",
+        "categoria": "tiendas",
+        "descrip": "Tienda para comprar piedras preciosas",
+        "sector": "Comercios",
+        "Imagen_url": "https://i.ibb.co/Rc9MsX7/Captura-de-pantalla-2024-10-10-225523.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.45302726040525,
+          -25.68105275582934
+        ],
+        "type": "Point"
+      },
+      "id": 7
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "comercio 2",
+        "categoria": "tienda",
+        "descrip": "Tienda",
+        "sector": "Comercios",
+        "Imagen_url": "https://i.ibb.co/10Bk2k9/Captura-de-pantalla-2024-10-10-225550.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.453039217582884,
+          -25.680690699658555
+        ],
+        "type": "Point"
+      },
+      "id": 8
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "MiradorArrechea",
+        "categoria": "Saltos",
+        "descrip": "Mirador del salto Arrechea",
+        "sector": "Macuco",
+        "Imagen_url": "https://tourbly.com.ar/wp-content/uploads/2023/10/sendero-macuco.jpg"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.45739604644338,
+          -25.655204771667144
+        ],
+        "type": "Point"
+      },
+      "id": 9
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "FrontJungle",
+        "categoria": "Jungle Iguazu",
+        "descrip": "venta paseos nauticos",
+        "sector": "Acceso",
+        "Imagen_url": "https://www.iguazujungle.com/esp/web2/media/widgetkit/FAQ01-1edcfed5dc84ad8537097fb2bbc7ee70.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.45450646144451,
+          -25.682973724519783
+        ],
+        "type": "Point"
+      },
+      "id": 10
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Taxi",
+        "categoria": "transporte",
+        "descrip": "Taxistas",
+        "sector": "Acceso",
+        "Imagen_url": "https://imgs.search.brave.com/AqLWZnWLcI240xaWLPgytgIiNCF2zS1euhRCKAF4OtQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9mb3Rv/Z3JhZmlhcy5hbnRl/bmEzLmNvbS9jbGlw/cGluZy9jbXNpbWFn/ZXMwMS8yMDE4LzA3/LzMxLzEwQUNBOThD/LUYzMzYtNEYzRS1C/NzU3LTMwNkREMkQz/NzE3Ni82My5qcGc"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.45419729380879,
+          -25.683323788742086
+        ],
+        "type": "Point"
+      },
+      "id": 12
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bus",
+        "categoria": "transporte",
+        "descrip": "Oficina de Rio Uruguay",
+        "sector": "Acceso",
+        "Imagen_url": "https://imgs.search.brave.com/V_ZjBLnLBcKeoY_gO94epSluPMt1TZis7WryaRj0lfs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pMC53/cC5jb20vd3d3Lmlu/Zm92aWFqZXJhLmNv/bS93cC1jb250ZW50/L3VwbG9hZHMvMjAy/My8wNS9CdXMtTWlj/cm8tQXV0b2J1cy1S/aW8tVXJ1Z3VheS1U/cmFuc3BvcnRlLVB1/YmxpY28tUGFycXVl/LU5hY2lvbmFsLVRh/YmxhLUhvcmFyaW9z/LmpwZz9yZXNpemU9/MTIwMCw5MDAmc3Ns/PTE"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.45509761185271,
+          -25.682954283074537
+        ],
+        "type": "Point"
+      },
+      "id": 13
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ventanillas-izquierda",
+        "categoria": "VentaTicket",
+        "descrip": "Ventanilla para la compra de tickets",
+        "sector": "Acceso",
+        "Imagen_url": "https://i.ibb.co/R9X2jBS/Captura-de-pantalla-2024-10-10-230919.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.45495266304384,
+          -25.68288589635266
+        ],
+        "type": "Point"
+      },
+      "id": 13
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Oficina APN",
+        "categoria": "Atencion APN",
+        "descrip": "atencion de guarda parques",
+        "sector": "Acceso",
+        "Imagen_url": "https://i.ibb.co/PCPkRrk/Captura-de-pantalla-2024-10-10-231016.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.45467122266645,
+          -25.68283181831201
+        ],
+        "type": "Point"
+      },
+      "id": 19
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "fotografos",
+        "categoria": "Fotografia",
+        "descrip": "Stand de fotografos del parque",
+        "sector": "Entrada",
+        "Imagen_url": "https://i.ibb.co/NtCJrCh/Captura-de-pantalla-2024-10-10-231148.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.45456244191766,
+          -25.682596101887384
+        ],
+        "type": "Point"
+      },
+      "id": 16
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "oficina IGARG",
+        "categoria": "atencion al publico",
+        "descrip": "atencion para personas discapacitadas o jubiladas",
+        "sector": "Acceso",
+        "Imagen_url": "https://i.ibb.co/JBX0Pp6/Captura-de-pantalla-2024-10-10-232956.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.454456039374804,
+          -25.682856428163362
+        ],
+        "type": "Point"
+      },
+      "id": 21
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Souvenirs",
+        "categoria": "tiendas",
+        "descrip": "Tienda para comprar recuerdos de las cataratas",
+        "sector": "Comercios",
+        "Imagen_url": "https://i.ibb.co/k9BQ4qt/Captura-de-pantalla-2024-10-10-231548.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.45367041662196,
+          -25.68121661850229
+        ],
+        "type": "Point"
+      },
+      "id": 17
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "tiendaselva",
+        "categoria": "tienda",
+        "descrip": "Tienda cerca del restaurante la selva",
+        "sector": "Comercios",
+        "Imagen_url": "https://i.ibb.co/10Bk2k9/Captura-de-pantalla-2024-10-10-225550.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.45402423647141,
+          -25.680748449444295
+        ],
+        "type": "Point"
+      },
+      "id": 19
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Verde",
+        "categoria": "sendero",
+        "descrip": "Sendero de unos 600mts, finaliza en la estacion cataratas",
+        "sector": "SenderoVerde",
+        "Imagen_url": "https://imgs.search.brave.com/Kug6kMBTLdR0RJ3Y8AuYR9Z2bJ-q4CgANG2zq1xtOmo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zcC1h/by5zaG9ydHBpeGVs/LmFpL2NsaWVudC90/b19hdXRvLHFfZ2xv/c3N5LHJldF9pbWcs/d181MDAsaF8zMDAv/aHR0cHM6Ly9wYXJx/dWVuYWNpb25hbGln/dWF6dS5jb20uYXIv/d3AtY29udGVudC91/cGxvYWRzLzIwMjAv/MDcvc2VuZGVyby12/ZXJkZS0xLmpwZw"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.45269868314267,
+          -25.679822214063364
+        ],
+        "type": "Point"
+      },
+      "id": 20
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "TrenCataratas",
+        "categoria": "Tren",
+        "descrip": "Estacion del tren Cataratas",
+        "sector": "EstacionCataratas",
+        "Imagen_url": "https://imgs.search.brave.com/POy41QglYYycUDxvfvZZKmMCCD8Blq8Hluskzh08nU4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9k/L2RjL1RyZW5fRWNv/bCVDMyVCM2dpY29f/ZGVfbGFfU2VsdmEx/LmpwZw"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.448999251832305,
+          -25.68379802044484
+        ],
+        "type": "Point"
+      },
+      "id": 20
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "BañoCataratas",
+        "categoria": "Sanitarios",
+        "descrip": "Sanitarios de la estacion cataratas",
+        "sector": "EstacionCataratas",
+        "Imagen_url": "https://imgs.search.brave.com/OEilfNl8YFDMD2ZXOgr57XbFKnfui1mIpfKIzjCm-1Q/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTI3/ODkxMzY0Ny9lcy9m/b3RvL2JhJUMzJUIx/by1wJUMzJUJBYmxp/Y28uanBnP3M9NjEy/eDYxMiZ3PTAmaz0y/MCZjPWlhT1dGS25F/ZkRjejBNVWhFbzRL/VG5TcHBTWVM3czdI/cjFEVTgyQnlFVHM9"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.44906312858308,
+          -25.683594099463164
+        ],
+        "type": "Point"
+      },
+      "id": 22
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "TiendaCataratas",
+        "categoria": "Tiendas",
+        "descrip": "Tienda de Est Cataratas",
+        "sector": "EstacionCataratas",
+        "Imagen_url": "https://i.ibb.co/10Bk2k9/Captura-de-pantalla-2024-10-10-225550.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.448793485147974,
+          -25.683822037207605
+        ],
+        "type": "Point"
+      },
+      "id": 23
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "tienda-izquierda",
+        "categoria": "tiendas",
+        "descrip": "tienda en la entrada",
+        "sector": "Acceso",
+        "Imagen_url": "https://i.ibb.co/10Bk2k9/Captura-de-pantalla-2024-10-10-225550.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.45487426223549,
+          -25.682877694944594
+        ],
+        "type": "Point"
+      },
+      "id": 23
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "tienda-derecha",
+        "categoria": "tiendas",
+        "descrip": "tienda en la entrada",
+        "sector": "Acceso",
+        "Imagen_url": "https://i.ibb.co/10Bk2k9/Captura-de-pantalla-2024-10-10-225550.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.45430020141721,
+          -25.683007534441742
+        ],
+        "type": "Point"
+      },
+      "id": 26
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "BañoComercio",
+        "categoria": "Sanitarios",
+        "descrip": "sanitario de zona de comercios",
+        "sector": "Comercios",
+        "Imagen_url": "https://imgs.search.brave.com/OEilfNl8YFDMD2ZXOgr57XbFKnfui1mIpfKIzjCm-1Q/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTI3/ODkxMzY0Ny9lcy9m/b3RvL2JhJUMzJUIx/by1wJUMzJUJBYmxp/Y28uanBnP3M9NjEy/eDYxMiZ3PTAmaz0y/MCZjPWlhT1dGS25F/ZkRjejBNVWhFbzRL/VG5TcHBTWVM3czdI/cjFEVTgyQnlFVHM9"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.45295172846623,
+          -25.680880855915916
+        ],
+        "type": "Point"
+      },
+      "id": 26
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "CIES",
+        "categoria": "Museo",
+        "descrip": "Centro de investigaciones ecologicas subtropicales",
+        "sector": "ViejoHotel",
+        "Imagen_url": "https://imgs.search.brave.com/mAOjW59OCqSbksLuWnFl2HmlGRddOmlMOuD1csuIO-Q/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9lbHRl/cnJpdG9yaW8xLmNk/bi5uZXQuYXIvMjUy/L2VsdGVycml0b3Jp/bzEvaW1hZ2VzLzE4/LzgxLzE4ODE5OV81/MzZhMjJmY2ZiNDcx/NzJhZTk3MGNkODMy/YmNmNDIyYmZmZDEy/NGMyMjgwMmNjOWVj/NmI2MDQwZGVjZWM1/ZjYyL21kLndlYnA"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.44619397385139,
+          -25.681756445648617
+        ],
+        "type": "Point"
+      },
+      "id": 27
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Melía",
+        "categoria": "Hoteles",
+        "descrip": "Hotel Melia",
+        "sector": "Melía",
+        "Imagen_url": "https://dam.melia.com/melia/accounts/f8/4000018/projects/127/assets/0f/49258/6fdf7e33d913c2d297a66c40c8cecef9-1605804871.jpg?im=RegionOfInterestCrop=(1920,960),regionOfInterest=(1476.5,984.5)"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.44534793695885,
+          -25.679965151141474
+        ],
+        "type": "Point"
+      },
+      "id": 28
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "San Martin",
+        "categoria": "Saltos",
+        "descrip": "Salto San Martin",
+        "sector": "Superior",
+        "Imagen_url": "https://imgs.search.brave.com/yrXqwjLYK0Z5iwl6jf-Pvmus54GqQ5lzxeAtr-VHzyI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9saXZl/LnN0YXRpY2ZsaWNr/ci5jb20vNzQ4NS8x/NTkwNjA2MzA5Nl9l/MDkzOGEyMTFjLmpw/Zw"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.44423977181924,
+          -25.688744579314104
+        ],
+        "type": "Point"
+      },
+      "id": 28
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mbigua",
+        "categoria": "Saltos",
+        "descrip": "Salto Mbigua",
+        "sector": "Superior",
+        "Imagen_url": "https://fastly.4sqi.net/img/general/width960/8869208__edEzWtj-0i3On0tHfjuHRdQWxv3o5DuMvQYwu8rtt0.jpg"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.44538501457657,
+          -25.687447386369882
+        ],
+        "type": "Point"
+      },
+      "id": 29
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bernade Mendez",
+        "categoria": "Saltos",
+        "descrip": "Salto Bernade Mendez",
+        "sector": "Superior",
+        "Imagen_url": "https://i.ibb.co/BCc8TGP/Captura-de-pantalla-2024-10-10-233551.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.44574382815068,
+          -25.686975501492455
+        ],
+        "type": "Point"
+      },
+      "id": 30
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Dos Hermanas",
+        "categoria": "Saltos",
+        "descrip": "salto dos hermanas",
+        "sector": "Superior",
+        "Imagen_url": "https://fastly.4sqi.net/img/general/width960/39251248_R07_bqlRdIsSpvSTd62gqcfslyARwICIREnwiPj3edU.jpg"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.445796829921775,
+          -25.684239639794
+        ],
+        "type": "Point"
+      },
+      "id": 31
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "SupChico",
+        "categoria": "Saltos",
+        "descrip": "Salto Chico",
+        "sector": "Superior",
+        "Imagen_url": "https://fastly.4sqi.net/img/general/width960/3157443_hREk0fF-RjB_xZQ2-kD-5DPpkb8PR3wTrH9d3h_jipM.jpg"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.445883123867745,
+          -25.6848613233403
+        ],
+        "type": "Point"
+      },
+      "id": 32
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bosetti",
+        "descrip": "Salto Bosetti",
+        "sector": "Superior",
+        "categoria": "Saltos",
+        "Imagen_url": "https://fastly.4sqi.net/img/general/width960/52126295_ue-vhx38D0xj-a0SB3EO13ahnmhMj4jfof9aUUFnOW0.jpg"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.44618078641943,
+          -25.685576061173947
+        ],
+        "type": "Point"
+      },
+      "id": 33
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Eva",
+        "categoria": "Saltos",
+        "descrip": "Salto Eva",
+        "sector": "Superior",
+        "Imagen_url": "https://fastly.4sqi.net/img/general/width960/52070315_ktu4HceUYEQy-sXGFREdpKVG5ru39GcD_w9Pe9aVnWc.jpg"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.446202285375065,
+          -25.686008960731357
+        ],
+        "type": "Point"
+      },
+      "id": 34
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lanusse",
+        "categoria": "Saltos",
+        "descrip": "Salto Lanusse",
+        "sector": "Inferior",
+        "Imagen_url": "https://fastly.4sqi.net/img/general/width960/20016345_Pxj9L-69ANl9n1ga2VxeFeLOsSrf7-wkrwW-MbLCZ7w.jpg"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.442697269020144,
+          -25.683069451800037
+        ],
+        "type": "Point"
+      },
+      "id": 35
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Álvar Nuñez",
+        "categoria": "Saltos",
+        "descrip": "Salto Alvar Nuñez",
+        "sector": "Inferior",
+        "Imagen_url": "https://fastly.4sqi.net/img/general/width960/6443255_kZk9BwyJ6H8RRufBDy3pIts03BPAwRjqxLnHhL5n1NE.jpg"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.44278285728457,
+          -25.683786098352513
+        ],
+        "type": "Point"
+      },
+      "id": 36
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "InfChico",
+        "categoria": "Saltos",
+        "descrip": "Salto Chico",
+        "sector": "Inferior",
+        "Imagen_url": "https://fastly.4sqi.net/img/general/width960/1157279_hQm91SPBx9P7EAWlO-Xjf35H6AjohiIb1AEDVEDBdWY.jpg"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.4454765942542,
+          -25.68490613490647
+        ],
+        "type": "Point"
+      },
+      "id": 37
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "TrenGarganta",
+        "categoria": "Tren",
+        "descrip": "Estacion de Tren en Gargante del Diablo",
+        "sector": "Garganta",
+        "Imagen_url": "https://imgs.search.brave.com/40ohHYlv1b5r0nMWhGMmBZImWxb3RPVgMz19zQECvy8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy84/LzhkL0VzdGFjaSVD/MyVCM25fR2FyZ2Fu/dGFfZGVsX0RpYWJs/b18oQ2F0YXJhdGFz/X2RlbF9JZ3VheiVD/MyVCQSksX25vbWVu/Y2xhZG9yLkpQRw"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.44490415060095,
+          -25.70142685350433
+        ],
+        "type": "Point"
+      },
+      "id": 38
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "BañosGarganta",
+        "categoria": "sanitarios",
+        "descrip": "Sanitario de zona Garganta",
+        "sector": "Garganta",
+        "Imagen_url": "https://imgs.search.brave.com/OEilfNl8YFDMD2ZXOgr57XbFKnfui1mIpfKIzjCm-1Q/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTI3/ODkxMzY0Ny9lcy9m/b3RvL2JhJUMzJUIx/by1wJUMzJUJBYmxp/Y28uanBnP3M9NjEy/eDYxMiZ3PTAmaz0y/MCZjPWlhT1dGS25F/ZkRjejBNVWhFbzRL/VG5TcHBTWVM3czdI/cjFEVTgyQnlFVHM9"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.444457556782666,
+          -25.701619637741786
+        ],
+        "type": "Point"
+      },
+      "id": 39
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "GargantaJungle",
+        "categoria": "Jungle Iguazu",
+        "descrip": "Paseos Nauticos (paseo ecologico)",
+        "sector": "Garganta",
+        "Imagen_url": "https://www.iguazujungle.com/esp/web2/media/widgetkit/nos02-cc5296fcb676f49946d2a7a20d69bad3.jpg"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.44441826955784,
+          -25.701418332525662
+        ],
+        "type": "Point"
+      },
+      "id": 40
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "CentralJungle",
+        "categoria": "IguazuJungle",
+        "descrip": "Oficina principal de los paseos nauticos",
+        "sector": "CentralJungle",
+        "Imagen_url": "https://www.iguazujungle.com/esp/web2/images/nosotros02.jpg"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.44676502437056,
+          -25.681206662730062
+        ],
+        "type": "Point"
+      },
+      "id": 48
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ventanillas-derecha",
+        "categoria": "VentaTicket",
+        "descrip": "venta de ticket para ingresar al parque",
+        "sector": "Acceso",
+        "Imagen_url": "https://i.ibb.co/R9X2jBS/Captura-de-pantalla-2024-10-10-230919.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.45420507951209,
+          -25.683060518960772
+        ],
+        "type": "Point"
+      },
+      "id": 54
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "TerritorioYaguarete",
+        "categoria": "museo",
+        "descrip": "Museo sobre el felino yaguarete",
+        "sector": "Comercio",
+        "Imagen_url": "https://static.misionesonline.news/wp-content/uploads/2023/11/Territorio-Yaguarete-6-696x522.jpeg"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.453740967491086,
+          -25.68071066573576
+        ],
+        "type": "Point"
+      },
+      "id": 55
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "comercio 1",
+        "categoria": "tienda",
+        "descrip": "Tienda en zona comercios",
+        "sector": "Comercios",
+        "Imagen_url": "https://i.ibb.co/10Bk2k9/Captura-de-pantalla-2024-10-10-225550.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.45328139873354,
+          -25.68055685054526
+        ],
+        "type": "Point"
+      },
+      "id": 56
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "TicketCentral",
+        "categoria": "TicketTren",
+        "descrip": "Aqui se retiran los ticket para el tren",
+        "sector": "Comercios",
+        "Imagen_url": "https://i.ibb.co/PZ5CFcv/Captura-de-pantalla-2024-10-10-235207.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.453124116254926,
+          -25.680468150121555
+        ],
+        "type": "Point"
+      },
+      "id": 56
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Central",
+        "categoria": "AtencionMedica",
+        "descrip": "Atencion medica",
+        "sector": "EstacionCentral",
+        "Imagen_url": "https://i.ibb.co/PZ5CFcv/Captura-de-pantalla-2024-10-10-235207.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.4533536763832,
+          -25.679208667259218
+        ],
+        "type": "Point"
+      },
+      "id": 46
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Estacion Central 1",
+        "categoria": "tiendas",
+        "descrip": "Tienda en Estacio central",
+        "sector": "EstacionCentral",
+        "Imagen_url": "https://i.ibb.co/10Bk2k9/Captura-de-pantalla-2024-10-10-225550.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.45326943761903,
+          -25.67926448985405
+        ],
+        "type": "Point"
+      },
+      "id": 47
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "EstacionCentral 2",
+        "categoria": "tiendas",
+        "descrip": "tienda en estacion central",
+        "sector": "EstacionCentral",
+        "Imagen_url": "https://i.ibb.co/10Bk2k9/Captura-de-pantalla-2024-10-10-225550.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.453001759363886,
+          -25.679242488658062
+        ],
+        "type": "Point"
+      },
+      "id": 48
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "TrenCentral",
+        "categoria": "Tren",
+        "descrip": "Estacion de Tren ",
+        "sector": "EstacionCentral",
+        "Imagen_url": "https://imgs.search.brave.com/b6578TdHwCnLCSU0lHHsiqQ6tvJVpPzMaaC-_ZcGku4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/aWd1YXp1dmlhamVz/LmNvbS9tZWRpYS9r/Mi9pdGVtcy9jYWNo/ZS8xNzFmYzE0YjQ5/YTc5ZWE5Nzk3MTBk/ZTViMzQwMmIzMF9M/LmpwZw"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.453125342236206,
+          -25.679305530213625
+        ],
+        "type": "Point"
+      },
+      "id": 49
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cajero",
+        "categoria": "CajeroAutomatico",
+        "descrip": "Cajero automatico",
+        "sector": "Acceso",
+        "Imagen_url": "https://www.infobae.com/resizer/v2/XK2XMDLY5VHADNBPV4ANGHARTQ.jpg?auth=0b23c9263ef05cec2228faf50eaa4900306b2b354dce8082319d8d229036a11c&smart=true&width=992&height=606&quality=85"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.45473862707455,
+          -25.682864582413586
+        ],
+        "type": "Point"
+      },
+      "id": 62
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Macuco",
+        "categoria": "Sendero",
+        "descrip": "Entrada al sendero macuco",
+        "sector": "Macuco",
+        "Imagen_url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/13/4f/0f/75/sendero-macuco.jpg?w=1000&h=-1&s=1"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.450225979660104,
+          -25.678785547892048
+        ],
+        "type": "Point"
+      },
+      "id": 59
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "CaminoMacuco",
+        "categoria": "sendero",
+        "descrip": "Entrada al camino para dirigirse a la entrada del sendero macuco",
+        "sector": "Estacion Central",
+        "Imagen_url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/13/4b/2c/d9/cartel-en-la-entrada.jpg?w=1000&h=-1&s=1"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.45289346177529,
+          -25.679010354713853
+        ],
+        "type": "Point"
+      },
+      "id": 64
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Arrechea",
+        "categoria": "Saltos",
+        "descrip": "Salto 'Escondido' Arrechea",
+        "sector": "Macuco",
+        "Imagen_url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/e7/49/41/sendero-macuco.jpg?w=1000&h=-1&s=1"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.45732525073619,
+          -25.655167648347003
+        ],
+        "type": "Point"
+      },
+      "id": 60
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "TicketCataratas",
+        "categoria": "TicketTren",
+        "descrip": "Tickets para el tren",
+        "sector": "EstacionCataratas",
+        "Imagen_url": "aHR0cHM6Ly93d3cu"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.44888994841763,
+          -25.683783977909613
+        ],
+        "type": "Point"
+      },
+      "id": 64
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Superior",
+        "categoria": "Sendero",
+        "descrip": "Entrada al circuito superior",
+        "sector": "Superior",
+        "Imagen_url": "https://i.ibb.co/f9S0HpB/Captura-de-pantalla-2024-10-10-235944.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.44683431510205,
+          -25.683951813682185
+        ],
+        "type": "Point"
+      },
+      "id": 62
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Fortin",
+        "categoria": "Restaurante",
+        "descrip": "Buffets, Helado, Comida, etc",
+        "sector": "Fortin",
+        "Imagen_url": "https://www.fortincataratas.com/img/contenido/big/elfortin01.jpg"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.44741250621628,
+          -25.6822036964914
+        ],
+        "type": "Point"
+      },
+      "id": 64
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ramirez",
+        "categoria": "Saltos",
+        "descrip": "Salto ramirez",
+        "sector": "Superior",
+        "Imagen_url": "https://fastly.4sqi.net/img/general/width960/308963_Kx3fJvpw1Q-QdLaEcn63SDVELvgi38j3I_dVcbhDjQ8.jpg"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.44604611000774,
+          -25.684981614834967
+        ],
+        "type": "Point"
+      },
+      "id": 62
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Adam",
+        "categoria": "Saltos",
+        "descrip": "Saltos Adam",
+        "sector": "Superior",
+        "Imagen_url": "https://imgs.search.brave.com/sTN6jLfx3dVtmm_sFZ7iwmfmGDe0OhQyT0FgLfLkEgw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvOTI3/OTYxMjc4L2VzL2Zv/dG8vd2F0ZXJmYWxs/cy1hZGFtLWFuZC1l/dmUtaWd1YXp1LWZh/bGxzLWlndWF6dS1y/aXZlci1ib3JkZXIt/YmV0d2Vlbi1icmF6/aWwtYW5kLWFyZ2Vu/dGluYS1mb3otZG8u/anBnP3M9NjEyeDYx/MiZ3PTAmaz0yMCZj/PVNjdzJDTFk5NnF1/RWlPeTJhUDRObXVj/dG1WUXE1MWtfTmwz/NXNobGdwSTQ9"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.446041676029424,
+          -25.68648105695725
+        ],
+        "type": "Point"
+      },
+      "id": 63
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Dos Hermanas",
+        "categoria": "Saltos",
+        "descrip": "Salto Dos Hermanas desde inferior",
+        "sector": "Inferior",
+        "Imagen_url": "https://fastly.4sqi.net/img/general/width960/37064202_UAyzLbsn2skbItaUQnqjZPd-1M5thySf9JMyx1n6zQc.jpg"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.44546159857521,
+          -25.6836556142907
+        ],
+        "type": "Point"
+      },
+      "id": 63
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "TiendaGarganta",
+        "categoria": "tiendas",
+        "descrip": "Tienda en garganta",
+        "sector": "Garganta",
+        "Imagen_url": "https://i.ibb.co/10Bk2k9/Captura-de-pantalla-2024-10-10-225550.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.44500613908771,
+          -25.70114926768072
+        ],
+        "type": "Point"
+      },
+      "id": 60
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Garganta Del Diablo",
+        "categoria": "Saltos",
+        "descrip": "Salto mas famoso, Garganta del diablo",
+        "sector": "Garganta",
+        "Imagen_url": "https://imgs.search.brave.com/YBtb_T7KmllT-UTFq_TSmJY7ogphz8d12vuxmxVH6f0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bGF2b3ouY29tLmFy/L3Jlc2l6ZXIvdjIv/R0ZTR0VZUllHNDNX/R1pSUkdBWVRDTVJS/R1kuanBnP3F1YWxp/dHk9NzUmc21hcnQ9/dHJ1ZSZhdXRoPTA0/YzNkZDkzZDg2MzIz/M2I4ZGI5MjdjMzYw/MWRhMjgxOWI0YTk0/MTY1M2JhZTMyMzY0/ZWRmYTBmZTgzMmE1/MjAmd2lkdGg9OTgw/JmhlaWdodD02NDA"
+      },
+      "geometry": {
+        "coordinates": [
+          -54.43736886446776,
+          -25.695504696349133
+        ],
+        "type": "Point"
+      },
+      "id": 61
+    }
+  ]
+}

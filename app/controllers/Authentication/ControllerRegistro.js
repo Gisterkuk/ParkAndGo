@@ -1,6 +1,5 @@
-import { validateEmail, validateNombre, transporter, MensajeCorreo } from '../public/JS/ScriptValideEmail.js';
+import { validateEmail,validateNombre, transporter, MensajeCorreo,generadorToken, linktoken } from '../../public/JS/ScriptValideEmail.js';
 import bcryptjs from 'bcryptjs';
-import { generadorToken, linktoken } from '../public/JS/ScriptValideEmail.js';
 
 export async function Registrarse(app, pool) {
     app.post("/VerificarRegister", async (req, res) => {

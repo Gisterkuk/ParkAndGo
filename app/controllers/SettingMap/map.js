@@ -12,11 +12,11 @@ window.onload = function() {
     map.on('load', function() {
         map.addSource('rutas', {
             'type': 'geojson',
-            'data': '/app/public/rutas.geojson'    
+            'data': '/app/controllers/rutas.geojson'    
         });
         map.addSource('rutas', {
             'type': 'geojson',
-            'data': '/app/public/puntos.geojson'    
+            'data': '/app/controllers/puntos.geojson'    
         });
 
         
