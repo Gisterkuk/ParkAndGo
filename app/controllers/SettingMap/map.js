@@ -10,10 +10,7 @@ window.onload = function() {
     });
 
     map.on('load', function() {
-        map.addSource('rutas', {
-            'type': 'geojson',
-            'data': './controllers/rutas.geojson'    
-        });
+
         map.addSource('puntos', {
             'type': 'geojson',
             'data': './controllers/puntos.geojson'    
@@ -42,5 +39,43 @@ window.onload = function() {
         .catch(error => {
             console.error('Error al cargar los puntos de interés:', error);
         });
+        fetch('/api/rutas')
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(ruta => {
+                const coordinates = JSON.parse(ruta.geojson).coordinates;
+                
+                // Añadir la ruta al mapa
+                map.addSource(ruta.nombre_ruta, {
+                    type: 'geojson',
+                    data: {
+                        type: 'Feature',
+                        geometry: {
+                            type: 'LineString',
+                            coordinates: coordinates
+                        },
+                        properties: {
+                            nombre: ruta.nombre_ruta
+                        }
+                    }
+                });
+
+                // Añadir la capa para mostrar la ruta
+                map.addLayer({
+                    id: ruta.nombre_ruta,
+                    type: 'line',
+                    source: ruta.nombre_ruta,
+                    layout: {
+                        'line-join': 'round',
+                        'line-cap': 'round'
+                    },
+                    paint: {
+                        'line-color': '#888',
+                        'line-width': 4
+                    }
+                });
+            });
+        })
+        .catch(error => console.error('Error al obtener las rutas:', error));
     });
 };

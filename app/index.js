@@ -3,6 +3,7 @@ import nodemailer from 'nodemailer';
 import express from 'express';
 import path from 'path';
 import { insertPuntos } from './controllers/data/EndPoints/PuntosInsert.js';
+import { insertRutas } from './controllers/data/EndPoints/RutasInsert.js';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import { Registrarse } from './controllers/Authentication/ControllerRegistro.js';
@@ -38,9 +39,9 @@ app.use(cookieParser());
 // O define una ruta específica para servir el archivo geojson
 app.use(express.static(path.join(__dirname, '/')));
  
-app.set("port", 8000);
-app.listen(app.get("port"), function () {
-    console.log("El servidor se inició en http://localhost:8000");
+const PORT = process.env.PORT || 8200; // Cambia a 8101 o otro puerto
+app.listen(PORT, () => {
+    console.log(`Servidor escuchando en http://localhost:${PORT}`);
 });
 app.get("/login", function (req, res) {
     res.sendFile(path.join(__dirname, "pages/Entrada/login.html"));
@@ -102,7 +103,7 @@ app.get("/ValidarCorreo", function (req, res) {
 });
 
 app.post("/Insertar-puntos", insertPuntos);
-
+app.post("/Insertar-rutas", insertRutas)
 app.get('/api/puntos-interes', async (req, res) => {
     const query = 'SELECT name, descrip, latitud, longitud, categoria, sector, imagen_url FROM puntos_interes';
 
@@ -114,7 +115,15 @@ app.get('/api/puntos-interes', async (req, res) => {
         res.status(500).json({ error: 'Error en el servidor' });
     }
 });
-
+app.get("/api/rutas", async (req, res) => {
+    const query = 'SELECT nombre_ruta, ST_AsGeoJSON(coordenadas) AS geojson FROM rutas';
+    try {
+        const [results] = await pool.query(query); // Desestructuramos para obtener solo los resultados
+        res.json(results);
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
+    }
+});
 
 
 
