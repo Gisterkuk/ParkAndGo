@@ -29,9 +29,10 @@ window.onload = function() {
                 const marker = new mapboxgl.Marker()
                 .setLngLat(coordinates)
                 .setPopup(new mapboxgl.Popup().setHTML(`
+                    <img src="${punto.imagen_url}" alt="${punto.name}" style="width:100%;">
                     <h3>${punto.name}</h3>
                     <p>${punto.descrip}</p>
-                    <img src="${punto.imagen_url}" alt="${punto.name}" style="width:100px;">`
+                    `
                 ))
                 .addTo(map);
             });
