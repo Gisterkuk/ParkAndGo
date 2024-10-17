@@ -14,6 +14,7 @@ import JsonWebToken from 'jsonwebtoken';
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser';
 import { SoloUsuarios } from './Middlewares/authorization.js';
+import { MultiRoad } from './controllers/data/EndPoints/MultiRoad.js';
 
 dotenv.config();
 export const pool = mysql.createPool({
