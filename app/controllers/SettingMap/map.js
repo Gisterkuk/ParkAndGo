@@ -6,15 +6,35 @@ window.onload = function() {
         container: 'mapa', // ID del contenedor
         style: 'mapbox://styles/mapbox/streets-v11', // Estilo del mapa
         center: [-54.454692, -25.683152], // Longitud y latitud
-        zoom: 12 // Nivel de zoom
+        zoom: 13, // Nivel de zoom
+        maxBounds: [
+            [-54.500, -25.720], // Suroeste (más al oeste y al sur)
+            [-54.400, -25.630]  // Noreste (más al este y al norte)
+        ] // Nivel de zoom
     });
 
     map.on('load', function() {
 
-        map.addSource('puntos', {
-            'type': 'geojson',
-            'data': './controllers/puntos.geojson'    
+        map.addSource('CataratasDelIguazu', {
+            'type': 'vector',
+            'url': 'mapbox://alcandejs.cm2coubw706nl1tlkfdrxxr6k-5tdje' // ID del tileset de Mapbox
         });
+        
+        map.addLayer({
+            'id': 'rutas-layer',
+            'type': 'line',  // Tipo de geometría (puede ser 'fill', 'line', 'circle', etc.)
+            'source': 'CataratasDelIguazu',
+            'source-layer': 'CataratasDelIguazu', // Nombre de la capa dentro de tu tileset
+            'layout': {
+                'line-join': 'round',
+                'line-cap': 'round'
+            },
+            'paint': {
+                'line-color': '#ff1', // Color de la línea
+                'line-width': 3           // Grosor de la línea
+            }
+        });
+
         fetch('/api/puntos-interes')
         .then(response =>{
             if(!response.ok){
@@ -40,43 +60,6 @@ window.onload = function() {
         .catch(error => {
             console.error('Error al cargar los puntos de interés:', error);
         });
-        fetch('/api/rutas')
-        .then(response => response.json())
-        .then(data => {
-            data.forEach(ruta => {
-                const coordinates = JSON.parse(ruta.geojson).coordinates;
-                
-                // Añadir la ruta al mapa
-                map.addSource(ruta.nombre_ruta, {
-                    type: 'geojson',
-                    data: {
-                        type: 'Feature',
-                        geometry: {
-                            type: 'LineString',
-                            coordinates: coordinates
-                        },
-                        properties: {
-                            nombre: ruta.nombre_ruta
-                        }
-                    }
-                });
-
-                // Añadir la capa para mostrar la ruta
-                map.addLayer({
-                    id: ruta.nombre_ruta,
-                    type: 'line',
-                    source: ruta.nombre_ruta,
-                    layout: {
-                        'line-join': 'round',
-                        'line-cap': 'round'
-                    },
-                    paint: {
-                        'line-color': '#888',
-                        'line-width': 4
-                    }
-                });
-            });
-        })
-        .catch(error => console.error('Error al obtener las rutas:', error));
+        
     });
 };
