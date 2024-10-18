@@ -13,6 +13,16 @@ window.onload = function() {
         ] // Nivel de zoom
     });
 
+    const geocoder = new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        mapboxgl: mapboxgl,
+        marker: false, // No agregar automáticamente un marcador
+        placeholder: 'Busca un lugar en el mapa' // Texto de sugerencia
+    });
+
+    // Añadir el control de búsqueda al mapa
+    map.addControl(geocoder, 'top-right');
+
     map.on('load', function() {
 
         map.addSource('CataratasDelIguazu', {

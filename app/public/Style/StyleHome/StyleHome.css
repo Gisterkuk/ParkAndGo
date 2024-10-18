@@ -23,7 +23,7 @@ body {
   padding: 0; /* Cambiado de auto a 0 */
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.03);
   height: calc(100vh - 4rem);
-  min-height: 728px;
+  min-height: 670px;
   display: flex;
   flex-direction: column; /* Asegura que los elementos se alineen verticalmente */
   justify-content: space-between; /* Distribuye el espacio entre los elementos */
