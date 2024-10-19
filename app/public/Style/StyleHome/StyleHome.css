@@ -13,7 +13,17 @@ body {
   font-family: "Open Sans", sans-serif;
   margin: 0; /* Asegúrate de que no haya márgenes en el body */
 }
-
+#form {
+  position: absolute;
+  top: 60px; /* Ajustar según la altura de la barra de búsqueda */
+  right: 10px;
+  background: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  width: 200px; /* Tamaño reducido */
+}
 .navbar {
   position: fixed;
   top: 1rem;

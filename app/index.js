@@ -15,6 +15,7 @@ import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser';
 import { SoloUsuarios } from './Middlewares/authorization.js';
 import { MultiRoad } from './controllers/data/EndPoints/MultiRoad.js';
+import { AsyncCompiler } from 'sass';
 
 dotenv.config();
 export const pool = mysql.createPool({
@@ -106,7 +107,7 @@ app.get("/ValidarCorreo", function (req, res) {
 app.post("/Insertar-puntos", insertPuntos);
 app.post("/Insertar-rutas", insertRutas)
 app.get('/api/puntos-interes', async (req, res) => {
-    const query = 'SELECT name, descrip, latitud, longitud, categoria, sector, imagen_url FROM puntos_interes';
+    const query = 'SELECT name, descrip, latitud, longitud, categoria,zoom, sector, imagen_url FROM puntos_interes';
 
     try {
         const [results] = await pool.query(query); // Usa await para la consulta
@@ -116,6 +117,26 @@ app.get('/api/puntos-interes', async (req, res) => {
         res.status(500).json({ error: 'Error en el servidor' });
     }
 });
+app.get('/api/puntos-interes/search', async (req, res) => {
+    const query = req.query.query; // Toma el término de búsqueda desde la URL
+    const sql = `
+        SELECT name, descrip, latitud, longitud, categoria, zoom, sector, imagen_url 
+        FROM puntos_interes 
+        WHERE name LIKE ? 
+        AND latitud BETWEEN -25.720 AND -25.630 
+        AND longitud BETWEEN -54.500 AND -54.400
+    `;
+    const params = [`%${query}%`]; // Usa el término de búsqueda
+    
+    try {
+        const [results] = await pool.query(sql, params); // Ejecuta la consulta con el parámetro
+        res.json(results); // Devuelve los resultados como JSON
+    } catch (err) {
+        console.error('Error en la consulta:', err);
+        res.status(500).json({ error: 'Error en el servidor' });
+    }
+});
+
 app.get("/api/rutas", async (req, res) => {
     const query = 'SELECT nombre_ruta, ST_AsGeoJSON(coordenadas) AS geojson FROM rutas';
     try {

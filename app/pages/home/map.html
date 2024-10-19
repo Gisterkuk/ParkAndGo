@@ -17,11 +17,21 @@
   <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css' type='text/css' />
   
   <script src="/JS/ScriptHome.js"></script>
-  <script src="/controllers/SettingMap/map.js"></script>
+  <script type="module" src="/controllers/SettingMap/map.js"></script>
 </head>
 <body>
   <div class="padre-container"> 
     <div class="mapa-container" id="mapa"></div>
+
+    <div id="form">
+      <h3>Ruta entre Puntos de Interés</h3>
+      <label for="start">Punto A:</label>
+      <input type="text" id="start" placeholder="Ej. Punto de Interés A" required>
+      <label for="end">Punto B:</label>
+      <input type="text" id="end" placeholder="Ej. Punto de Interés B" required>
+      <button id="routeButton">Mostrar Ruta</button>
+  </div>
+
     <nav class="navbar">
         <ul class="navbar__menu">
           <li class="navbar__item">
