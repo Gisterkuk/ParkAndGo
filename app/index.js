@@ -1,20 +1,13 @@
 import mysql from 'mysql2/promise';
-import nodemailer from 'nodemailer';
 import express from 'express';
 import path from 'path';
-import { insertPuntos } from './controllers/data/EndPoints/PuntosInsert.js';
-import { insertRutas } from './controllers/data/EndPoints/RutasInsert.js';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import { Registrarse } from './controllers/Authentication/ControllerRegistro.js';
 import { loguearse } from './controllers/Authentication/ControllerLogin.js';
 import { validateEmail, validateNombre, transporter, MensajeCorreo,  generadorToken, linktoken } from './public/JS/ScriptValideEmail.js';
-import bcrypt from "bcryptjs";
-import JsonWebToken from 'jsonwebtoken';
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser';
-import { SoloUsuarios } from './Middlewares/authorization.js';
-import { MultiRoad } from './controllers/data/EndPoints/MultiRoad.js';
 
 dotenv.config();
 export const pool = mysql.createPool({
@@ -103,10 +96,8 @@ app.get("/ValidarCorreo", function (req, res) {
     res.sendFile(path.join(__dirname, "/pages/Email/validarEmail.html"));
 });
 
-app.post("/Insertar-puntos", insertPuntos);
-app.post("/Insertar-rutas", insertRutas)
 app.get('/api/puntos-interes', async (req, res) => {
-    const query = 'SELECT name, descrip, latitud, longitud, categoria, sector, imagen_url FROM puntos_interes';
+    const query = 'SELECT name, descrip, latitud, longitud, categoria,zoom, sector, imagen_url FROM puntos_interes';
 
     try {
         const [results] = await pool.query(query); // Usa await para la consulta
@@ -116,19 +107,34 @@ app.get('/api/puntos-interes', async (req, res) => {
         res.status(500).json({ error: 'Error en el servidor' });
     }
 });
-app.get("/api/rutas", async (req, res) => {
-    const query = 'SELECT nombre_ruta, ST_AsGeoJSON(coordenadas) AS geojson FROM rutas';
+app.get('/api/puntos-interes/search', async (req, res) => {
+    const query = req.query.query; // Toma el término de búsqueda desde la URL
+    const sql = `
+        SELECT name, descrip, latitud, longitud, categoria, zoom, sector, imagen_url 
+        FROM puntos_interes 
+        WHERE name LIKE ? 
+        AND latitud BETWEEN -25.720 AND -25.630 
+        AND longitud BETWEEN -54.500 AND -54.400
+    `;
+    const params = [`%${query}%`]; // Usa el término de búsqueda
+    
     try {
-        const [results] = await pool.query(query); // Desestructuramos para obtener solo los resultados
-        res.json(results);
-    } catch (error) {
-        return res.status(500).json({ error: error.message });
+        const [results] = await pool.query(sql, params); // Ejecuta la consulta con el parámetro
+        res.json(results); // Devuelve los resultados como JSON
+    } catch (err) {
+        console.error('Error en la consulta:', err);
+        res.status(500).json({ error: 'Error en el servidor' });
     }
 });
-
-
-
-
+// app.get('/api/MultiLineStringWithOrientation.geojson', (req, res) => {
+//     const filePath = path.join(__dirname, 'MultiLineStringWithOrientation.geojson');
+//     res.sendFile(filePath, (err) => {
+//         if (err) {
+//             console.error('Error al enviar el archivo GeoJSON:', err);
+//             res.status(500).send('Error al enviar el archivo GeoJSON');
+//         }
+//     });
+// });
 
 // Verificar la conexión realizando una consulta simple
 async function verificarPool() {
