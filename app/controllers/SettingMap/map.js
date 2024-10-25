@@ -1,14 +1,18 @@
-import { actualizarSugerencias, buscarPunto } from "./funcionalidad.js";
+import { actualizarSugerencias, buscarPunto } from "./Search.js";
+import {createGraph,setupMapEvents,visualizeRoutesOnMap} from "./Routing.js";
+//import fs from 'fs';
+let map; // Declarar map de manera global
+let geojsonData; // También almacenar el GeoJSON de manera global
+const TOLERANCE_RADIUS = 100; // Tolerancia en metros
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiYWxjYW5kZWpzIiwiYSI6ImNtMWNxa3p6cDExdnoyam9mbjlpYmNncjAifQ.CjlYg9fh0dxJ49BDuACykw';
 
 window.onload = function() {
     const map = new mapboxgl.Map({
         container: 'mapa',
-        style: 'mapbox://styles/alcandejs/cm2fa7mpi007d01pbacp8hvpz',
+        style: 'mapbox://styles/alcandejs/cm2oxvu73008801qifmae69zs',
         center: [-54.454692, -25.683152],
-        zoom: 15,
-        projection: 'globe',
+        zoom: 12,
         maxBounds: [
             [-54.500, -25.720],
             [-54.400, -25.630]
@@ -26,27 +30,89 @@ window.onload = function() {
     
     map.on('load', function() {
 
-        
-        map.addSource('ParqueFinal1', {
-            'type': 'vector',
-            'url': 'mapbox://alcandejs.cm2coubw706nl1tlkfdrxxr6k-9i6l8'
+        map.addSource('geojsonSource', {
+            type: 'geojson',
+            data: {
+                type: 'FeatureCollection',
+                features: [],
+            },
         });
-        
+    
+        // Añadir el layer
         map.addLayer({
-            'id': 'rutas-layer',
-            'type': 'line',
-            'source': 'ParqueFinal1',
-            'source-layer': 'ParqueFinal1',
-            'layout': {
+            id: 'route',
+            type: 'line',
+            source: 'geojsonSource',
+            layout: {
                 'line-join': 'round',
                 'line-cap': 'round'
             },
-            'paint': {
-                'line-color': '#ff1',
-                'line-width': 3
+            paint: {
+                'line-color': '#0aa3ef', // Cambia a rojo para visibilidad
+                'line-width': 6 // Aumenta el ancho
             }
         });
-        
+    
+        // Verificar si la fuente y el layer existen
+        if (map.getSource('geojsonSource')) {
+            console.log("La fuente 'geojsonSource' se ha agregado correctamente.");
+        }
+    
+        if (map.getLayer('route')) {
+            console.log("El layer 'route' se ha agregado correctamente.");
+        }
+    
+        //const filePath = path.join(__dirname, 'MultiLineStringWithOrientation.geojson');
+
+        // fs.access(filePath, fs.constants.F_OK, (err) => {
+        //     console.log(err ? 'El archivo no existe' : 'El archivo está presente');
+        // });
+        fetch('http://localhost:8200/MultiLineStringWithOrientation.geojson')
+        .then(response => {
+            console.log(response);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('GeoJSON cargado:', data);
+            geojsonData = data; // Guardar el GeoJSON de manera global
+        // Verificar si las características son LineString o MultiLineString
+        if (data.features && data.features.length > 0) {
+            // Iterar sobre cada LineString y añadir orientación directamente
+            data.features.forEach((feature) => {
+                if (feature.geometry.type === 'LineString') {
+                    const coordinates = feature.geometry.coordinates;
+                    if (coordinates.length > 1) {
+                        const from = coordinates[0];
+                        const to = coordinates[coordinates.length - 1];
+
+                        // Agregar la orientación a las propiedades
+                        feature.properties.orientation = {
+                            from: { lat: from[1], lon: from[0] },
+                            to: { lat: to[1], lon: to[0] }
+                        };
+                    }
+                } else if (feature.geometry.type === 'MultiLineString') {
+                    console.warn("Encontrado MultiLineString, se ignorará por esta implementación.");
+                }
+            });
+
+            //console.log("GeoJSON actualizado con orientaciones:", data);
+            
+            const graph = createGraph(data); // Crear el grafo
+            //visualizeRoutesOnMap(map,data); // Visualizar las rutas en el mapa
+            setupMapEvents(map,graph); // Configurar eventos después de cargar el mapa
+
+        } else {
+            console.error("El archivo GeoJSON no contiene LineStrings o no es válido.");
+        }
+    })
+    .catch(error => {
+        console.error("Error al cargar el archivo GeoJSON:", error);
+    });     
+
         fetch('/api/puntos-interes')
         .then(response => {
             if (!response.ok) {
@@ -108,7 +174,7 @@ window.onload = function() {
             // Evento para controlar el zoom
             map.on('zoom', function() {
                 const currentZoom = map.getZoom();
-                console.log(currentZoom);
+                //console.log(currentZoom);
                 markers.forEach(({ marker, zoom }) => {
                     if (currentZoom >= zoom) {
                         marker.getElement().style.display = 'flex'; // Mostrar el marcador si el zoom es suficiente
@@ -132,18 +198,6 @@ window.onload = function() {
             console.error('Error al cargar los puntos de interés:', error);
         });
 
-        // Ocultar etiquetas
-        map.setLayoutProperty('road-label', 'visibility', 'none');
-        map.setLayoutProperty('poi-label', 'visibility', 'none');
-        map.setLayoutProperty('country-label', 'visibility', 'none');
-        map.setLayoutProperty('transit-label', 'visibility', 'none');
-        map.setLayoutProperty('waterway-label', 'visibility', 'none');
-        map.setLayoutProperty('natural-line-label', 'visibility', 'none');
-        map.setLayoutProperty('natural-point-label', 'visibility', 'none');
-        map.setLayoutProperty('water-line-label', 'visibility', 'none');
-        map.setLayoutProperty('water-point-label', 'visibility', 'none');
-        map.setLayoutProperty('path-pedestrian-label', 'visibility', 'none');
-        map.setLayoutProperty('road-number-shield', 'visibility', 'none');
     });
 
     const searchInput = document.createElement('input');
@@ -188,11 +242,13 @@ window.onload = function() {
     searchInput.addEventListener('keydown', function(event) {
         if (event.key === 'Enter') {
             const query = searchInput.value; // Obtener el valor del input
-            buscarPunto(query); // Llamar a la función para buscar
+            buscarPunto(query,map); // Llamar a la función para buscar
             suggestionsContainer.style.display = 'none'; // Ocultar las sugerencias
         }
     });
 
         // Realiza la solicitud a la API de direcciones
-    
+    map.on('error', function(e) {
+        console.error('Error al cargar el mapa:', e.error.message);
+    });
 };
