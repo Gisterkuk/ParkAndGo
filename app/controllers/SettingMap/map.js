@@ -1,5 +1,6 @@
 import { actualizarSugerencias, buscarPunto } from "./Search.js";
 import {createGraph,setupMapEvents,visualizeRoutesOnMap} from "./Routing.js";
+import { trackUserLocation } from "./LiveLocation.js";
 //import fs from 'fs';
 let map; // Declarar map de manera global
 let geojsonData; // También almacenar el GeoJSON de manera global
@@ -11,12 +12,13 @@ window.onload = function() {
     const map = new mapboxgl.Map({
         container: 'mapa',
         style: 'mapbox://styles/alcandejs/cm2oxvu73008801qifmae69zs',
-        center: [-54.454692, -25.683152],
-        zoom: 12,
-        maxBounds: [
-            [-54.500, -25.720],
-            [-54.400, -25.630]
-        ]
+        center: [-54.454692, -25.683152],   
+        zoom: 12
+        
+        // ,maxBounds: [
+        //     [-54.500, -25.720],
+        //     [-54.400, -25.630]
+        // ]
     });
     
     // const geocoder = new MapboxGeocoder({
@@ -61,6 +63,7 @@ window.onload = function() {
         if (map.getLayer('route')) {
             console.log("El layer 'route' se ha agregado correctamente.");
         }
+        trackUserLocation(map);
     
         //const filePath = path.join(__dirname, 'MultiLineStringWithOrientation.geojson');
 
