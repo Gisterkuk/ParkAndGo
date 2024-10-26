@@ -5,9 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home</title>
   <script src="https://kit.fontawesome.com/35df38f204.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="/Style/StyleHome/StyleHome.css">
   <script src="https://unpkg.com/feather-icons"></script>
   
+  <!-- ESTILOS DEL HOME -->
+  <link rel="stylesheet" href="/Style/StyleHome/Nav.css">
+  <link rel="stylesheet" href="/Style/StyleHome/Search.css">
   <!-- Mapbox GL JS -->
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
   <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
@@ -16,8 +18,12 @@
   <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js'></script>
   <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css' type='text/css' />
   
-  <script src="/JS/ScriptHome.js"></script>
+  <!-- SCRIPTS  -->
+  
+  <script src="/JS/HomeJs/Home.js" ></script>
+  <script src="/JS/HomeJs/SearchBox.js" type="module"></script>
   <script type="module" src="/controllers/SettingMap/map.js"></script>
+
 </head>
 <body>
   <div class="padre-container"> 
@@ -60,6 +66,12 @@
           </li>
         </ul>
     </nav>
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="" autocomplete="false" />
+      <button id="search-btn"><i data-feather="search"></i></button>
+    </div>
+    <div id="suggestions-container" style="display: none;"></div>
   </div>
+  
 </body>
 </html>

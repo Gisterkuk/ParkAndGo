@@ -24,55 +24,50 @@ export function actualizarSugerencias(query, suggestionsContainer, searchInput, 
     fetch(`/api/puntos-interes/search?query=${encodeURIComponent(query)}`)
     .then(response => response.json())
     .then(data => {
-        // Limpiar el contenedor de sugerencias
-        suggestionsContainer.innerHTML = '';
+        console.log('Datos recibidos:', data);  // Ver qué datos se reciben exactamente
 
-        if (data.length > 0) {
-            suggestionsContainer.style.display = 'block'; // Mostrar el contenedor de sugerencias
+        suggestionsContainer.innerHTML = '';  // Limpiar el contenedor de sugerencias
+
+        if (data && data.length > 0) {
+            suggestionsContainer.style.display = 'block';  // Mostrar el contenedor de sugerencias
 
             data.forEach(punto => {
-                const suggestionItem = document.createElement('div');
-                suggestionItem.style.display = 'flex'; // Para alinear imagen y texto horizontalmente
-                suggestionItem.style.alignItems = 'center'; // Centrar verticalmente
+                console.log('Procesando punto:', punto);  // Ver los datos de cada punto
+
+                const suggestionItem = document.createElement('item');
+                suggestionItem.style.display = 'flex';
+                suggestionItem.style.alignItems = 'center';
                 suggestionItem.style.padding = '10px';
                 suggestionItem.style.cursor = 'pointer';
                 suggestionItem.style.borderBottom = '1px solid #ccc';
 
-                // Crear el elemento de imagen
                 const img = document.createElement('img');
-                img.src = punto.imagen_url; // URL de la imagen
-                img.style.width = '40px'; // Ancho de la imagen
-                img.style.height = '40px'; // Alto de la imagen
-                img.style.marginRight = '10px'; // Espacio entre la imagen y el texto
+                img.src = punto.imagen_url;
+                img.style.width = '40px';
+                img.style.height = '40px';
+                img.style.marginRight = '10px';
 
-                // Crear el elemento de texto
                 const name = document.createElement('span');
                 name.textContent = punto.name;
 
-                // Añadir imagen y texto al ítem de sugerencia
                 suggestionItem.appendChild(img);
                 suggestionItem.appendChild(name);
 
-                // Resaltar el ítem cuando pasas el ratón
-                suggestionItem.onmouseenter = () => {
-                    suggestionItem.style.backgroundColor = '#eee';
-                };
-                suggestionItem.onmouseleave = () => {
-                    suggestionItem.style.backgroundColor = '#fff';
-                };
-
-                // Evento al hacer clic en una sugerencia
-                suggestionItem.onclick = () => {
+                suggestionItem.addEventListener('click', () => {
                     searchInput.value = punto.name; // Actualizar el input de búsqueda con el nombre seleccionado
-                    buscarPunto(punto.name, map); // Buscar el punto en el mapa
+                    buscarPunto(searchInput.value,map) // Función para hacer zoom al POI
                     suggestionsContainer.style.display = 'none'; // Ocultar las sugerencias
-                };
+                    searchInput.value = '';
+                    suggestionsContainer.innerHTML = '';
+                });
 
                 suggestionsContainer.appendChild(suggestionItem);
             });
         } else {
-            suggestionsContainer.style.display = 'none'; // Ocultar si no hay sugerencias
+            suggestionsContainer.style.display = 'none';  // Ocultar si no hay sugerencias
         }
+
+        console.log('Contenido final del contenedor:', suggestionsContainer.innerHTML);  // Debería mostrar el HTML interno
     })
     .catch(error => {
         console.error('Error al buscar sugerencias:', error);
