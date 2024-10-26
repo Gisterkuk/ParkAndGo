@@ -10,6 +10,7 @@
   <!-- ESTILOS DEL HOME -->
   <link rel="stylesheet" href="/Style/StyleHome/Nav.css">
   <link rel="stylesheet" href="/Style/StyleHome/Search.css">
+  <link rel="stylesheet" href="/Style/StyleHome/Aside.css">
   <!-- Mapbox GL JS -->
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
   <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
@@ -26,7 +27,7 @@
 
 </head>
 <body>
-  <div class="padre-container"> 
+  <main class="padre-container"> 
     <div class="mapa-container" id="mapa"></div>
 
     <!-- <div id="form">
@@ -37,7 +38,7 @@
       <input type="text" id="end" placeholder="Ej. Punto de Interés B" required>
       <button id="routeButton">Mostrar Ruta</button>
     </div> -->
-
+    <!-- NAVEGADOR -->
     <nav class="navbar">
         <ul class="navbar__menu">
           <li class="navbar__item">
@@ -66,12 +67,39 @@
           </li>
         </ul>
     </nav>
+    <!-- SEARCH -->
     <div class="search-container" id="searchContainer">
       <input type="text" id="search-input" placeholder="" autocomplete="off" />
       <button id="search-btn"><i data-feather="search"></i></button>
     </div>
+
+    <!-- SUGERENCIAS DE SEARCH -->
     <div id="suggestions-container" style="display: none;"></div>
-  </div>
+
+    <!-- ASIDE INFORMATIVO -->
+     <aside id="aside-info" class="aside-info">
+      <div class="Imagen-container">
+        <img src="https://gpsviajes.com.ar/inicio/wp-content/uploads/2021/08/cataratas-iguazu-panoramica.jpeg" alt="">
+      </div>
+      <div class="Nombre-container">
+        <h1 id="name">Puerto Iguazu</h1>
+      </div>
+      <div class="descrip-container">
+        <div class="" id="descrip">
+        <h3 id="ubicacion">Ubicacion: <span id="TxtUbi"></span></h3>
+        <h3 id="Dificultad">Dificultad: <span id="TxtDif"></span></h3>
+        <h3 id="Acceso">Acceso: <span id="TxtAcc"></span></h3>
+        <h4 id="Info">Sobre el lugar: <span id="TxtInfo">
+          </span></h4>
+      </div>
+      <button id="Direction">Como llegar?</button>
+      </div>
+      
+     </aside>
+  </main>
+  
+
+
   
 </body>
 </html>

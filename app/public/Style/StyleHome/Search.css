@@ -11,6 +11,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end; /* Alinea el botón a la derecha */
+    z-index: 500;
 }
 
 /* Input de búsqueda inicial oculto */
@@ -28,6 +29,7 @@
     right: 40px; /* Tamaño inicial del botón */
     top: 0;
     bottom: 0;
+   
 }
 
 /* Estilos cuando el input está activo */

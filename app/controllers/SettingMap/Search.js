@@ -10,7 +10,7 @@ export function buscarPunto(query, map) {
             if (data.length > 0) {
                 const firstPoint = data[0];
                 const coordinates = [firstPoint.longitud, firstPoint.latitud];
-                map.flyTo({ center: coordinates, zoom: 18.5 });
+                map.flyTo({ center: coordinates, zoom: 16.5 });
             } else {
                 alert('No se encontraron resultados.');
             }
@@ -59,6 +59,14 @@ export function actualizarSugerencias(query, suggestionsContainer, searchInput,s
                     suggestionsContainer.style.display = 'none'; // Ocultar las sugerencias
                     searchInput.value = '';
                     suggestionsContainer.innerHTML = '';
+                    searchContainer.style.borderRadius = '20px';
+                    // let informacion = {
+                    //     name: punto.name,
+                    //     Dificultad: punto.Dificultad,
+                    //     Accesibilidad: punto.Accesibilidad,
+                    //     Descrip: punto.Descrip
+                    // }
+                    // return informacion
                 });
 
                 suggestionsContainer.appendChild(suggestionItem);
@@ -74,4 +82,6 @@ export function actualizarSugerencias(query, suggestionsContainer, searchInput,s
         console.error('Error al buscar sugerencias:', error);
     });
 }
+export function AsideInfo(){
 
+}

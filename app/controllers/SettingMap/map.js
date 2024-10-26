@@ -137,6 +137,7 @@ window.onload = function() {
             }
         });
         suggestionItem.addEventListener('click',()=>{
+            //
             buscarPunto(suggestionItem.span, map);
             suggestionsContainer.style.display = 'none';
         })
