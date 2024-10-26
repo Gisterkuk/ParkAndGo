@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
       event.stopPropagation(); // Detiene la propagación para evitar que se active el evento del documento
       searchContainer.classList.toggle('expanded');
       sugerencia.classList.toggle('expanded');
+
       if (searchContainer.classList.contains('expanded')) {
         sugerencia.style.display = 'block';
         searchInput.style.display = "block";
@@ -21,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
         sugerencia.innerHTML = ''
         sugerencia.style.display = 'none';
         searchInput.value = '';
+        searchContainer.style.borderRadius = '20px'
         searchInput.style.display = "none";
         searchBtn.style.color = '#6a778e'
         searchInput.placeholder = '';
@@ -32,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (!searchContainer.contains(event.target)) {
         searchContainer.classList.remove('expanded');
         searchInput.style.display = "none";
+        searchInput.value = '';
       }
     });
 

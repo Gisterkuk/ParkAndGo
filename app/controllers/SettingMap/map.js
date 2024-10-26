@@ -123,6 +123,7 @@ window.onload = function() {
         addPOI(map);
         
         //FUNCIONALIDAD DEL SEARCH
+        const searchContainer = document.getElementById('searchContainer')
         const searchInput = document.getElementById('search-input');
         const suggestionsContainer = document.getElementById('suggestions-container');
         const suggestionItem = document.createElement('item');
@@ -130,7 +131,7 @@ window.onload = function() {
         searchInput.addEventListener('input', () => {
             const query = searchInput.value;
             if (query.length > 1) { // Evitar búsquedas demasiado frecuentes por cada letra
-                actualizarSugerencias(query, suggestionsContainer, searchInput, map);
+                actualizarSugerencias(query, suggestionsContainer, searchInput,searchContainer, map);
             } else {
                 suggestionsContainer.style.display = 'none'; // Ocultar las sugerencias si el texto es muy corto
             }

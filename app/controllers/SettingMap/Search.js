@@ -20,7 +20,7 @@ export function buscarPunto(query, map) {
         });
 }
 
-export function actualizarSugerencias(query, suggestionsContainer, searchInput, map) {
+export function actualizarSugerencias(query, suggestionsContainer, searchInput,searchContainer, map) {
     fetch(`/api/puntos-interes/search?query=${encodeURIComponent(query)}`)
     .then(response => response.json())
     .then(data => {
@@ -30,7 +30,7 @@ export function actualizarSugerencias(query, suggestionsContainer, searchInput, 
 
         if (data && data.length > 0) {
             suggestionsContainer.style.display = 'block';  // Mostrar el contenedor de sugerencias
-
+            searchContainer.style.borderRadius = '15px 15px 0px 0px';
             data.forEach(punto => {
                 console.log('Procesando punto:', punto);  // Ver los datos de cada punto
 
@@ -65,6 +65,7 @@ export function actualizarSugerencias(query, suggestionsContainer, searchInput, 
             });
         } else {
             suggestionsContainer.style.display = 'none';  // Ocultar si no hay sugerencias
+            
         }
 
         console.log('Contenido final del contenedor:', suggestionsContainer.innerHTML);  // Debería mostrar el HTML interno

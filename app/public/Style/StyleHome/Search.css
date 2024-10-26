@@ -4,6 +4,7 @@
     height: 40px;
     right: 10px;
     top: 15px;
+    border-radius: 20px;
     overflow: hidden;
     transition: width 0.3s ease;
     background-color: white;
@@ -72,4 +73,10 @@
     border-radius: 4px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+}
+item{
+    transition: .5s all;
+}
+item:hover{
+    background-color: #e7e5e5;
 }
