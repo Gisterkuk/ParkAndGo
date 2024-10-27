@@ -73,33 +73,37 @@
       <button id="search-btn"><i data-feather="search"></i></button>
     </div>
 
+    
     <!-- SUGERENCIAS DE SEARCH -->
     <div id="suggestions-container" style="display: none;"></div>
 
     <!-- ASIDE INFORMATIVO -->
      <aside id="aside-info" class="aside-info">
       <div class="Imagen-container">
-        <img src="https://gpsviajes.com.ar/inicio/wp-content/uploads/2021/08/cataratas-iguazu-panoramica.jpeg" alt="">
+        <img id='imagen' src="https://media.traveler.es/photos/613768f03decec3303bab7da/16:9/w_1856,h_1044,c_limit/158835.jpg" alt="">
       </div>
+      <!-- INFORMACION  -->
       <div class="Nombre-container">
         <h1 id="name">Puerto Iguazu</h1>
       </div>
       <div class="descrip-container">
         <div class="" id="descrip">
-        <h3 id="ubicacion">Ubicacion: <span id="TxtUbi"></span></h3>
-        <h3 id="Dificultad">Dificultad: <span id="TxtDif"></span></h3>
-        <h3 id="Acceso">Acceso: <span id="TxtAcc"></span></h3>
-        <h4 id="Info">Sobre el lugar: <span id="TxtInfo">
-          </span></h4>
+          <h3 id="ubicacion" ><span class="Subtitulo">Ubicacion:<br></span><span id="TxtUbi" class="info-span">Ubicado en Misiones Argentina</span></h3>
+          <h3 id="Dificultad" ><span class="Subtitulo">Accesibilidad:<br></span> <span id="TxtDif" class="info-span"></span></h3>
+          <h3 id="Sector"><span class="Subtitulo">Sector:<br></span><span id="TxtSec" class="info-span">Parque Nacional Cataratas Del Iguazu</span></h3>
+          <h4 id="Info" ><span class="Subtitulo">Sobre el lugar:<br></span><span id="TxtInfo" class="info-span">Las Cataratas del Iguazú, situadas en el Parque Nacional Iguazú, son una de las maravillas naturales más impresionantes del mundo. Ubicadas en la frontera entre Argentina y Brasil, estas cataratas están compuestas por aproximadamente 275 saltos de agua que se extienden a lo largo de 2.7 kilómetros del río Iguazú.</span></h4>
+        </div>
+          <button id="Direction">Como llegar?</button>
       </div>
-      <button id="Direction">Como llegar?</button>
-      </div>
+      <!-- BOTON PARA ABRIR EL ASIDE -->
       
-     </aside>
-  </main>
-  
-
-
+    </aside>
+    <button id="open-aside" class="open-button"> <i data-feather="info"></i></button>
+    <button id="close-aside" class="close-button"><i data-feather="x"></i></button>
+    </main>
+    
+    
+    
   
 </body>
 </html>

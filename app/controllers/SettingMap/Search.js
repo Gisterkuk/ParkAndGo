@@ -1,4 +1,20 @@
-export function buscarPunto(query, map) {
+import { setCoordenadasSeleccionadas } from "./CoordState.js";
+
+export function abrirAside(imagen,nombre,info,aside,punto){
+    imagen.src = punto.imagen_url;
+    info[0].textContent = punto.Ubicacion;
+    info[1].textContent = punto.Accesibilidad;
+    info[2].textContent = punto.sector;
+    info[3].textContent= punto.descrip;
+    nombre.textContent =punto.name;
+    aside.style.display ='flex';
+}
+// export function LocToPOI(graph,start,end,routeBtn){
+
+// }
+
+let currentMarkers = []; // Almacenar los marcadores actuales
+export function buscarPunto(query, map) { 
     if (!map) {
         console.error('El mapa no está disponible.');
         return;
@@ -7,10 +23,38 @@ export function buscarPunto(query, map) {
     fetch(`/api/puntos-interes/search?query=${encodeURIComponent(query)}`)
         .then(response => response.json())
         .then(data => {
+            // Limpiar todos los marcadores actuales del mapa
+            if (currentMarkers.length > 0) {
+                currentMarkers.forEach(marker => marker.remove());
+                currentMarkers = [];
+            }
             if (data.length > 0) {
-                const firstPoint = data[0];
-                const coordinates = [firstPoint.longitud, firstPoint.latitud];
-                map.flyTo({ center: coordinates, zoom: 16.5 });
+                if (data.length === 1) {
+                    // Si solo hay un punto, hacer un flyTo con zoom 16.5
+                    const firstPoint = data[0];
+                    const coordinates = [firstPoint.longitud, firstPoint.latitud];
+                    
+                    map.flyTo({ center: coordinates, zoom: data[0].zoom+.5 });
+                } else {
+                    // Si hay múltiples puntos, hacer un flyTo con zoom 15 y añadir marcadores
+                    const bounds = new mapboxgl.LngLatBounds();
+                    data.forEach(punto => {
+                        console.log(punto.name)
+                        const coordinates = [punto.longitud, punto.latitud];
+                        bounds.extend(coordinates);
+
+                        // Crear un marcador para cada punto
+                        const marker = new mapboxgl.Marker()
+                            .setLngLat(coordinates)
+                            .addTo(map);
+
+                        // Almacenar el marcador en el array de marcadores actuales
+                        currentMarkers.push(marker);
+                    });
+
+                    // Ajustar el mapa para mostrar todos los puntos con un zoom adecuado
+                    map.fitBounds(bounds, { padding: 50, maxZoom: 15 });
+                }
             } else {
                 alert('No se encontraron resultados.');
             }
@@ -19,6 +63,7 @@ export function buscarPunto(query, map) {
             console.error('Error al buscar puntos de interés:', error);
         });
 }
+
 
 export function actualizarSugerencias(query, suggestionsContainer, searchInput,searchContainer, map) {
     fetch(`/api/puntos-interes/search?query=${encodeURIComponent(query)}`)
@@ -55,20 +100,27 @@ export function actualizarSugerencias(query, suggestionsContainer, searchInput,s
 
                 suggestionItem.addEventListener('click', () => {
                     searchInput.value = punto.name; // Actualizar el input de búsqueda con el nombre seleccionado
+                    console.log("LA FUNCION BUSCARA EL NOMBRE DE ", punto.name)
                     buscarPunto(searchInput.value,map) // Función para hacer zoom al POI
+                    
+                    console.log(punto)
+
                     suggestionsContainer.style.display = 'none'; // Ocultar las sugerencias
                     searchInput.value = '';
                     suggestionsContainer.innerHTML = '';
                     searchContainer.style.borderRadius = '20px';
-                    // let informacion = {
-                    //     name: punto.name,
-                    //     Dificultad: punto.Dificultad,
-                    //     Accesibilidad: punto.Accesibilidad,
-                    //     Descrip: punto.Descrip
-                    // }
-                    // return informacion
+                    
+                    const info = document.getElementsByClassName('info-span')
+                    const aside = document.getElementById('aside-info')
+                    const nombre = document.getElementById('name');
+                    const imagen = document.getElementById('imagen');
+                    
+                    abrirAside(imagen,nombre,info,aside,punto);
+                    const longitudParsed = parseFloat(punto.longitud.trim());
+                    const latitudParsed = parseFloat(punto.latitud.trim());
+                   setCoordenadasSeleccionadas(longitudParsed,latitudParsed,);
+                   console.log("Coordenadas del punto:",latitudParsed,longitudParsed);
                 });
-
                 suggestionsContainer.appendChild(suggestionItem);
             });
         } else {
@@ -76,12 +128,9 @@ export function actualizarSugerencias(query, suggestionsContainer, searchInput,s
             
         }
 
-        console.log('Contenido final del contenedor:', suggestionsContainer.innerHTML);  // Debería mostrar el HTML interno
+        // console.log('Contenido final del contenedor:', suggestionsContainer.innerHTML);  // Debería mostrar el HTML interno
     })
     .catch(error => {
         console.error('Error al buscar sugerencias:', error);
     });
-}
-export function AsideInfo(){
-
 }

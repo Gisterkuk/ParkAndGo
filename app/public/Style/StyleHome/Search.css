@@ -32,6 +32,7 @@
    
 }
 
+
 /* Estilos cuando el input está activo */
 .search-container.expanded #search-input {
     background-color: white;
@@ -41,14 +42,15 @@
 
 /* Botón de búsqueda dentro del contenedor */
 #search-btn {
-    background: none;
-    border: 1px solid #f0f0f0;
+    background: white;
     font-size: 20px;
     cursor: pointer;
     z-index: 10;
-    width: 40px; /* Ancho fijo para el botón */
-    height: 40px; /* Altura fija para el botón */
-    color: #6a778e;
+    width: 45px; /* Ancho fijo para el botón */
+    height: 45px; /* Altura fija para el botón */
+    color: #406ff3;
+    transition: 0.5s all;
+    border: 0px solid white;
 }
 
 /* Estilos cuando el input está activo */
@@ -56,7 +58,8 @@
     width: 300px; /* Ancho cuando se expande */
 }
 #search-btn:hover {
-    color:#406ff3;
+    background-color: #406ff3;
+    color: white;
 
 }
 .search-container.expanded #search-input {

@@ -1,11 +1,14 @@
-import {createGraph,setupMapEvents} from "./Routing.js";
+import {createGraph,dijkstra,findClosestPoint,setupMapEvents} from "./Routing.js";
 import { trackUserLocation } from "./LiveLocation.js";
-import { addPOI } from "../../public/JS/HomeJs/POI.js";
+import { addPOI, agregarMarcador } from "../../public/JS/HomeJs/POI.js";
 import {actualizarSugerencias,buscarPunto} from "./Search.js";
-//import fs from 'fs';
+import { getCoordenadasSeleccionadas} from "./CoordState.js";
+
+let graph;
 let map; // Declarar map de manera global
 let geojsonData; // También almacenar el GeoJSON de manera global
 const TOLERANCE_RADIUS = 100; // Tolerancia en metros
+let Informacion;
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiYWxjYW5kZWpzIiwiYSI6ImNtMWNxa3p6cDExdnoyam9mbjlpYmNncjAifQ.CjlYg9fh0dxJ49BDuACykw';
 
@@ -106,7 +109,7 @@ window.onload = function() {
 
                 //console.log("GeoJSON actualizado con orientaciones:", data);
         
-                const graph = createGraph(data); // Crear el grafo
+                graph = createGraph(data); // Crear el grafo
                 //visualizeRoutesOnMap(map,data); // Visualizar las rutas en el mapa
                 setupMapEvents(map,graph); // Configurar eventos después de cargar el mapa
 
@@ -132,12 +135,13 @@ window.onload = function() {
             const query = searchInput.value;
             if (query.length > 1) { // Evitar búsquedas demasiado frecuentes por cada letra
                 actualizarSugerencias(query, suggestionsContainer, searchInput,searchContainer, map);
+                console.log(Informacion);
             } else {
                 suggestionsContainer.style.display = 'none'; // Ocultar las sugerencias si el texto es muy corto
             }
         });
         suggestionItem.addEventListener('click',()=>{
-            //
+            //S
             buscarPunto(suggestionItem.span, map);
             suggestionsContainer.style.display = 'none';
         })
@@ -148,6 +152,33 @@ window.onload = function() {
                 suggestionsContainer.style.display = 'none';
             }
         });
+
+        const routeBtn = document.querySelector("#Direction")
+        routeBtn.addEventListener('click',()=>{
+            let PuntoA = [-54.45460685091212,-25.68292920945988];
+            let PuntoB = getCoordenadasSeleccionadas();
+            console.log("PUNTO A; ",PuntoA);
+            console.log("PUNTO B; ",PuntoB);
+            agregarMarcador(map,PuntoA);
+            agregarMarcador(map,PuntoB);
+            let start = findClosestPoint(PuntoA,graph,TOLERANCE_RADIUS);
+            let end = findClosestPoint(PuntoB,graph,TOLERANCE_RADIUS);
+            
+            if (start && end) {
+                const path = dijkstra(graph, start, end);
+                if (path.length > 0) {
+                    drawRoute(map, path); // Dibujar la ruta
+                    //clearMarkers(); // Limpiar los marcadores después de dibujar la ruta
+                    startPoint = null;
+                    endPoint = null; // Resetear los puntos
+                }
+            } else {
+                console.error("No se encontraron puntos dentro del radio de tolerancia.");
+               // resetPoints(); // Llamar a la función para resetear puntos
+            }
+
+        })
+
     });
 
 };

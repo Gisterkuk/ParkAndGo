@@ -1,3 +1,5 @@
+import { setLiveLocation } from "./CoordState.js";
+
 let userMarker = null; // Guardará el marcador del usuario
 
 // Función para obtener la ubicación del usuario y actualizar el marcador
@@ -16,7 +18,7 @@ export function trackUserLocation(map) {
                         .setLngLat([longitude, latitude])
                         .addTo(map);
                 }
-
+                setLiveLocation({latitude,longitude});
                 // Opcional: Centrar el mapa en la ubicación del usuario
                 // map.flyTo({
                 //     center: [longitude, latitude],

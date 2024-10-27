@@ -79,3 +79,15 @@ export function addPOI(map){
         console.error('Error al cargar los puntos de interés:', error);
     });
 }
+
+export function agregarMarcador(map, coordenadas) {
+    if (!map) {
+        console.error("El mapa no está disponible.");
+        return;
+    }
+
+    // Crear un marcador en la ubicación dada por las coordenadas
+    const marker = new mapboxgl.Marker({ color: "red" }) // Puedes cambiar el color según tus necesidades
+        .setLngLat(coordenadas)
+        .addTo(map);
+}

@@ -110,7 +110,7 @@ app.get('/api/puntos-interes', async (req, res) => {
 app.get('/api/puntos-interes/search', async (req, res) => {
     const query = req.query.query; // Toma el término de búsqueda desde la URL
     const sql = `
-        SELECT name, descrip, latitud, longitud, categoria, Visibilidad, zoom, sector, imagen_url 
+        SELECT name, descrip, latitud, longitud, categoria,Ubicacion,Accesibilidad, Visibilidad, zoom, sector, imagen_url 
         FROM puntos_interes
         WHERE (name LIKE ? OR categoria LIKE ? OR sector LIKE ?)
         AND Visibilidad = 1
