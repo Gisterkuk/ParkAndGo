@@ -174,8 +174,8 @@ export function dijkstra(graph, start, end) {
 
             const distance = calculateDistance(currentNode, neighbor);
             const newDistance = distances[currentNode] + distance;
-            //console.log(`newDistance: ${newDistance}, distances[${neighbor}]: ${distances[neighbor]}`);
-
+            // console.log(`newDistance: ${newDistance}, distances[${neighbor}]: ${distances[neighbor]}`);
+            
             if (newDistance < distances[neighbor]) {
                 distances[neighbor] = newDistance;
                 previous[neighbor] = currentNode;
