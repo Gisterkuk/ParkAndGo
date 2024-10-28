@@ -1,0 +1,87 @@
+.search-container {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    right: 10px;
+    top: 15px;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: width 0.3s ease;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Alinea el botón a la derecha */
+    z-index: 40;
+}
+
+/* Input de búsqueda inicial oculto */
+#search-input {
+    width: 96%;
+    border: none;
+    outline: none; /* Incrementa el padding izquierdo */
+    font-size: 16px;
+    border-radius: 14px;
+    background-color: transparent;
+    transition: all 0.3s ease;
+    opacity: 0;
+    display: block;
+    position: absolute;
+    right: 40px; /* Tamaño inicial del botón */
+    top: 0;
+    bottom: 0;
+   
+}
+
+
+/* Estilos cuando el input está activo */
+.search-container.expanded #search-input {
+    background-color: white;
+    opacity: 1;
+    right: 0; /* Extender completamente a la derecha cuando se expande */
+}
+
+/* Botón de búsqueda dentro del contenedor */
+#search-btn {
+    background: white;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 40;
+    width: 45px; /* Ancho fijo para el botón */
+    height: 45px; /* Altura fija para el botón */
+    color: #406ff3;
+    transition: 0.5s all;
+    border: 0px solid white;
+}
+
+/* Estilos cuando el input está activo */
+.search-container.expanded  {
+    width: 300px; /* Ancho cuando se expande */
+}
+#search-btn:hover {
+    background-color: #406ff3;
+    color: white;
+
+}
+.search-container.expanded #search-input {
+    background-color: white;
+    opacity: 1;
+    right: 0; /* Extender completamente a la derecha cuando se expande */
+}
+
+
+#suggestions-container {
+    position: absolute;
+    right: 10px;
+    top: 50px;
+    width: 300px;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 40;
+}
+item{
+    transition: .5s all;
+}
+item:hover{
+    background-color: #e7e5e5;
+}

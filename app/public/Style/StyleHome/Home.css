@@ -1,0 +1,114 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Contenedor del mensaje flotante */
+.floating-box {
+    position: absolute;
+    background-color: #fff;
+    width: 400px;
+    max-height: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Botón para cerrar el mensaje */
+.close-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #406ff3;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    width: 80px;
+    height: 30px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.close-btn:hover {
+    background-color: #275cfb;
+    transform: scale(.95);
+}
+
+#Descripcion{
+    margin-bottom: 40px;
+}
+
+.blur-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px); /* Efecto borroso */
+    background-color: rgba(0, 0, 0, 0.3); /* Sombra oscura ligera */
+    z-index: 40;
+}
+
+/* SEGUNDO BOX  */
+
+.offer-box {
+    position: absolute;
+    max-width: 510px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 60;
+    display: none;
+}
+
+#offer {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    transform: translateY(-10px);
+}
+
+.listado {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+/* Ícono personalizado en cada lista */
+.listado::before {
+    content: "✓";
+    color: #2ecc71;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.parrafos-offer {
+    margin: 0;
+    line-height: 1.6;
+    color: #34495e;
+}
+.marker-icon i {
+    transition: transform 0.2s ease-in-out;
+}

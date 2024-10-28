@@ -5,9 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home</title>
   <script src="https://kit.fontawesome.com/35df38f204.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="/Style/StyleHome/StyleHome.css">
   <script src="https://unpkg.com/feather-icons"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
   
+  <!-- ESTILOS DEL HOME -->
+  <link rel="stylesheet" href="/Style/StyleHome/Nav.css">
+  <link rel="stylesheet" href="/Style/StyleHome/Search.css">
+  <link rel="stylesheet" href="/Style/StyleHome/Aside.css">
+  <link rel="stylesheet" href="/Style/StyleHome/Home.css">
   <!-- Mapbox GL JS -->
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
   <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
@@ -16,11 +22,15 @@
   <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js'></script>
   <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css' type='text/css' />
   
-  <script src="/JS/ScriptHome.js"></script>
+  <!-- SCRIPTS  -->
+  
+  <script type="module" src="/JS/HomeJs/Home.js" ></script>
+  <script src="/JS/HomeJs/SearchBox.js" type="module"></script>
   <script type="module" src="/controllers/SettingMap/map.js"></script>
+
 </head>
 <body>
-  <div class="padre-container"> 
+  <main class="padre-container"> 
     <div class="mapa-container" id="mapa"></div>
 
     <!-- <div id="form">
@@ -31,7 +41,7 @@
       <input type="text" id="end" placeholder="Ej. Punto de Interés B" required>
       <button id="routeButton">Mostrar Ruta</button>
     </div> -->
-
+    <!-- NAVEGADOR -->
     <nav class="navbar">
         <ul class="navbar__menu">
           <li class="navbar__item">
@@ -60,6 +70,70 @@
           </li>
         </ul>
     </nav>
+    <!-- SEARCH -->
+    <div class="search-container" id="searchContainer">
+      <input type="text" id="search-input" placeholder="Busca en el parque..." autocomplete="off" />
+      <button id="search-btn"><i data-feather="search"></i></button>
+    </div>
+
+    
+    <!-- SUGERENCIAS DE SEARCH -->
+    <div id="suggestions-container" style="display: none;"></div>
+
+    <!-- ASIDE INFORMATIVO -->
+     <aside id="aside-info" class="aside-info">
+      <div class="Imagen-container">
+        <img id='imagen' src="https://media.traveler.es/photos/613768f03decec3303bab7da/16:9/w_1856,h_1044,c_limit/158835.jpg" alt="">
+      </div>
+      <!-- INFORMACION  -->
+      <div class="Nombre-container">
+        <h1 id="name">Cataratas Del Iguazu</h1>
+      </div>
+      <div class="descrip-container">
+        <div class="" id="descrip">
+          <h3 id="ubicacion" ><span class="Subtitulo">Ubicacion:<br></span><span id="TxtUbi" class="info-span">Ubicado en Misiones Argentina</span></h3>
+          <h3 id="Dificultad" ><span class="Subtitulo">Accesibilidad:<br></span> <span id="TxtDif" class="info-span">El Parque Nacional Iguazú es mayormente accesible, con el Circuito Superior completamente adaptado y rampas en el Circuito Inferior para puntos clave como el Salto Bossetti. Además, el Tren Ecológico de la Selva facilita el acceso, y se ofrecen sillas de ruedas para quienes las necesiten</span></h3>
+          <h3 id="Sector"><span class="Subtitulo">Sector:<br></span><span id="TxtSec" class="info-span">Parque Nacional Cataratas Del Iguazu</span></h3>
+          <h4 id="Info" ><span class="Subtitulo">Sobre el lugar:<br></span><span id="TxtInfo" class="info-span">Las Cataratas del Iguazú, situadas en el Parque Nacional Iguazú, son una de las maravillas naturales más impresionantes del mundo. Ubicadas en la frontera entre Argentina y Brasil, estas cataratas están compuestas por aproximadamente 275 saltos de agua que se extienden a lo largo de 2.7 kilómetros del río Iguazú.</span></h4>
+        </div>
+          <button id="Direction" style="display: flex;">Como llegar?</button>
+      </div>
+      <!-- BOTON PARA ABRIR EL ASIDE -->
+      
+    </aside>
+    <button id="open-aside" class="open-button"> <i data-feather="info"></i></button>
+    <button id="close-aside" class="close-button"><i data-feather="x"></i></button>
+
+    <div class="blur-background"></div>
+    <!-- CAJA FLOTANTE -->
+    <div class="floating-box">
+      <button class="close-btn" id="Siguiente">Siguiente</button>
+      <h1>Bienvenido a Path and Go</h1>
+      <h2>¡Explorá el Parque Nacional Iguazú a tu medida!</h2>
+      <p id="Descripcion">Descubrí la magia del Parque Nacional Iguazú de una manera única y personalizada. Nuestra aplicación está diseñada para guiarte por los rincones más emblemáticos del parque, generando rutas óptimas desde tu ubicación hasta cualquier punto de interés que desees visitar.</p>
   </div>
+  <div class="offer-box">
+    <button class="close-btn" id="cerrar">Ir al mapa</button>
+    <h2 id="offer">¿Qué te ofrecemos?</h2>
+    <ul>
+        <li class="listado">
+            <p class="parrafos-offer"><strong>Rutas personalizadas:</strong> Planificamos tu recorrido para que no te pierdas de ninguna atracción, optimizando el tiempo y esfuerzo.</p>
+        </li>
+        <li class="listado">
+            <p class="parrafos-offer"><strong>Exploración eficiente:</strong> Generamos las mejores rutas para conectar múltiples puntos en tu aventura, adaptándonos a tus preferencias.</p>
+        </li>
+        <li class="listado">
+            <p class="parrafos-offer"><strong>Experiencia interactiva:</strong> Navegá sin preocupaciones con mapas dinámicos y guías paso a paso.</p>
+        </li>
+        <li class="listado">
+            <p class="parrafos-offer"><strong>Conexión con la naturaleza:</strong> Descubrí senderos ocultos, miradores impresionantes y lugares icónicos como las Cataratas del Iguazú.</p>
+        </li>
+    </ul>
+  </div>
+    </main>
+    
+    
+    
+  
 </body>
 </html>

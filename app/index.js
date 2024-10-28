@@ -97,7 +97,7 @@ app.get("/ValidarCorreo", function (req, res) {
 });
 
 app.get('/api/puntos-interes', async (req, res) => {
-    const query = 'SELECT name, descrip, latitud, longitud, categoria,zoom, sector, imagen_url FROM puntos_interes';
+    const query = 'SELECT name, descrip, latitud, longitud, categoria,Ubicacion,Accesibilidad,zoom, sector, imagen_url FROM puntos_interes' ;
 
     try {
         const [results] = await pool.query(query); // Usa await para la consulta
@@ -110,22 +110,22 @@ app.get('/api/puntos-interes', async (req, res) => {
 app.get('/api/puntos-interes/search', async (req, res) => {
     const query = req.query.query; // Toma el término de búsqueda desde la URL
     const sql = `
-        SELECT name, descrip, latitud, longitud, categoria, zoom, sector, imagen_url 
-        FROM puntos_interes 
-        WHERE name LIKE ? 
-        AND latitud BETWEEN -25.720 AND -25.630 
-        AND longitud BETWEEN -54.500 AND -54.400
+        SELECT name, descrip, latitud, longitud, categoria,Ubicacion,Accesibilidad, Visibilidad, zoom, sector, imagen_url 
+        FROM puntos_interes
+        WHERE (name LIKE ? OR categoria LIKE ? OR sector LIKE ?)
+        AND Visibilidad = 1
     `;
-    const params = [`%${query}%`]; // Usa el término de búsqueda
+    const params = [`%${query}%`, `%${query}%`, `%${query}%`]; // Usa el término de búsqueda para name, categoria, y sector
     
     try {
-        const [results] = await pool.query(sql, params); // Ejecuta la consulta con el parámetro
+        const [results] = await pool.query(sql, params); // Ejecuta la consulta con los parámetros
         res.json(results); // Devuelve los resultados como JSON
     } catch (err) {
         console.error('Error en la consulta:', err);
         res.status(500).json({ error: 'Error en el servidor' });
     }
 });
+
 // app.get('/api/MultiLineStringWithOrientation.geojson', (req, res) => {
 //     const filePath = path.join(__dirname, 'MultiLineStringWithOrientation.geojson');
 //     res.sendFile(filePath, (err) => {

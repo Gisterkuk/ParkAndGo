@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap");
+body{
+    font-family: "Open Sans", sans-serif;
+}
+#aside-info{
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    width: 360px;
+    background-color: white ;
+    display: none;
+    flex-direction: column;
+}
+
+.Imagen-container {
+    flex: 1;
+    background-color: blueviolet;
+    min-height: 240px;
+    max-height: 280px;
+    display: flex;          /* Asegurar que el contenedor use flexbox */
+    align-items: center;    /* Centrar verticalmente la imagen */
+    justify-content: center; /* Centrar horizontalmente la imagen */
+    overflow: hidden;       /* Recortar si la imagen es demasiado grande */
+    
+}
+
+.Imagen-container img {
+    width: 100%;            /* Asegura que la imagen ocupe todo el ancho del contenedor */
+    height: 100%;           /* Asegura que la imagen ocupe todo el alto del contenedor */
+    object-fit: cover;      /* Mantiene la relación de aspecto, recorta la imagen si es necesario */
+    max-width: 100%;        /* Limita el ancho máximo de la imagen para que no se salga */
+    max-height: 100%;       /* Limita la altura máxima de la imagen para que no se salga */
+    min-height: 240px;
+    min-width: 320px;
+}
+.Nombre-container{
+    background-color: #eaeef6;
+    text-align: center;
+    min-height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+    .Nombre-container > h1{
+        transform: translateY(-10px);
+        margin: 0px 5px;
+        padding: 5px 5px;
+        color: #406ff3;
+        border-bottom: 1px solid #406ff3;
+    }
+
+.descrip-container{
+    flex: 2.5;
+    background-color:#eaeef6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#descrip{
+    flex: 6;
+    background-color: #eaeef6;
+    width: 100%;
+    overflow: auto;
+    max-height: 360px;
+    transform: translateY(-15px);
+}
+.Subtitulo{
+    color: #6a778e;
+    transition: 0.5s all;
+}
+.Subtitulo:hover{
+    color: #406ff3;
+}
+h3,h4{
+    padding: 0px 10px;
+}
+#Direction{
+    width: 95%;
+    max-height: 50px;
+    border-radius: 20px;
+    flex: 1;
+    margin-bottom: 30px;
+    border: none;
+    background-color: #85a1f0;
+    color: #fff;
+    font-size: 1.4em;
+    font-weight: 600;
+    transition: 0.5s all;
+    padding: 10px;
+    justify-content: center;
+}
+#Direction:active{
+    transform: scale(0.96);
+}
+#Direction:hover{
+    background-color :#406ff3;
+
+}
+
+
+/* Botón de cerrar el aside  */
+
+/* Botón para abrir el aside */
+.open-button {
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background-color: white;
+    color: #406ff3;
+    border: none;
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 40;
+    transition: 0.5s all;
+    justify-content: center;
+    align-items: center;
+}
+#close-aside {
+    position: absolute;
+    top: 15px;
+    right: 317px;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 40;
+    border: none;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    color:#406ff3;
+    transition: 0.5s all;
+    padding: 10px;
+
+}
+#close-aside:hover, .open-button:hover{
+    color: white;
+    background-color: #406ff3;
+}
+
+
+    /* Estiliza toda la barra de desplazamiento */
+    ::-webkit-scrollbar {
+        width: 6px; /* Ancho de la barra de desplazamiento */
+        height: 6px; /* Altura para los scrollbars horizontales */
+    }
+
+    /* Estiliza la parte que se mueve (el pulgar) */
+    ::-webkit-scrollbar-thumb {
+        background-color: #888; /* Color del pulgar */
+        border-radius: 10px; /* Bordes redondeados para darle un aspecto fino */
+    }
+
+    /* Estiliza el fondo de la pista de la barra de desplazamiento */
+    ::-webkit-scrollbar-track {
+        background: #f0f0f0; /* Color del track (el fondo) */
+        border-radius: 10px; /* Bordes redondeados */
+    }
+
