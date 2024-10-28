@@ -1,4 +1,5 @@
-import { setPoi } from "../../../controllers/SettingMap/CoordState.js";
+
+import { setCoordenadasSeleccionadas } from "../../../controllers/SettingMap/CoordState.js";
 import { abrirAside, abrirInfo } from "../../../controllers/SettingMap/Search.js";
 
 
@@ -97,7 +98,11 @@ export function addPOI(map) {
                 });
                 markerContainer.addEventListener('click',(event)=>{
                     abrirInfo(punto);
-                    abrirAside();
+                    abrirAside(event);
+                    const longitudParsed = parseFloat(punto.longitud.trim());
+                    const latitudParsed = parseFloat(punto.latitud.trim());
+                    setCoordenadasSeleccionadas(longitudParsed,latitudParsed,);
+                    console.log("Coordenadas del punto:",latitudParsed,longitudParsed);
                 })
             });
             
@@ -140,7 +145,7 @@ export function agregarMarcador(map, coordenadas) {
         console.error("El mapa no está disponible.");
         return;
     }
-
+    console.log(coordenadas);
     new mapboxgl.Marker({ color: "red" })
         .setLngLat(coordenadas)
         .addTo(map);

@@ -133,8 +133,8 @@ export function actualizarSugerencias(query, suggestionsContainer, searchInput,s
                     abrirAside(event);
                     const longitudParsed = parseFloat(punto.longitud.trim());
                     const latitudParsed = parseFloat(punto.latitud.trim());
-                   setCoordenadasSeleccionadas(longitudParsed,latitudParsed,);
-                   console.log("Coordenadas del punto:",latitudParsed,longitudParsed);
+                    setCoordenadasSeleccionadas(longitudParsed,latitudParsed);
+                    console.log("Coordenadas del punto:",latitudParsed,longitudParsed);
                 });
                 suggestionsContainer.appendChild(suggestionItem);
             });
@@ -158,21 +158,23 @@ export function abrirAside(event){
     const searchInput =document.getElementById('search-input');
     const direcBtn = document.getElementById('Direction');
 
-    event.stopPropagation(); // Detiene la propagación para evitar que se active el evento del documento
+    //event.stopPropagation(); // Detiene la propagación para evitar que se active el evento del documento
     asideInfo.style.display = "flex";
     openButton.style.display = 'none'; // Ocultar el botón de abrir
     closeButton.style.display = 'flex';
-
+    console.log(direcBtn);
     // Expander el contenedor de búsqueda si no está expandido
     if (!searchContainer.classList.contains('expanded')) {
         searchContainer.classList.add('expanded');
         searchInput.style.display = "block";
+        
 
         setTimeout(() => {
             searchInput.placeholder = 'Busca en el parque...';
         }, 200);
         searchInput.focus(); // Enfocar en el input para permitir búsqueda
     }
+    direcBtn.style.display = 'flex';
 
 }
 export function cerrarAside(){
