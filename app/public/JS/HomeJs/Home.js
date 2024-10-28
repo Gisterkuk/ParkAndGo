@@ -1,3 +1,17 @@
+import { abrirAside } from "../../../controllers/SettingMap/Search.js";
+
+
+const asideInfo = document.getElementById('aside-info');
+const closeButton = document.getElementById('close-aside');
+const openButton = document.getElementById('open-aside');
+const searchContainer = document.getElementById('searchContainer')
+const searchInput =document.getElementById('search-input');
+const direcBtn = document.getElementById('Direction');
+
+const intro =  document.querySelector('.floating-box');
+const nextBtn = document.querySelector('#Siguiente');
+const offerBox = document.querySelector(".offer-box");
+
 window.addEventListener('load', function() {
     feather.replace(); // Reemplaza los íconos de Feather
 
@@ -11,18 +25,18 @@ window.addEventListener('load', function() {
         });
     }
 
-    const intro =  document.querySelector('.floating-box');
-    const nextBtn = document.querySelector('#Siguiente');
-    const offerBox = this.document.querySelector(".offer-box");
+    
     nextBtn.addEventListener("click", ()=>{
         intro.style.display = 'none';
         offerBox.style.display = 'initial';
     })
     const closeBtn = this.document.querySelector("#cerrar");
     const blur = this.document.querySelector(".blur-background")
-    closeBtn.addEventListener("click",()=>{
+    closeBtn.addEventListener("click",(event)=>{
         offerBox.style.display = "none"
         blur.style.display ="none";
-    })
+        abrirAside(event);
+        direcBtn.style.display = "none";
+    });
     
 });

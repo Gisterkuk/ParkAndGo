@@ -306,41 +306,41 @@ export function setupMapEvents(map, graph) {
 
     const markers = []; // Almacenar los marcadores para poder eliminarlos
 
-    map.on('click', (e) => {
-        const coords = [e.lngLat.lng, e.lngLat.lat];
+    // map.on('click', (e) => {
+    //     const coords = [e.lngLat.lng, e.lngLat.lat];
 
-        if (!startPoint) {
-            startPoint = coords;
-            const startMarker = new mapboxgl.Marker({ color: 'green' })
-                .setLngLat(startPoint)
-                .addTo(map);
-            markers.push(startMarker); // Guardar el marcador
+    //     if (!startPoint) {
+    //         startPoint = coords;
+    //         const startMarker = new mapboxgl.Marker({ color: 'green' })
+    //             .setLngLat(startPoint)
+    //             .addTo(map);
+    //         markers.push(startMarker); // Guardar el marcador
 
-        } else if (!endPoint) {
-            endPoint = coords;
-            const endMarker = new mapboxgl.Marker({ color: 'red' })
-                .setLngLat(endPoint)
-                .addTo(map);
-            markers.push(endMarker); // Guardar el marcador
+    //     } else if (!endPoint) {
+    //         endPoint = coords;
+    //         const endMarker = new mapboxgl.Marker({ color: 'red' })
+    //             .setLngLat(endPoint)
+    //             .addTo(map);
+    //         markers.push(endMarker); // Guardar el marcador
 
-            // Buscar el punto más cercano dentro de la tolerancia
-            const closestStart = findClosestPoint(startPoint, graph, TOLERANCE_RADIUS);
-            const closestEnd = findClosestPoint(endPoint, graph, TOLERANCE_RADIUS);
+    //         // Buscar el punto más cercano dentro de la tolerancia
+    //         const closestStart = findClosestPoint(startPoint, graph, TOLERANCE_RADIUS);
+    //         const closestEnd = findClosestPoint(endPoint, graph, TOLERANCE_RADIUS);
 
-            if (closestStart && closestEnd) {
-                const path = dijkstra(graph, closestStart, closestEnd);
-                if (path.length > 0) {
-                    drawRoute(map, path); // Dibujar la ruta
-                    clearMarkers(); // Limpiar los marcadores después de dibujar la ruta
-                    startPoint = null;
-                    endPoint = null; // Resetear los puntos
-                }
-            } else {
-                console.error("No se encontraron puntos dentro del radio de tolerancia.");
-                resetPoints(); // Llamar a la función para resetear puntos
-            }
-        }
-    });
+    //         if (closestStart && closestEnd) {
+    //             const path = dijkstra(graph, closestStart, closestEnd);
+    //             if (path.length > 0) {
+    //                 drawRoute(map, path); // Dibujar la ruta
+    //                 clearMarkers(); // Limpiar los marcadores después de dibujar la ruta
+    //                 startPoint = null;
+    //                 endPoint = null; // Resetear los puntos
+    //             }
+    //         } else {
+    //             console.error("No se encontraron puntos dentro del radio de tolerancia.");
+    //             resetPoints(); // Llamar a la función para resetear puntos
+    //         }
+    //     }
+    // });
 
     // Función para limpiar los marcadores del mapa
     function clearMarkers() {

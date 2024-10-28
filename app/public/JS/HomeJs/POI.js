@@ -1,83 +1,138 @@
-export function addPOI(map){
+import { setPoi } from "../../../controllers/SettingMap/CoordState.js";
+import { abrirAside, abrirInfo } from "../../../controllers/SettingMap/Search.js";
+
+
+export function addPOI(map) {
     fetch('/api/puntos-interes')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('La respuesta a la API no funcionó');
-        }
-        return response.json();
-    })
-    .then(data => {
-        const markers = []; // Inicializa el array para almacenar marcadores
-        
-        data.forEach(punto => {
-            const coordinates = [punto.longitud, punto.latitud];
-            
-            // Crear un contenedor para el marcador y la etiqueta
-            const markerContainer = document.createElement('div');
-            markerContainer.style.display = 'flex';
-            markerContainer.style.flexDirection = 'column'; // Para apilar verticalmente
-            markerContainer.style.alignItems = 'center'; // Centramos el contenido
-            
-            // Crear un marcador con la imagen personalizada y borde circular
-            const markerElement = document.createElement('div');
-            markerElement.style.backgroundImage = `url(${punto.imagen_url})`; // URL de la imagen
-            markerElement.style.backgroundSize = 'contain'; // Ajustar el tamaño
-            markerElement.style.width = '40px'; // Ancho del marcador
-            markerElement.style.height = '40px'; // Alto del marcador
-            markerElement.style.borderRadius = '50%'; // Hacer que sea circular
-            markerElement.style.border = '2px solid white'; // Color y grosor del borde
-            markerElement.style.boxShadow = '0 0 5px rgba(0,0,0,0.5)'; // Sombra para efecto de profundidad
-            
-            // Crear el label
-            const label = document.createElement('p');
-            label.textContent = punto.name; // Nombre del punto
-            label.style.margin = '5px 0 0 0'; // Margen superior para separación
-            label.style.color = 'gray'; // Color del texto
-            label.style.fontSize = '12px'; // Tamaño de fuente
-            label.style.textAlign = 'center'; // Centramos el texto
-            
-            // Añadir el marcador y la etiqueta al contenedor
-            markerContainer.appendChild(markerElement);
-            markerContainer.appendChild(label);
-            
-            // Crear el marcador de Mapbox
-            const marker = new mapboxgl.Marker(markerContainer)
-            .setLngLat(coordinates)
-            .addTo(map);
-
-                // Almacena el marcador y su nivel de zoom
-                markers.push({
-                marker: marker,
-                zoom: punto.zoom // Suponiendo que tienes un campo 'zoom' en tu base de datos
-            });
-        });
-
-        // Evento para controlar el zoom
-        map.on('zoom', function() {
-            const currentZoom = map.getZoom();
-            //console.log(currentZoom);
-            markers.forEach(({ marker, zoom }) => {
-                if (currentZoom >= zoom) {
-                    marker.getElement().style.display = 'flex'; // Mostrar el marcador si el zoom es suficiente
-                } else {
-                    marker.getElement().style.display = 'none'; // Ocultar el marcador si el zoom no es suficiente
-                }
-            });
-        });
-
-        // Inicializa la visibilidad de los marcadores según el zoom inicial
-        const initialZoom = map.getZoom();
-        markers.forEach(({ marker, zoom }) => {
-            if (initialZoom >= zoom) {
-                marker.getElement().style.display = 'flex'; // Mostrar el marcador si el zoom es suficiente
-            } else {
-                marker.getElement().style.display = 'none'; // Ocultar el marcador si el zoom no es suficiente
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('La respuesta a la API no funcionó');
             }
+            return response.json();
+        })
+        .then(data => {
+            const markers = []; // Array para almacenar los marcadores
+            const iconosPorCategoria = {
+                "Saltos": "fas fa-water",
+                "Sendero": "fas fa-hiking",
+                "Sanitarios": "fas fa-restroom",
+                "CajeroAutomatico": "fas fa-money-bill-wave",
+                "Restaurantes": "fas fa-utensils",
+                "TicketTren": "fas fa-ticket",
+                "Tren": "fas fa-train",
+                "Jungle Iguazu": "fas fa-anchor",
+                "Museo": "fas fa-landmark",
+                "Tiendas": "fas fa-store",
+                "Fotografia": "fas fa-camera",
+                "Hoteles": "fas fa-hotel",
+                "Pabellon": "fas fa-building",  // Pabellón
+                "Transporte": "fas fa-bus",  // Transporte
+                "AtencionPublico": "fas fa-info-circle",
+                "AtencionMedica": "fas fa-clinic-medical",
+                "VentaTicket" : "fas fa-ticket"
+            };
+            const coloresPorCategoria = {
+                "Saltos": "blue",
+                "Sendero": "green",
+                "Sanitarios": "purple",
+                "CajeroAutomatico": "gold",
+                "Restaurantes": "darkred",
+                "TicketTren": "orange",
+                "Tren": "gray",
+                "Jungle Iguazu": "darkgreen",
+                "Museo": "darkblue",
+                "Tiendas": "brown",
+                "Fotografia": "black",
+                "Hoteles": "teal",
+                "Pabellon": "slategray",
+                "Transporte": "navy",
+                "AtencionPublico": "indigo",
+                "AtencionMedica": "red",
+                "VentaTicket" : "orange"
+            };
+            
+
+            data.forEach(punto => {
+                const coordinates = [punto.longitud, punto.latitud];
+            
+                // Crear el contenedor del marcador
+                const markerContainer = document.createElement('div');
+                markerContainer.className = 'marker-icon';
+                markerContainer.style.display = 'flex';
+                markerContainer.style.flexDirection = 'column';
+                markerContainer.style.alignItems = 'center';
+                
+            
+                // Seleccionar el ícono y el color basados en la categoría
+                const iconClass = iconosPorCategoria[punto.categoria] || 'fas fa-map-marker-alt';
+                const iconColor = coloresPorCategoria[punto.categoria] || 'black';
+            
+                const iconElement = document.createElement('i');
+                iconElement.className = iconClass;
+                iconElement.style.fontSize = '30px';
+                iconElement.style.color = iconColor;  // Asignar color según la categoría
+            
+                // Crear el elemento para el nombre del POI
+                const nameElement = document.createElement('span');
+                nameElement.textContent = punto.name;
+                nameElement.style.marginTop = '5px';
+                nameElement.style.fontSize = '12px';
+                nameElement.style.color = 'grey';  // Nombre en negro para mayor legibilidad
+                nameElement.style.textAlign = 'center';
+                nameElement.style.display = "none";
+            
+                // Añadir ícono y nombre al contenedor del marcador
+                markerContainer.appendChild(iconElement);
+                markerContainer.appendChild(nameElement);
+            
+                // Crear y agregar el marcador al mapa
+                const marker = new mapboxgl.Marker(markerContainer)
+                    .setLngLat(coordinates)
+                    .addTo(map);
+            
+                // Agregar el marcador al array con su zoom correspondiente
+                markers.push({
+                    marker: marker,
+                    zoom: punto.zoom || 0
+                });
+                markerContainer.addEventListener('click',(event)=>{
+                    abrirInfo(punto);
+                    abrirAside();
+                })
+            });
+            
+            
+
+            // Evento para controlar la visibilidad según el zoom
+            map.on('zoom', () => {
+                const currentZoom = map.getZoom();
+                console.log(currentZoom);
+                markers.forEach(({ marker, zoom }) => {
+                    marker.getElement().style.display = currentZoom >= zoom ? 'flex' : 'none';
+                });
+                document.querySelectorAll('.marker-icon span').forEach(nameElement => {
+                    nameElement.style.display = currentZoom >= 16 ? 'block' : 'none';  // Mostrar a partir de zoom 16
+                });
+            
+                // Ajustar el tamaño de los íconos con un límite máximo
+                document.querySelectorAll('.marker-icon i').forEach(icon => {
+                    const scale = Math.min(2, currentZoom / 20);  // Límite máximo de escala a 2x
+                    icon.style.transform = `scale(${scale})`;  // Escala con suavidad
+                });
+            });
+            
+            
+            
+
+            // Configurar la visibilidad inicial según el zoom actual
+            const initialZoom = map.getZoom();
+            markers.forEach(({ marker, zoom }) => {
+                marker.getElement().style.display = initialZoom >= zoom ? 'flex' : 'none';
+            });
+        })
+        .catch(error => {
+            console.error('Error al cargar los puntos de interés:', error);
         });
-    })
-    .catch(error => {
-        console.error('Error al cargar los puntos de interés:', error);
-    });
 }
 
 export function agregarMarcador(map, coordenadas) {
@@ -86,8 +141,7 @@ export function agregarMarcador(map, coordenadas) {
         return;
     }
 
-    // Crear un marcador en la ubicación dada por las coordenadas
-    const marker = new mapboxgl.Marker({ color: "red" }) // Puedes cambiar el color según tus necesidades
+    new mapboxgl.Marker({ color: "red" })
         .setLngLat(coordenadas)
         .addTo(map);
 }

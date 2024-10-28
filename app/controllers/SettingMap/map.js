@@ -1,8 +1,8 @@
 import {createGraph,dijkstra,findClosestPoint,setupMapEvents,drawRoute,visualizeRoutesOnMap} from "./Routing.js";
 import { trackUserLocation } from "./LiveLocation.js";
 import { addPOI, agregarMarcador } from "../../public/JS/HomeJs/POI.js";
-import {actualizarSugerencias,buscarPunto} from "./Search.js";
-import { getCoordenadasSeleccionadas, getLiveLocation} from "./CoordState.js";
+import {abrirAside, abrirInfo, actualizarSugerencias,buscarPunto} from "./Search.js";
+import { getCoordenadasSeleccionadas, getLiveLocation, getPOI} from "./CoordState.js";
 
 let graph;
 let map; // Declarar map de manera global
@@ -12,17 +12,16 @@ let Informacion;
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiYWxjYW5kZWpzIiwiYSI6ImNtMWNxa3p6cDExdnoyam9mbjlpYmNncjAifQ.CjlYg9fh0dxJ49BDuACykw';
 
-window.onload = function() {
+document.addEventListener('DOMContentLoaded', () => {
     const map = new mapboxgl.Map({
         container: 'mapa',
         style: 'mapbox://styles/alcandejs/cm2oxvu73008801qifmae69zs',
-        center: [-54.454692, -25.683152],   
-        zoom: 12
-        
-        // ,maxBounds: [
-        //     [-54.500, -25.720],
-        //     [-54.400, -25.630]
-        // ]
+        center: [-54.449985515005594,-25.682853268597665],   
+        zoom: 14.5
+        ,maxBounds: [
+            [-54.500, -25.720],
+            [-54.400, -25.630]
+        ]
     });
 
     // const geocoder = new MapboxGeocoder({
@@ -68,6 +67,7 @@ window.onload = function() {
             console.log("El layer 'route' se ha agregado correctamente.");
         }
         trackUserLocation(map);
+        addPOI(map);
     
         //const filePath = path.join(__dirname, 'MultiLineStringWithOrientation.geojson');
 
@@ -123,7 +123,15 @@ window.onload = function() {
         });
         
         //AGREGO LOS PUNTOS DE INTERES 
-        addPOI(map);
+        
+        // let POI = getPOI();
+        // const marcador = document.getElementsByClassName('.mapboxgl-icon');
+        // console.log(marcador);
+        
+        // marcador.addEventListener('click',(event)=>{
+        //     abrirInfo(POI)
+        //     abrirAside(event);
+        // });
         
         //FUNCIONALIDAD DEL SEARCH
         const searchContainer = document.getElementById('searchContainer')
@@ -182,4 +190,4 @@ window.onload = function() {
 
     });
 
-};
+});

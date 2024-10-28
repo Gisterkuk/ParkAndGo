@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Función para ocultar el aside
         closeButton.addEventListener('click', () => {
-            cerrarAside(closeButton,asideInfo,openButton,searchContainer,searchInput,suggestionsContainer);
+            cerrarAside();
         });
         // Función para mostrar el aside
         openButton.addEventListener('click', (event) => {

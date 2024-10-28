@@ -1,13 +1,15 @@
 import { setCoordenadasSeleccionadas } from "./CoordState.js";
 
-export function abrirInfo(imagen,nombre,info,aside,punto){
+export function abrirInfo(punto){
+    const info = document.getElementsByClassName('info-span')
+    const nombre = document.getElementById('name');
+    const imagen = document.getElementById('imagen');
     imagen.src = punto.imagen_url;
     info[0].textContent = punto.Ubicacion;
     info[1].textContent = punto.Accesibilidad;
     info[2].textContent = punto.sector;
     info[3].textContent= punto.descrip;
     nombre.textContent =punto.name;
-    abrirAside
 }
 
 
@@ -80,23 +82,36 @@ export function actualizarSugerencias(query, suggestionsContainer, searchInput,s
                 const suggestionItem = document.createElement('item');
                 suggestionItem.style.display = 'flex';
                 suggestionItem.style.alignItems = 'center';
-                suggestionItem.style.padding = '10px';
+                suggestionItem.style.padding = '5px 0px';
                 suggestionItem.style.cursor = 'pointer';
                 suggestionItem.style.borderBottom = '1px solid #ccc';
+                suggestionItem.style.zIndex = '45';
 
-                const img = document.createElement('img');
-                img.src = punto.imagen_url;
-                img.style.width = '40px';
-                img.style.height = '40px';
-                img.style.marginRight = '10px';
+                const infoContainer = document.createElement('div');
+                infoContainer.style.display = "flex";
+                infoContainer.style.flexDirection = "column";
+
+                const sector = document.createElement('span');
+                sector.textContent = punto.sector;  
+                sector.style.color = "grey";
+                sector.style.fontSize = "13px"
 
                 const name = document.createElement('span');
                 name.textContent = punto.name;
+                infoContainer.appendChild(name);
+                infoContainer.appendChild(sector);
+
+                const img = document.createElement('img');
+                img.src = punto.imagen_url;
+                img.style.width = '60px';
+                img.style.height = '60px';
+                img.style.marginRight = '10px';
+
 
                 suggestionItem.appendChild(img);
-                suggestionItem.appendChild(name);
+                suggestionItem.appendChild(infoContainer);
 
-                suggestionItem.addEventListener('click', () => {
+                suggestionItem.addEventListener('click', (event) => {
                     searchInput.value = punto.name; // Actualizar el input de búsqueda con el nombre seleccionado
                     console.log("LA FUNCION BUSCARA EL NOMBRE DE ", punto.name)
                     buscarPunto(searchInput.value,map) // Función para hacer zoom al POI
@@ -112,8 +127,10 @@ export function actualizarSugerencias(query, suggestionsContainer, searchInput,s
                     const aside = document.getElementById('aside-info')
                     const nombre = document.getElementById('name');
                     const imagen = document.getElementById('imagen');
+
                     
-                    abrirInfo(imagen,nombre,info,aside,punto);
+                    abrirInfo(punto);
+                    abrirAside(event);
                     const longitudParsed = parseFloat(punto.longitud.trim());
                     const latitudParsed = parseFloat(punto.latitud.trim());
                    setCoordenadasSeleccionadas(longitudParsed,latitudParsed,);
@@ -133,10 +150,16 @@ export function actualizarSugerencias(query, suggestionsContainer, searchInput,s
     });
 }
 
-export function abrirAside(openButton,asideInfo,closeButton,searchContainer,searchInput,event){
+export function abrirAside(event){
+    const asideInfo = document.getElementById('aside-info');
+    const closeButton = document.getElementById('close-aside');
+    const openButton = document.getElementById('open-aside');
+    const searchContainer = document.getElementById('searchContainer')
+    const searchInput =document.getElementById('search-input');
+    const direcBtn = document.getElementById('Direction');
 
     event.stopPropagation(); // Detiene la propagación para evitar que se active el evento del documento
-    asideInfo.style.display = "block";
+    asideInfo.style.display = "flex";
     openButton.style.display = 'none'; // Ocultar el botón de abrir
     closeButton.style.display = 'flex';
 
@@ -144,6 +167,7 @@ export function abrirAside(openButton,asideInfo,closeButton,searchContainer,sear
     if (!searchContainer.classList.contains('expanded')) {
         searchContainer.classList.add('expanded');
         searchInput.style.display = "block";
+
         setTimeout(() => {
             searchInput.placeholder = 'Busca en el parque...';
         }, 200);
@@ -151,8 +175,14 @@ export function abrirAside(openButton,asideInfo,closeButton,searchContainer,sear
     }
 
 }
-export function cerrarAside(closeButton,asideInfo,openButton,searchContainer,searchInput,suggestionsContainer){
-    
+export function cerrarAside(){
+    const asideInfo = document.getElementById('aside-info');
+    const closeButton = document.getElementById('close-aside');
+    const openButton = document.getElementById('open-aside');
+    const searchContainer = document.getElementById('searchContainer')
+    const searchInput =document.getElementById('search-input');
+    const suggestionsContainer = document.getElementById('suggestions-container')
+
     asideInfo.style.display = 'none';
     openButton.style.display = 'flex'; // Mostrar el botón de abrir
     closeButton.style.display = 'none';
