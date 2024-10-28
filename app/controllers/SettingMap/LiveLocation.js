@@ -18,7 +18,7 @@ export function trackUserLocation(map) {
                         .setLngLat([longitude, latitude])
                         .addTo(map);
                 }
-                setLiveLocation({latitude,longitude});
+                setLiveLocation(latitude,longitude);
                 // Opcional: Centrar el mapa en la ubicación del usuario
                 // map.flyTo({
                 //     center: [longitude, latitude],

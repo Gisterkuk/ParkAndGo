@@ -1,8 +1,8 @@
-import {createGraph,dijkstra,findClosestPoint,setupMapEvents} from "./Routing.js";
+import {createGraph,dijkstra,findClosestPoint,setupMapEvents,drawRoute,visualizeRoutesOnMap} from "./Routing.js";
 import { trackUserLocation } from "./LiveLocation.js";
 import { addPOI, agregarMarcador } from "../../public/JS/HomeJs/POI.js";
 import {actualizarSugerencias,buscarPunto} from "./Search.js";
-import { getCoordenadasSeleccionadas} from "./CoordState.js";
+import { getCoordenadasSeleccionadas, getLiveLocation} from "./CoordState.js";
 
 let graph;
 let map; // Declarar map de manera global
@@ -74,7 +74,7 @@ window.onload = function() {
         // fs.access(filePath, fs.constants.F_OK, (err) => {
         //     console.log(err ? 'El archivo no existe' : 'El archivo está presente');
         // });
-        fetch('http://localhost:8200/MultiLineStringWithOrientation.geojson')
+        fetch('http://localhost:8200/UltimateRoad4.5.geojson')
         .then(response => {
             console.log(response);
             if (!response.ok) {
@@ -110,7 +110,7 @@ window.onload = function() {
                 //console.log("GeoJSON actualizado con orientaciones:", data);
         
                 graph = createGraph(data); // Crear el grafo
-                //visualizeRoutesOnMap(map,data); // Visualizar las rutas en el mapa
+               // visualizeRoutesOnMap(map,data); // Visualizar las rutas en el mapa
                 setupMapEvents(map,graph); // Configurar eventos después de cargar el mapa
 
             } 
@@ -155,7 +155,8 @@ window.onload = function() {
 
         const routeBtn = document.querySelector("#Direction")
         routeBtn.addEventListener('click',()=>{
-            let PuntoA = [-54.45460685091212,-25.68292920945988];
+            // let PuntoA = [-54.45460685091212,-25.68292920945988];
+            let PuntoA = getLiveLocation();
             let PuntoB = getCoordenadasSeleccionadas();
             console.log("PUNTO A; ",PuntoA);
             console.log("PUNTO B; ",PuntoB);
@@ -169,8 +170,8 @@ window.onload = function() {
                 if (path.length > 0) {
                     drawRoute(map, path); // Dibujar la ruta
                     //clearMarkers(); // Limpiar los marcadores después de dibujar la ruta
-                    startPoint = null;
-                    endPoint = null; // Resetear los puntos
+                    // startPoint = null;
+                    // endPoint = null; // Resetear los puntos
                 }
             } else {
                 console.error("No se encontraron puntos dentro del radio de tolerancia.");

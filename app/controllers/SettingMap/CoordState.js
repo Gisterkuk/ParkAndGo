@@ -7,8 +7,8 @@ export function setCoordenadasSeleccionadas(lon,lat) {
 export function getCoordenadasSeleccionadas() {
     return coordenadasSeleccionadas;
 }
-export function setLiveLocation(liveLocation){
-    Localizacion = liveLocation;
+export function setLiveLocation(lon,lat){
+    Localizacion = [lat,lon];
 }
 export function getLiveLocation(){
     return Localizacion;

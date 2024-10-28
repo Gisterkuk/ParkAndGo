@@ -110,7 +110,7 @@ export function visualizeRoutesOnMap(map,geojson) {
         },
         'paint': {
             'line-color': '#888',
-            'line-width': 0
+            'line-width': 2
         }
     });
     //console.log("Visualizacion de rutas agregadas correctamente");

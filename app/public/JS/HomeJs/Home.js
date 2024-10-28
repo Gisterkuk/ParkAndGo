@@ -1,6 +1,7 @@
 window.addEventListener('load', function() {
     feather.replace(); // Reemplaza los íconos de Feather
 
+
     const logoutButton = document.getElementById("logout");
     if (logoutButton) {
         logoutButton.addEventListener("click", (event) => {
@@ -9,4 +10,19 @@ window.addEventListener('load', function() {
             document.location.href = "/login"; // Redirige a la página de login
         });
     }
+
+    const intro =  document.querySelector('.floating-box');
+    const nextBtn = document.querySelector('#Siguiente');
+    const offerBox = this.document.querySelector(".offer-box");
+    nextBtn.addEventListener("click", ()=>{
+        intro.style.display = 'none';
+        offerBox.style.display = 'initial';
+    })
+    const closeBtn = this.document.querySelector("#cerrar");
+    const blur = this.document.querySelector(".blur-background")
+    closeBtn.addEventListener("click",()=>{
+        offerBox.style.display = "none"
+        blur.style.display ="none";
+    })
+    
 });

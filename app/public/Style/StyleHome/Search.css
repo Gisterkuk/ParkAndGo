@@ -11,7 +11,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end; /* Alinea el botón a la derecha */
-    z-index: 500;
+    z-index: 40;
 }
 
 /* Input de búsqueda inicial oculto */
@@ -45,7 +45,7 @@
     background: white;
     font-size: 20px;
     cursor: pointer;
-    z-index: 10;
+    z-index: 40;
     width: 45px; /* Ancho fijo para el botón */
     height: 45px; /* Altura fija para el botón */
     color: #406ff3;
@@ -77,7 +77,7 @@
     background: white;
     border-radius: 4px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    z-index: 40;
 }
 item{
     transition: .5s all;

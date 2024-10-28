@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="/Style/StyleHome/Nav.css">
   <link rel="stylesheet" href="/Style/StyleHome/Search.css">
   <link rel="stylesheet" href="/Style/StyleHome/Aside.css">
+  <link rel="stylesheet" href="/Style/StyleHome/Home.css">
   <!-- Mapbox GL JS -->
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
   <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
@@ -69,7 +70,7 @@
     </nav>
     <!-- SEARCH -->
     <div class="search-container" id="searchContainer">
-      <input type="text" id="search-input" placeholder="" autocomplete="off" />
+      <input type="text" id="search-input" placeholder="Busca en el parque..." autocomplete="off" />
       <button id="search-btn"><i data-feather="search"></i></button>
     </div>
 
@@ -84,7 +85,7 @@
       </div>
       <!-- INFORMACION  -->
       <div class="Nombre-container">
-        <h1 id="name">Puerto Iguazu</h1>
+        <h1 id="name">Cataratas Del Iguazu</h1>
       </div>
       <div class="descrip-container">
         <div class="" id="descrip">
@@ -93,13 +94,40 @@
           <h3 id="Sector"><span class="Subtitulo">Sector:<br></span><span id="TxtSec" class="info-span">Parque Nacional Cataratas Del Iguazu</span></h3>
           <h4 id="Info" ><span class="Subtitulo">Sobre el lugar:<br></span><span id="TxtInfo" class="info-span">Las Cataratas del Iguazú, situadas en el Parque Nacional Iguazú, son una de las maravillas naturales más impresionantes del mundo. Ubicadas en la frontera entre Argentina y Brasil, estas cataratas están compuestas por aproximadamente 275 saltos de agua que se extienden a lo largo de 2.7 kilómetros del río Iguazú.</span></h4>
         </div>
-          <button id="Direction">Como llegar?</button>
+          <button id="Direction" style="display: flex;">Como llegar?</button>
       </div>
       <!-- BOTON PARA ABRIR EL ASIDE -->
       
     </aside>
     <button id="open-aside" class="open-button"> <i data-feather="info"></i></button>
     <button id="close-aside" class="close-button"><i data-feather="x"></i></button>
+
+    <div class="blur-background"></div>
+    <!-- CAJA FLOTANTE -->
+    <div class="floating-box">
+      <button class="close-btn" id="Siguiente">Siguiente</button>
+      <h1>Bienvenido a Path and Go</h1>
+      <h2>¡Explorá el Parque Nacional Iguazú a tu medida!</h2>
+      <p id="Descripcion">Descubrí la magia del Parque Nacional Iguazú de una manera única y personalizada. Nuestra aplicación está diseñada para guiarte por los rincones más emblemáticos del parque, generando rutas óptimas desde tu ubicación hasta cualquier punto de interés que desees visitar.</p>
+  </div>
+  <div class="offer-box">
+    <button class="close-btn" id="cerrar">Ir al mapa</button>
+    <h2 id="offer">¿Qué te ofrecemos?</h2>
+    <ul>
+        <li class="listado">
+            <p class="parrafos-offer"><strong>Rutas personalizadas:</strong> Planificamos tu recorrido para que no te pierdas de ninguna atracción, optimizando el tiempo y esfuerzo.</p>
+        </li>
+        <li class="listado">
+            <p class="parrafos-offer"><strong>Exploración eficiente:</strong> Generamos las mejores rutas para conectar múltiples puntos en tu aventura, adaptándonos a tus preferencias.</p>
+        </li>
+        <li class="listado">
+            <p class="parrafos-offer"><strong>Experiencia interactiva:</strong> Navegá sin preocupaciones con mapas dinámicos y guías paso a paso.</p>
+        </li>
+        <li class="listado">
+            <p class="parrafos-offer"><strong>Conexión con la naturaleza:</strong> Descubrí senderos ocultos, miradores impresionantes y lugares icónicos como las Cataratas del Iguazú.</p>
+        </li>
+    </ul>
+  </div>
     </main>
     
     

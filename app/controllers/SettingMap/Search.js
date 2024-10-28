@@ -1,17 +1,15 @@
 import { setCoordenadasSeleccionadas } from "./CoordState.js";
 
-export function abrirAside(imagen,nombre,info,aside,punto){
+export function abrirInfo(imagen,nombre,info,aside,punto){
     imagen.src = punto.imagen_url;
     info[0].textContent = punto.Ubicacion;
     info[1].textContent = punto.Accesibilidad;
     info[2].textContent = punto.sector;
     info[3].textContent= punto.descrip;
     nombre.textContent =punto.name;
-    aside.style.display ='flex';
+    abrirAside
 }
-// export function LocToPOI(graph,start,end,routeBtn){
 
-// }
 
 let currentMarkers = []; // Almacenar los marcadores actuales
 export function buscarPunto(query, map) { 
@@ -115,7 +113,7 @@ export function actualizarSugerencias(query, suggestionsContainer, searchInput,s
                     const nombre = document.getElementById('name');
                     const imagen = document.getElementById('imagen');
                     
-                    abrirAside(imagen,nombre,info,aside,punto);
+                    abrirInfo(imagen,nombre,info,aside,punto);
                     const longitudParsed = parseFloat(punto.longitud.trim());
                     const latitudParsed = parseFloat(punto.latitud.trim());
                    setCoordenadasSeleccionadas(longitudParsed,latitudParsed,);
@@ -133,4 +131,36 @@ export function actualizarSugerencias(query, suggestionsContainer, searchInput,s
     .catch(error => {
         console.error('Error al buscar sugerencias:', error);
     });
+}
+
+export function abrirAside(openButton,asideInfo,closeButton,searchContainer,searchInput,event){
+
+    event.stopPropagation(); // Detiene la propagación para evitar que se active el evento del documento
+    asideInfo.style.display = "block";
+    openButton.style.display = 'none'; // Ocultar el botón de abrir
+    closeButton.style.display = 'flex';
+
+    // Expander el contenedor de búsqueda si no está expandido
+    if (!searchContainer.classList.contains('expanded')) {
+        searchContainer.classList.add('expanded');
+        searchInput.style.display = "block";
+        setTimeout(() => {
+            searchInput.placeholder = 'Busca en el parque...';
+        }, 200);
+        searchInput.focus(); // Enfocar en el input para permitir búsqueda
+    }
+
+}
+export function cerrarAside(closeButton,asideInfo,openButton,searchContainer,searchInput,suggestionsContainer){
+    
+    asideInfo.style.display = 'none';
+    openButton.style.display = 'flex'; // Mostrar el botón de abrir
+    closeButton.style.display = 'none';
+    if (searchContainer.classList.contains('expanded')) {
+        searchContainer.classList.remove('expanded');
+        searchInput.style.display = "none";
+        searchInput.placeholder = '';
+        suggestionsContainer.style.display = 'none'; // Ocultar sugerencias
+        suggestionsContainer.innerHTML = ''; // Limpiar sugerencias
+    }
 }

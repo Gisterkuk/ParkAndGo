@@ -8,7 +8,7 @@ body{
     top: 0;
     height: 100vh;
     width: 360px;
-    background-color: #aaa ;
+    background-color: white ;
     display: none;
     flex-direction: column;
 }
@@ -35,9 +35,12 @@ body{
     min-width: 320px;
 }
 .Nombre-container{
-    flex: .3;
     background-color: #eaeef6;
+    text-align: center;
     min-height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
 }
     .Nombre-container > h1{
         transform: translateY(-10px);
@@ -86,6 +89,7 @@ h3,h4{
     font-weight: 600;
     transition: 0.5s all;
     padding: 10px;
+    justify-content: center;
 }
 #Direction:active{
     transform: scale(0.96);
@@ -110,7 +114,7 @@ h3,h4{
     width: 40px;
     height: 40px;
     cursor: pointer;
-    z-index: 1000;
+    z-index: 40;
     transition: 0.5s all;
     justify-content: center;
     align-items: center;
@@ -124,7 +128,7 @@ h3,h4{
     border-radius: 20px;
     font-size: 20px;
     cursor: pointer;
-    z-index: 1100;
+    z-index: 40;
     border: none;
     display: none;
     justify-content: center;
