@@ -1,7 +1,7 @@
 import {createGraph,dijkstra,findClosestPoint,setupMapEvents,drawRoute,visualizeRoutesOnMap} from "./Routing.js";
 import { trackUserLocation } from "./LiveLocation.js";
 import { addPOI, agregarMarcador } from "../../public/JS/HomeJs/POI.js";
-import {abrirAside, abrirInfo, actualizarSugerencias,buscarPunto} from "./Search.js";
+import {actualizarSugerencias,buscarPunto} from "./Search.js";
 import { getCoordenadasSeleccionadas, getLiveLocation, getPOI} from "./CoordState.js";
 
 let graph;
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // fs.access(filePath, fs.constants.F_OK, (err) => {
         //     console.log(err ? 'El archivo no existe' : 'El archivo está presente');
         // });
-        fetch('http://localhost:8200/UltimateRoad4.5.geojson')
+        fetch('https://parkandgo-g4r5.onrender.com/UltimateRoad4.5.geojson')
         .then(response => {
             console.log(response);
             if (!response.ok) {
