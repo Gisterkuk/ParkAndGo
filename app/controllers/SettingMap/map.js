@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // });
         
         //FUNCIONALIDAD DEL SEARCH
-        const searchContainer = document.getElementById('searchContainer')
+        const searchContainer = document.getElementById('searchContainer');
         const searchInput = document.getElementById('search-input');
         const suggestionsContainer = document.getElementById('suggestions-container');
         const suggestionItem = document.createElement('item');
@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
         searchInput.addEventListener('input', () => {
             const query = searchInput.value;
             if (query.length > 1) { // Evitar búsquedas demasiado frecuentes por cada letra
-                actualizarSugerencias(query, suggestionsContainer, searchInput,searchContainer, map);
+                actualizarSugerencias(query,map);
                 console.log(Informacion);
             } else {
                 suggestionsContainer.style.display = 'none'; // Ocultar las sugerencias si el texto es muy corto
@@ -187,6 +187,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
         })
+
+
 
     });
 

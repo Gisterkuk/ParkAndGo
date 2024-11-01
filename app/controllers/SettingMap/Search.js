@@ -65,17 +65,31 @@ export function buscarPunto(query, map) {
 }
 
 
-export function actualizarSugerencias(query, suggestionsContainer, searchInput,searchContainer, map) {
+export function actualizarSugerencias(query,map) {
     fetch(`/api/puntos-interes/search?query=${encodeURIComponent(query)}`)
     .then(response => response.json())
     .then(data => {
+        const suggestionsContainer = document.getElementById('suggestions-container');
+        const searchInput = document.getElementById('search-input');
+        const searchContainer = document.getElementById('searchContainer');
+
         console.log('Datos recibidos:', data);  // Ver qué datos se reciben exactamente
 
         suggestionsContainer.innerHTML = '';  // Limpiar el contenedor de sugerencias
 
         if (data && data.length > 0) {
             suggestionsContainer.style.display = 'block';  // Mostrar el contenedor de sugerencias
+            suggestionsContainer.style.borderRadius = '0px 0px 0px 20px';
+            suggestionsContainer.style.maxHeight = '300px';
+            suggestionsContainer.style.overflow = 'scroll';
             searchContainer.style.borderRadius = '15px 15px 0px 0px';
+            suggestionsContainer.style.overflowX ='hidden';
+
+            const openBtn = document.getElementById('open-aside');
+            const routingBtn = document.getElementById('Routing');
+            openBtn.style.top = '355px';
+            routingBtn.style.top = '400px'; 
+
             data.forEach(punto => {
                 console.log('Procesando punto:', punto);  // Ver los datos de cada punto
 
@@ -84,8 +98,9 @@ export function actualizarSugerencias(query, suggestionsContainer, searchInput,s
                 suggestionItem.style.alignItems = 'center';
                 suggestionItem.style.padding = '5px 0px';
                 suggestionItem.style.cursor = 'pointer';
-                suggestionItem.style.borderBottom = '1px solid #ccc';
                 suggestionItem.style.zIndex = '45';
+                suggestionItem.style.paddingLeft = '7px';
+                
 
                 const infoContainer = document.createElement('div');
                 infoContainer.style.display = "flex";
@@ -106,6 +121,7 @@ export function actualizarSugerencias(query, suggestionsContainer, searchInput,s
                 img.style.width = '60px';
                 img.style.height = '60px';
                 img.style.marginRight = '10px';
+                img.style.borderRadius = '10px'
 
 
                 suggestionItem.appendChild(img);
@@ -128,9 +144,9 @@ export function actualizarSugerencias(query, suggestionsContainer, searchInput,s
                     const nombre = document.getElementById('name');
                     const imagen = document.getElementById('imagen');
 
-                    
                     abrirInfo(punto);
                     abrirAside(event);
+                    routingBtn.style.top = '60px'; 
                     const longitudParsed = parseFloat(punto.longitud.trim());
                     const latitudParsed = parseFloat(punto.latitud.trim());
                     setCoordenadasSeleccionadas(longitudParsed,latitudParsed);
@@ -140,7 +156,9 @@ export function actualizarSugerencias(query, suggestionsContainer, searchInput,s
             });
         } else {
             suggestionsContainer.style.display = 'none';  // Ocultar si no hay sugerencias
-            
+            openBtn.style.top = '60px';
+            routingBtn.style.top = '105px'; 
+  
         }
 
         // console.log('Contenido final del contenedor:', suggestionsContainer.innerHTML);  // Debería mostrar el HTML interno
@@ -148,6 +166,10 @@ export function actualizarSugerencias(query, suggestionsContainer, searchInput,s
     .catch(error => {
         console.error('Error al buscar sugerencias:', error);
     });
+}
+
+export function routingSugerencias(){
+
 }
 
 export function abrirAside(event){

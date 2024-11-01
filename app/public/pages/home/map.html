@@ -31,25 +31,18 @@
   <script src="/JS/HomeJs/SearchBox.js" type="module"></script>
   <script type="module" src="/controllers/SettingMap/map.js"></script>
   <script src="/JS/HomeJs/Responsive.js" ></script>
+  <script src="/JS/HomeJs/routingConf.js" ></script>
 
 </head>
 <body>
   <main class="padre-container"> 
     <div class="mapa-container" id="mapa"></div>
 
-    <!-- <div id="form">
-      <h3>Ruta entre Puntos de Interés</h3>
-      <label for="start">Punto A:</label>
-      <input type="text" id="start" placeholder="Ej. Punto de Interés A" required>
-      <label for="end">Punto B:</label>
-      <input type="text" id="end" placeholder="Ej. Punto de Interés B" required>
-      <button id="routeButton">Mostrar Ruta</button>
-    </div> -->
     <!-- NAVEGADOR -->
     <nav class="navbar">
         <ul class="navbar__menu">
           <li class="navbar__item">
-            <a href="#" class="navbar__link"><i data-feather="home"></i><span>Home</span></a>
+            <a href="#" class="navbar__link"><i data-feather="map"></i><span>Home</span></a>
           </li>
           <li class="navbar__item">
             <a href="#" class="navbar__link"><i data-feather="message-square"></i><span>Messages</span></a>        
@@ -108,6 +101,8 @@
     <button id="open-aside" class="open-button"> <i data-feather="info"></i></button>
     <button id="close-aside" class="close-button"><i data-feather="x"></i></button>
 
+    <button id="Routing" class="routing-button" style="display: none;" ><i data-feather="trending-up"></i></button>
+
     <!-- CAJA FLOTANTE -->
 
     <!-- <div class="blur-background"></div>
@@ -135,13 +130,36 @@
         </li>
     </ul>
   </div> -->
+  
+  <div id="routingForm" style="display: flex;">
+    <div class="routingTitulo">
+      <h3>Ruta entre Puntos de Interés</h3>
+    </div>
+    <div class="routingBody">
+      <button id="close-routing"><i data-feather="x"></i></button>
+      <div class="roadA">
+        <label for="start">Punto A:</label>
+        <input type="text" id="start" placeholder="Ej. Punto de Interés A" required>
+      </div>
+
+      <div class="roadB">
+        <label for="end">Punto B:</label>
+        <input type="text" id="end" placeholder="Ej. Punto de Interés B" required>
+      </div>
+
+      <div class="routingButton">  
+        <button id="routeButton">Mostrar Ruta</button>
+      </div>
+
+    </div>   
+  </div>
 
 
   <!-- RESPONSIVE -->
    <nav class="navres">
     <ul class="navres_menu">
       <li class=".navres_item"><a href=""> <i class="feather_icons" data-feather="settings"></i></a></li>
-      <li class=".navres_item"><a href=""><i class="feather_icons" data-feather="home"></i></a></li>
+      <li class=".navres_item"><a href=""><i class="feather_icons" data-feather="map"></i></a></li>
       <li class=".navres_item"><a href="" ><i class="feather_icons" data-feather="users"></i></a></li>
     </ul>
    </nav>
