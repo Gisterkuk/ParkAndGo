@@ -11,10 +11,10 @@ import cookieParser from 'cookie-parser';
 
 dotenv.config();
 export const pool = mysql.createPool({
-    host: 'localhost',
-    user: 'Alan',
-    password: 'Camara020672',
-    database: 'pathandgo',
+    host: process.env.DB_HOST,
+    user: process.env.DB_NAME_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0
@@ -47,7 +47,7 @@ app.get("/registro", function (req, res) {
     res.sendFile(path.join(__dirname, "/pages/Entrada/register.html"));
 });
 app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "/pages/home/map.html"));
+    res.sendFile(path.join(__dirname, "/public/pages/home/map.html"));
 });
 app.get("/CorreoValido", async function (req, res) {
     const tokenValido = req.query.token;
