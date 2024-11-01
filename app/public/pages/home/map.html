@@ -14,6 +14,9 @@
   <link rel="stylesheet" href="/Style/StyleHome/Search.css">
   <link rel="stylesheet" href="/Style/StyleHome/Aside.css">
   <link rel="stylesheet" href="/Style/StyleHome/Home.css">
+
+  <!-- ESTILOS DEL RESPONSIVE -->
+   <link rel="stylesheet" href="/Style/StyleHome/Responsive.css">
   <!-- Mapbox GL JS -->
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
   <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
@@ -27,6 +30,7 @@
   <script type="module" src="/JS/HomeJs/Home.js" ></script>
   <script src="/JS/HomeJs/SearchBox.js" type="module"></script>
   <script type="module" src="/controllers/SettingMap/map.js"></script>
+  <script src="/JS/HomeJs/Responsive.js" ></script>
 
 </head>
 <body>
@@ -104,8 +108,9 @@
     <button id="open-aside" class="open-button"> <i data-feather="info"></i></button>
     <button id="close-aside" class="close-button"><i data-feather="x"></i></button>
 
-    <div class="blur-background"></div>
     <!-- CAJA FLOTANTE -->
+
+    <!-- <div class="blur-background"></div>
     <div class="floating-box">
       <button class="close-btn" id="Siguiente">Siguiente</button>
       <h1>Bienvenido a Path and Go</h1>
@@ -129,7 +134,17 @@
             <p class="parrafos-offer"><strong>Conexión con la naturaleza:</strong> Descubrí senderos ocultos, miradores impresionantes y lugares icónicos como las Cataratas del Iguazú.</p>
         </li>
     </ul>
-  </div>
+  </div> -->
+
+
+  <!-- RESPONSIVE -->
+   <nav class="navres">
+    <ul class="navres_menu">
+      <li class=".navres_item"><a href=""> <i class="feather_icons" data-feather="settings"></i></a></li>
+      <li class=".navres_item"><a href=""><i class="feather_icons" data-feather="home"></i></a></li>
+      <li class=".navres_item"><a href="" ><i class="feather_icons" data-feather="users"></i></a></li>
+    </ul>
+   </nav>
     </main>
     
     

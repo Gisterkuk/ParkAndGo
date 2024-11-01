@@ -5,16 +5,16 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import { Registrarse } from './controllers/Authentication/ControllerRegistro.js';
 import { loguearse } from './controllers/Authentication/ControllerLogin.js';
-import { validateEmail, validateNombre, transporter, MensajeCorreo,  generadorToken, linktoken } from './public/JS/ScriptValideEmail.js';
-import dotenv from 'dotenv'
+import {transporter} from './public/JS/ScriptValideEmail.js';
+import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 
 dotenv.config();
 export const pool = mysql.createPool({
-    host: process.env.DB_HOST,
-    user: process.env.DB_NAME_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
+    host: process.env.LOCALHOST_NAME,
+    user: process.env.LOCALHOST_USER_NAME,
+    password: process.env.LOCALHOST_PASSWORD,
+    database: process.env.LOCALHOST_DB_NAME,
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0
@@ -38,13 +38,13 @@ app.listen(PORT, () => {
     console.log(`Servidor escuchando en http://localhost:${PORT}`);
 });
 app.get("/login", function (req, res) {
-    res.sendFile(path.join(__dirname, "pages/Entrada/login.html"));
+    res.sendFile(path.join(__dirname, "/public/pages/Entrada/login.html"));
 });
 app.post("/VerificarLogin", async (req, res) => {
     loguearse(pool,req, res);
 });
 app.get("/registro", function (req, res) {
-    res.sendFile(path.join(__dirname, "/pages/Entrada/register.html"));
+    res.sendFile(path.join(__dirname, "/public/pages/Entrada/register.html"));
 });
 app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "/public/pages/home/map.html"));
@@ -85,7 +85,7 @@ app.get("/CorreoValido", async function (req, res) {
         await pool.query(DelUsuarioTemp, [correo]);
 
         // Enviar archivo
-        res.sendFile(path.join(__dirname, "pages/Email/CorreoValidado.html"));
+        res.sendFile(path.join(__dirname, "/public/pages/Email/CorreoValidado.html"));
     } catch (error) {
         console.error('Error en la consulta o en el manejo de datos:', error);
         return res.redirect(`/?error=${encodeURIComponent('Error en la base de datos')}`);
@@ -93,7 +93,7 @@ app.get("/CorreoValido", async function (req, res) {
 });
 
 app.get("/ValidarCorreo", function (req, res) {
-    res.sendFile(path.join(__dirname, "/pages/Email/validarEmail.html"));
+    res.sendFile(path.join(__dirname, "/public/pages/Email/validarEmail.html"));
 });
 
 app.get('/api/puntos-interes', async (req, res) => {

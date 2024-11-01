@@ -112,3 +112,6 @@ ul {
 .marker-icon i {
     transition: transform 0.2s ease-in-out;
 }
+.navres{
+    display: none;
+}
