@@ -22,3 +22,11 @@ export function setPoi(Punto){
 export function getPOI(){
     return POI;
 }
+
+export function getMap(map){
+    const mapa = map;
+}
+
+export function setMap(mapa){
+    return mapa;
+}

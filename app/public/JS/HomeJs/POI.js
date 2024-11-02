@@ -1,5 +1,5 @@
 
-import { setCoordenadasSeleccionadas } from "../../../controllers/SettingMap/CoordState.js";
+import { setCoordenadasSeleccionadas } from "../../../controllers/SettingMap/intermediariosVAR.js";
 import { abrirAside, abrirInfo } from "../../../controllers/SettingMap/Search.js";
 
 

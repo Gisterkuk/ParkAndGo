@@ -1,4 +1,4 @@
-import { setLiveLocation } from "./CoordState.js";
+import { setLiveLocation } from "./intermediariosVAR.js";
 
 let userMarker = null; // Guardará el marcador del usuario
 

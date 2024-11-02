@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="/Style/StyleHome/Search.css">
   <link rel="stylesheet" href="/Style/StyleHome/Aside.css">
   <link rel="stylesheet" href="/Style/StyleHome/Home.css">
+  <link rel="stylesheet" href="/Style/StyleHome/Routing.css">
 
   <!-- ESTILOS DEL RESPONSIVE -->
    <link rel="stylesheet" href="/Style/StyleHome/Responsive.css">
@@ -31,7 +32,7 @@
   <script src="/JS/HomeJs/SearchBox.js" type="module"></script>
   <script type="module" src="/controllers/SettingMap/map.js"></script>
   <script src="/JS/HomeJs/Responsive.js" ></script>
-  <script src="/JS/HomeJs/routingConf.js" ></script>
+  <script type="module" src="/JS/HomeJs/routingConf.js" ></script>
 
 </head>
 <body>
@@ -132,6 +133,9 @@
   </div> -->
   
   <div id="routingForm" style="display: flex;">
+    <div class="scrollContainerA"><div class="sugerenciasRutaA"></div></div>
+    <div class="scrollContainerB"><div class="sugerenciasRutaB"></div></div>
+
     <div class="routingTitulo">
       <h3>Ruta entre Puntos de Interés</h3>
     </div>
@@ -139,12 +143,12 @@
       <button id="close-routing"><i data-feather="x"></i></button>
       <div class="roadA">
         <label for="start">Punto A:</label>
-        <input type="text" id="start" placeholder="Ej. Punto de Interés A" required>
+        <input type="text" id="start" autocomplete="off" placeholder="Ej. Punto de Interés A" required>
       </div>
 
       <div class="roadB">
         <label for="end">Punto B:</label>
-        <input type="text" id="end" placeholder="Ej. Punto de Interés B" required>
+        <input type="text" id="end" autocomplete="off" placeholder="Ej. Punto de Interés B" required>
       </div>
 
       <div class="routingButton">  

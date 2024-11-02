@@ -1,4 +1,4 @@
-import { setCoordenadasSeleccionadas } from "./CoordState.js";
+import { setCoordenadasSeleccionadas } from "./intermediariosVAR.js";
 
 export function abrirInfo(punto){
     const info = document.getElementsByClassName('info-span')
@@ -168,10 +168,114 @@ export function actualizarSugerencias(query,map) {
     });
 }
 
-export function routingSugerencias(){
+export function routingSugerencias(query, input, container) {
 
+    fetch(`/api/puntos-interes/search?query=${encodeURIComponent(query)}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(container);
+            container.innerHTML = ''; // Limpiar el contenedor de sugerencias
+            
+
+
+            if (data && data.length > 0) {
+                container.style.display = 'block'; // Mostrar el contenedor de sugerencias
+                console.log(data);
+
+                data.forEach(punto => {
+                    const suggestionItem = document.createElement('div');
+                    suggestionItem.style.display = 'flex';
+                    suggestionItem.style.alignItems = 'center';
+                    suggestionItem.style.padding = '5px 0px';
+                    suggestionItem.style.cursor = 'pointer';
+                    suggestionItem.style.zIndex = '45';
+                    suggestionItem.style.paddingLeft = '7px';
+                    suggestionItem.style.backgroundColor = 'white';
+
+                    const infoContainer = document.createElement('div');
+                    infoContainer.style.display = "flex";
+                    infoContainer.style.flexDirection = "column";
+
+                    const sector = document.createElement('span');
+                    sector.textContent = punto.sector;
+                    sector.style.color = "grey";
+                    sector.style.fontSize = "13px";
+
+                    const name = document.createElement('span');
+                    name.textContent = punto.name;
+                    infoContainer.appendChild(name);
+                    infoContainer.appendChild(sector);
+
+                    const img = document.createElement('img');
+                    img.src = punto.imagen_url;
+                    img.style.width = '60px';
+                    img.style.height = '60px';
+                    img.style.marginRight = '10px';
+                    img.style.borderRadius = '10px';
+
+                    suggestionItem.appendChild(img);
+                    suggestionItem.appendChild(infoContainer);
+
+                    // Añadir evento de click a la sugerencia
+                    suggestionItem.addEventListener('click', () => {
+                        input.value = punto.name; // Actualizar el input de búsqueda con el nombre seleccionado
+                        container.style.display = 'none'; // Ocultar las sugerencias
+                        container.innerHTML = ''; // Limpiar las sugerencias
+
+                        // Aquí podrías llamar a la lógica específica para Punto A o Punto B dependiendo de si el input es `#start` o `#end`.
+                        console.log(`Punto seleccionado: ${punto.name}`);
+                    });
+
+                    container.appendChild(suggestionItem);
+                });
+            } else {
+                // Mostrar opciones para elegir ubicación actual o hacer clic en el mapa
+                mostrarOpcionesUbicacion(container);
+            }
+        })
+        .catch(error => {
+            console.error('Error al buscar sugerencias:', error);
+        });
 }
+export function mostrarOpcionesUbicacion(container) {
+    container.style.display = 'block';
 
+    // Verificar si los elementos ya existen en el contenedor
+    if (!document.getElementById('ubiSugerencia')) {
+        const ubicacionActualItem = document.createElement('div');
+        ubicacionActualItem.id = 'ubiSugerencia';
+        ubicacionActualItem.textContent = 'Usar mi ubicación actual';
+        ubicacionActualItem.style.padding = '10px';
+        ubicacionActualItem.style.cursor = 'pointer';
+        ubicacionActualItem.style.backgroundColor = 'white';
+        ubicacionActualItem.style.borderBottom = '1px solid #ccc';
+
+        ubicacionActualItem.addEventListener('click', () => {
+            console.log('Usar mi ubicación actual');
+            // Aquí puedes agregar la lógica para obtener la ubicación actual del usuario
+            container.style.display = 'none';
+        });
+
+        container.appendChild(ubicacionActualItem);
+    }
+
+    if (!document.getElementById('clickOnMap')) {
+        const clicMapaItem = document.createElement('div');
+        clicMapaItem.id = 'clickOnMap';
+        clicMapaItem.textContent = 'Hacer clic en el mapa para seleccionar ubicación';
+        clicMapaItem.style.padding = '10px';
+        clicMapaItem.style.cursor = 'pointer';
+        clicMapaItem.style.backgroundColor = 'white';
+
+        clicMapaItem.addEventListener('click', () => {
+            console.log('Hacer clic en el mapa para seleccionar ubicación');
+            // Aquí puedes agregar la lógica para permitir que el usuario seleccione la ubicación en el mapa
+            container.style.display = 'none';
+        });
+
+        container.appendChild(clicMapaItem);
+    }
+}
 export function abrirAside(event){
     const asideInfo = document.getElementById('aside-info');
     const closeButton = document.getElementById('close-aside');

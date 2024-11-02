@@ -1,8 +1,8 @@
-import {createGraph,dijkstra,findClosestPoint,setupMapEvents,drawRoute,visualizeRoutesOnMap} from "./Routing.js";
+import {createGraph,dijkstra,findClosestPoint,setupMapEvents,drawRoute} from "./Routing.js";
 import { trackUserLocation } from "./LiveLocation.js";
 import { addPOI, agregarMarcador } from "../../public/JS/HomeJs/POI.js";
-import {abrirAside, abrirInfo, actualizarSugerencias,buscarPunto} from "./Search.js";
-import { getCoordenadasSeleccionadas, getLiveLocation, getPOI} from "./CoordState.js";
+import {actualizarSugerencias,buscarPunto} from "./Search.js";
+import { getCoordenadasSeleccionadas, getLiveLocation} from "./intermediariosVAR.js";
 
 let graph;
 let map; // Declarar map de manera global
@@ -10,9 +10,26 @@ let geojsonData; // También almacenar el GeoJSON de manera global
 const TOLERANCE_RADIUS = 100; // Tolerancia en metros
 let Informacion;
 
+
+//CODIGO
 mapboxgl.accessToken = 'pk.eyJ1IjoiYWxjYW5kZWpzIiwiYSI6ImNtMWNxa3p6cDExdnoyam9mbjlpYmNncjAifQ.CjlYg9fh0dxJ49BDuACykw';
 
 document.addEventListener('DOMContentLoaded', () => {
+    
+    //ELEMENTOS DE SEARCH
+    const searchInput = document.getElementById('search-input');
+    const suggestionsContainer = document.getElementById('suggestions-container');
+    const suggestionItem = document.createElement('item');
+
+    //ELEMENTOS DE ROUTING A to B
+
+    // const sugerenciaAContainer = document.querySelector('.scrollContainerA');
+    // const sugerenciaBContainer = document.querySelector('.scrollContainerB');
+    // const routingBtn = document.querySelector('#routeButton');
+    // const inputA = document.querySelector('#start');
+    // const inputB = document.querySelector('#end');
+
+    //configuracion mapa y funcionalidad    
     const map = new mapboxgl.Map({
         container: 'mapa',
         style: 'mapbox://styles/alcandejs/cm2oxvu73008801qifmae69zs',
@@ -134,10 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // });
         
         //FUNCIONALIDAD DEL SEARCH
-        const searchContainer = document.getElementById('searchContainer');
-        const searchInput = document.getElementById('search-input');
-        const suggestionsContainer = document.getElementById('suggestions-container');
-        const suggestionItem = document.createElement('item');
+        
         // Actualiza las sugerencias cada vez que el usuario escribe algo
         searchInput.addEventListener('input', () => {
             const query = searchInput.value;
@@ -188,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         })
 
-
+        
 
     });
 
