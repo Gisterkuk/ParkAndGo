@@ -2,7 +2,7 @@ import {createGraph,dijkstra,findClosestPoint,setupMapEvents,drawRoute} from "./
 import { trackUserLocation } from "./LiveLocation.js";
 import { addPOI, agregarMarcador } from "../../public/JS/HomeJs/POI.js";
 import {actualizarSugerencias,buscarPunto} from "./Search.js";
-import { getCoordenadasSeleccionadas, getLiveLocation} from "./intermediariosVAR.js";
+import { getCoordenadasSeleccionadas, getLiveLocation, setGraph, setMap} from "./intermediariosVAR.js";
 
 let graph;
 let map; // Declarar map de manera global
@@ -51,6 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // map.addControl(geocoder, 'top-right');
     
     map.on('load', function() {
+        setMap(map);
+
 
         map.addSource('geojsonSource', {
             type: 'geojson',
@@ -127,6 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 //console.log("GeoJSON actualizado con orientaciones:", data);
         
                 graph = createGraph(data); // Crear el grafo
+                setGraph(graph);
                // visualizeRoutesOnMap(map,data); // Visualizar las rutas en el mapa
                 setupMapEvents(map,graph); // Configurar eventos después de cargar el mapa
 
@@ -201,9 +204,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
         })
-
-        
-
     });
 
 });

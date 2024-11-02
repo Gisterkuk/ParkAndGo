@@ -111,7 +111,7 @@ export function addPOI(map) {
             // Evento para controlar la visibilidad según el zoom
             map.on('zoom', () => {
                 const currentZoom = map.getZoom();
-                console.log(currentZoom);
+                // console.log(currentZoom);
                 markers.forEach(({ marker, zoom }) => {
                     marker.getElement().style.display = currentZoom >= zoom ? 'flex' : 'none';
                 });
