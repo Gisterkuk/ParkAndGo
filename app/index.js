@@ -11,10 +11,10 @@ import cookieParser from 'cookie-parser';
 
 dotenv.config();
 export const pool = mysql.createPool({
-    host: process.env.LOCALHOST_NAME,
-    user: process.env.LOCALHOST_USER_NAME,
-    password: process.env.LOCALHOST_PASSWORD,
-    database: process.env.LOCALHOST_DB_NAME,
+    host: process.env.DB_HOST,
+    user: process.env.DB_NAME_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0
