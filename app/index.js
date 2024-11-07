@@ -14,7 +14,7 @@ dotenv.config();
 
 const connector = new Connector();
 const clientOpts = await connector.getOptions({
-    instanceConnectionName: process.env.CONEXION_CLOUD,
+    instanceConnectionName: "focal-renderer-440922-v1:us-central1:pathandgo-db",
     ipType: 'PUBLIC',
 });
 
