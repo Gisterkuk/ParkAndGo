@@ -8,10 +8,18 @@ import { loguearse } from './controllers/Authentication/ControllerLogin.js';
 import {transporter} from './public/JS/ScriptValideEmail.js';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
+import { Connector } from '@google-cloud/cloud-sql-connector';
 
 dotenv.config();
-export const pool = mysql.createPool({
-    host: process.env.DB_HOST,
+
+const connector = new Connector();
+const clientOpts = await connector.getOptions({
+    instanceConnectionName: process.env.CONEXION_CLOUD,
+    ipType: 'PUBLIC',
+});
+
+export const conn = mysql.createPool({
+    ...clientOpts,
     user: process.env.DB_NAME_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
@@ -19,7 +27,7 @@ export const pool = mysql.createPool({
     connectionLimit: 10,
     queueLimit: 0
 });
-
+const pool = await conn.getConnection();
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
