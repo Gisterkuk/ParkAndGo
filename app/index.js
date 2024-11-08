@@ -21,6 +21,15 @@ export const pool = mysql.createPool({
     connectionLimit: 10,
     queueLimit: 0
 });
+pool.getConnection()
+    .then(conn => {
+        console.log("Conexión a la base de datos exitosa");
+        conn.release();
+    })
+    .catch(err => {
+        console.error("Error al conectar a la base de datos:", err);
+    });
+
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -36,7 +45,7 @@ app.use(express.static(path.join(__dirname, '/')));
  
 const PORT = process.env.PORT || 8200; // Cambia a 8101 o otro puerto
 app.listen(PORT, () => {
-    console.log(`Servidor escuchando en http://localhost:${PORT}`);
+    console.log(`Servidor escuchando en http://${process.env.DB_HOST}:${PORT}`);
 });
 app.get("/login", function (req, res) {
     res.sendFile(path.join(__dirname, "/public/pages/Entrada/login.html"));
