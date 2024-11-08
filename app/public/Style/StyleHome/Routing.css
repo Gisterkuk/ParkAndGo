@@ -160,6 +160,3 @@
     padding: 0px;
     box-sizing: border-box; /* Para que el padding no afecte al ancho */
 }
-.coordenadas{
-    display: none;
-}

@@ -1,5 +1,4 @@
-import { agregarMarcador } from "../../public/JS/HomeJs/POI.js";
-import { getMap, setCoordenadasSeleccionadas, setPoi } from "./intermediariosVAR.js";
+import { setCoordenadasSeleccionadas } from "./intermediariosVAR.js";
 
 export function abrirInfo(punto){
     const info = document.getElementsByClassName('info-span')
@@ -12,68 +11,7 @@ export function abrirInfo(punto){
     info[3].textContent= punto.descrip;
     nombre.textContent =punto.name;
 }
-export function abrirAside(event){
-    const asideInfo = document.getElementById('aside-info');
-    const closeButton = document.getElementById('close-aside');
-    const openButton = document.getElementById('open-aside');
-    const searchContainer = document.getElementById('searchContainer')
-    const searchInput =document.getElementById('search-input');
-    const direcBtn = document.getElementById('Direction');
 
-    //event.stopPropagation(); // Detiene la propagación para evitar que se active el evento del documento
-    asideInfo.style.display = "flex";
-    openButton.style.display = 'none'; // Ocultar el botón de abrir
-    closeButton.style.display = 'flex';
-    console.log(direcBtn);
-    // Expander el contenedor de búsqueda si no está expandido
-    if (!searchContainer.classList.contains('expanded')) {
-        searchContainer.classList.add('expanded');
-        searchInput.style.display = "block";
-        
-
-        setTimeout(() => {
-            searchInput.placeholder = 'Busca en el parque...';
-        }, 200);
-        searchInput.focus(); // Enfocar en el input para permitir búsqueda
-    }
-    direcBtn.style.display = 'flex';
-
-}
-export function cerrarAside(){
-    const asideInfo = document.getElementById('aside-info');
-    const closeButton = document.getElementById('close-aside');
-    const openButton = document.getElementById('open-aside');
-    const searchContainer = document.getElementById('searchContainer')
-    const searchInput =document.getElementById('search-input');
-    const suggestionsContainer = document.getElementById('suggestions-container')
-
-    asideInfo.style.display = 'none';
-    openButton.style.display = 'flex'; // Mostrar el botón de abrir
-    closeButton.style.display = 'none';
-    if (searchContainer.classList.contains('expanded')) {
-        searchContainer.classList.remove('expanded');
-        searchInput.style.display = "none";
-        searchInput.placeholder = '';
-        suggestionsContainer.style.display = 'none'; // Ocultar sugerencias
-        suggestionsContainer.innerHTML = ''; // Limpiar sugerencias
-    }
-}
-
-export function cerrarRouting(){
-    const routingForm = document.getElementById('routingForm');
-    const routingMenuBtn = document.getElementById("Routing");
-
-    routingForm.style.display = 'none';
-    routingMenuBtn.style.display = "block";
-}
-
-export function abrirRouting(){
-    const routingForm = document.getElementById('routingForm');
-    const routingMenuBtn = document.getElementById("Routing");
-
-    routingForm.style.display = 'flex';
-    routingMenuBtn.style.display = "none";
-}
 
 let currentMarkers = []; // Almacenar los marcadores actuales
 export function buscarPunto(query, map) { 
@@ -201,10 +139,10 @@ export function actualizarSugerencias(query,map) {
                     suggestionsContainer.innerHTML = '';
                     searchContainer.style.borderRadius = '20px';
                     
-                    // const info = document.getElementsByClassName('info-span')
-                    // const aside = document.getElementById('aside-info')
-                    // const nombre = document.getElementById('name');
-                    // const imagen = document.getElementById('imagen');
+                    const info = document.getElementsByClassName('info-span')
+                    const aside = document.getElementById('aside-info')
+                    const nombre = document.getElementById('name');
+                    const imagen = document.getElementById('imagen');
 
                     abrirInfo(punto);
                     abrirAside(event);
@@ -237,7 +175,9 @@ export function routingSugerencias(query, input, container) {
         .then(data => {
             console.log(container);
             container.innerHTML = ''; // Limpiar el contenedor de sugerencias
-            const map = getMap();
+            
+
+
             if (data && data.length > 0) {
                 container.style.display = 'block'; // Mostrar el contenedor de sugerencias
                 console.log(data);
@@ -281,11 +221,6 @@ export function routingSugerencias(query, input, container) {
                         input.value = punto.name; // Actualizar el input de búsqueda con el nombre seleccionado
                         container.style.display = 'none'; // Ocultar las sugerencias
                         container.innerHTML = ''; // Limpiar las sugerencias
-                        buscarPunto(input.value,map);
-                        const longitudParsed = parseFloat(punto.longitud.trim());
-                        const latitudParsed = parseFloat(punto.latitud.trim());
-                        agregarMarcador(map,[longitudParsed,latitudParsed]);
-                        setCoordenadasSeleccionadas([longitudParsed,latitudParsed]);
 
                         // Aquí podrías llamar a la lógica específica para Punto A o Punto B dependiendo de si el input es `#start` o `#end`.
                         console.log(`Punto seleccionado: ${punto.name}`);
@@ -306,9 +241,9 @@ export function mostrarOpcionesUbicacion(container) {
     container.style.display = 'block';
 
     // Verificar si los elementos ya existen en el contenedor
-    if (!container.querySelector('.ubiSugerencia')) {
+    if (!document.getElementById('ubiSugerencia')) {
         const ubicacionActualItem = document.createElement('div');
-        ubicacionActualItem.className = 'ubiSugerencia';
+        ubicacionActualItem.id = 'ubiSugerencia';
         ubicacionActualItem.textContent = 'Usar mi ubicación actual';
         ubicacionActualItem.style.padding = '10px';
         ubicacionActualItem.style.cursor = 'pointer';
@@ -324,14 +259,13 @@ export function mostrarOpcionesUbicacion(container) {
         container.appendChild(ubicacionActualItem);
     }
 
-    if (!container.querySelector('.clickOnMap')) {
+    if (!document.getElementById('clickOnMap')) {
         const clicMapaItem = document.createElement('div');
-        clicMapaItem.className = 'clickOnMap';
+        clicMapaItem.id = 'clickOnMap';
         clicMapaItem.textContent = 'Hacer clic en el mapa para seleccionar ubicación';
         clicMapaItem.style.padding = '10px';
         clicMapaItem.style.cursor = 'pointer';
         clicMapaItem.style.backgroundColor = 'white';
-        clicMapaItem.style.borderBottom = '1px solid #ccc';
 
         clicMapaItem.addEventListener('click', () => {
             console.log('Hacer clic en el mapa para seleccionar ubicación');
@@ -342,4 +276,49 @@ export function mostrarOpcionesUbicacion(container) {
         container.appendChild(clicMapaItem);
     }
 }
+export function abrirAside(event){
+    const asideInfo = document.getElementById('aside-info');
+    const closeButton = document.getElementById('close-aside');
+    const openButton = document.getElementById('open-aside');
+    const searchContainer = document.getElementById('searchContainer')
+    const searchInput =document.getElementById('search-input');
+    const direcBtn = document.getElementById('Direction');
 
+    //event.stopPropagation(); // Detiene la propagación para evitar que se active el evento del documento
+    asideInfo.style.display = "flex";
+    openButton.style.display = 'none'; // Ocultar el botón de abrir
+    closeButton.style.display = 'flex';
+    console.log(direcBtn);
+    // Expander el contenedor de búsqueda si no está expandido
+    if (!searchContainer.classList.contains('expanded')) {
+        searchContainer.classList.add('expanded');
+        searchInput.style.display = "block";
+        
+
+        setTimeout(() => {
+            searchInput.placeholder = 'Busca en el parque...';
+        }, 200);
+        searchInput.focus(); // Enfocar en el input para permitir búsqueda
+    }
+    direcBtn.style.display = 'flex';
+
+}
+export function cerrarAside(){
+    const asideInfo = document.getElementById('aside-info');
+    const closeButton = document.getElementById('close-aside');
+    const openButton = document.getElementById('open-aside');
+    const searchContainer = document.getElementById('searchContainer')
+    const searchInput =document.getElementById('search-input');
+    const suggestionsContainer = document.getElementById('suggestions-container')
+
+    asideInfo.style.display = 'none';
+    openButton.style.display = 'flex'; // Mostrar el botón de abrir
+    closeButton.style.display = 'none';
+    if (searchContainer.classList.contains('expanded')) {
+        searchContainer.classList.remove('expanded');
+        searchInput.style.display = "none";
+        searchInput.placeholder = '';
+        suggestionsContainer.style.display = 'none'; // Ocultar sugerencias
+        suggestionsContainer.innerHTML = ''; // Limpiar sugerencias
+    }
+}
