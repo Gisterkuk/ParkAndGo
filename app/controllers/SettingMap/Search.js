@@ -338,9 +338,11 @@ export function obtenerPuntosDeInteres(nameA, nameB,graph,map) {
                 const puntoB = data.find(p => p.name === nameB);
 
                 if (puntoA && puntoB) {
+                    coordA = [parseFloat(puntoA.longitud), parseFloat(puntoA.latitud)];
+                    coordB = [parseFloat(puntoB.longitud), parseFloat(puntoB.latitud)];
                     // Guardar las coordenadas para aplicar Dijkstra
-                    const puntoACoords = findClosestPoint([parseFloat(puntoA.longitud), parseFloat(puntoA.latitud)],graph,100);
-                    const puntoBCoords = findClosestPoint([parseFloat(puntoB.longitud), parseFloat(puntoB.latitud)],graph,100);
+                    const puntoACoords = findClosestPoint(coordA,graph,100);
+                    const puntoBCoords = findClosestPoint(coordB,graph,100);
 
                     console.log('Coordenadas de Punto A:', puntoACoords);
                     console.log('Coordenadas de Punto B:', puntoBCoords);
