@@ -11,6 +11,7 @@ import cookieParser from 'cookie-parser';
 import { Connector } from '@google-cloud/cloud-sql-connector';
 
 dotenv.config();
+<<<<<<< HEAD
 
 const connector = new Connector();
 const clientOpts = await connector.getOptions({
@@ -23,6 +24,13 @@ export const conn = mysql.createPool({
     user: process.env.DB_NAME_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
+=======
+export const pool = mysql.createPool({
+    host: process.env.LOCALHOST_NAME,
+    user: process.env.LOCALHOST_USER_NAME,
+    password: process.env.LOCALHOST_PASSWORD,
+    database: process.env.LOCALHOST_DB_NAME,
+>>>>>>> parent of d28d73e (checkpoint fix de pool conection)
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0
