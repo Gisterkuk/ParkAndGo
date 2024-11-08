@@ -8,34 +8,19 @@ import { loguearse } from './controllers/Authentication/ControllerLogin.js';
 import {transporter} from './public/JS/ScriptValideEmail.js';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
-import { Connector } from '@google-cloud/cloud-sql-connector';
 
 dotenv.config();
-<<<<<<< HEAD
 
-const connector = new Connector();
-const clientOpts = await connector.getOptions({
-    instanceConnectionName: process.env.CONEXION_CLOUD,
-    ipType: 'PUBLIC',
-});
-
-export const conn = mysql.createPool({
-    ...clientOpts,
+export const pool = mysql.createPool({
     user: process.env.DB_NAME_USER,
+    host: process.env.DB_HOST,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-=======
-export const pool = mysql.createPool({
-    host: process.env.LOCALHOST_NAME,
-    user: process.env.LOCALHOST_USER_NAME,
-    password: process.env.LOCALHOST_PASSWORD,
-    database: process.env.LOCALHOST_DB_NAME,
->>>>>>> parent of d28d73e (checkpoint fix de pool conection)
+    port: process.env.DB_PORT,
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0
 });
-const pool = await conn.getConnection();
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
