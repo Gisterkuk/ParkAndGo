@@ -95,7 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // fs.access(filePath, fs.constants.F_OK, (err) => {
         //     console.log(err ? 'El archivo no existe' : 'El archivo está presente');
         // });
-        fetch('http://localhost:8000/UltimateRoad4.5.geojson')
+        // fetch('http://localhost:8000/UltimateRoad4.5.geojson')
+        fetch('https://pathandgo.com/UltimateRoad4.5.geojson')
         .then(response => {
             console.log(response);
             if (!response.ok) {
