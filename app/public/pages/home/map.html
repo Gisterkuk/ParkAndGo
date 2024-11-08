@@ -69,7 +69,7 @@
         </ul>
     </nav>
     <!-- SEARCH -->
-    <div class="search-container" id="searchContainer">
+    <div class="search-container expanded" id="searchContainer">
       <input type="text" id="search-input" placeholder="Busca en el parque..." autocomplete="off" />
       <button id="search-btn"><i data-feather="search"></i></button>
     </div>
@@ -79,7 +79,7 @@
     <div id="suggestions-container" style="display: none;"></div>
 
     <!-- ASIDE INFORMATIVO -->
-     <aside id="aside-info" class="aside-info">
+     <aside id="aside-info" class="aside-info" style="display: flex;">
       <div class="Imagen-container">
         <img id='imagen' src="https://media.traveler.es/photos/613768f03decec3303bab7da/16:9/w_1856,h_1044,c_limit/158835.jpg" alt="">
       </div>
@@ -99,14 +99,14 @@
       <!-- BOTON PARA ABRIR EL ASIDE -->
       
     </aside>
-    <button id="open-aside" class="open-button"> <i data-feather="info"></i></button>
-    <button id="close-aside" class="close-button"><i data-feather="x"></i></button>
+    <button id="open-aside" class="open-button" style="display: none;"> <i data-feather="info"></i></button>
+    <button id="close-aside" class="close-button" style="display: block;"><i data-feather="x"></i></button>
 
-    <button id="Routing" class="routing-button" style="display: none;" ><i data-feather="trending-up"></i></button>
+    <button id="Routing" class="routing-button" style="display: flex;" ><i data-feather="trending-up"></i></button>
 
     <!-- CAJA FLOTANTE -->
 
-    <!-- <div class="blur-background"></div>
+    <div class="blur-background"></div>
     <div class="floating-box">
       <button class="close-btn" id="Siguiente">Siguiente</button>
       <h1>Bienvenido a Path and Go</h1>
@@ -130,9 +130,9 @@
             <p class="parrafos-offer"><strong>Conexión con la naturaleza:</strong> Descubrí senderos ocultos, miradores impresionantes y lugares icónicos como las Cataratas del Iguazú.</p>
         </li>
     </ul>
-  </div> -->
+  </div>
   
-  <div id="routingForm" style="display: flex;">
+  <div id="routingForm" style="display: none;">
     <div class="scrollContainerA"><div class="sugerenciasRutaA"></div></div>
     <div class="scrollContainerB"><div class="sugerenciasRutaB"></div></div>
 

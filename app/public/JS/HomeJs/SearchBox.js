@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const suggestionsContainer = document.querySelector('#suggestions-container');
     const routeBtn = document.querySelector("#Direction");
     const routingBtn = document.getElementById('Routing');
+    const routingForm = document.getElementById('routingForm');
 
     // Verificar que los elementos existen en el DOM
     if (asideInfo && closeButton && openButton && searchContainer && searchInput && searchBtn && suggestionsContainer && routeBtn) {
@@ -24,6 +25,8 @@ document.addEventListener('DOMContentLoaded', function() {
         openButton.addEventListener('click', (event) => {
         abrirAside(openButton,asideInfo,closeButton,searchContainer,searchInput,event);
         routingBtn.style.top = '60px'; 
+        routingForm.style.display = 'none';
+
         })
 
         // Evento para el botón de búsqueda
