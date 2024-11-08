@@ -1,4 +1,5 @@
-import { setCoordenadasSeleccionadas } from "./intermediariosVAR.js";
+import {setCoordenadasSeleccionadas } from "./intermediariosVAR.js";
+import { dijkstra, drawRoute, findClosestPoint } from "./Routing.js";
 
 export function abrirInfo(punto){
     const info = document.getElementsByClassName('info-span')
@@ -14,11 +15,7 @@ export function abrirInfo(punto){
 
 
 let currentMarkers = []; // Almacenar los marcadores actuales
-export function buscarPunto(query, map) { 
-    if (!map) {
-        console.error('El mapa no está disponible.');
-        return;
-    }
+export function buscarPunto(query,map) { 
 
     fetch(`/api/puntos-interes/search?query=${encodeURIComponent(query)}`)
         .then(response => response.json())
@@ -151,6 +148,7 @@ export function actualizarSugerencias(query,map) {
                     const latitudParsed = parseFloat(punto.latitud.trim());
                     setCoordenadasSeleccionadas(longitudParsed,latitudParsed);
                     console.log("Coordenadas del punto:",latitudParsed,longitudParsed);
+                
                 });
                 suggestionsContainer.appendChild(suggestionItem);
             });
@@ -168,7 +166,7 @@ export function actualizarSugerencias(query,map) {
     });
 }
 
-export function routingSugerencias(query, input, container) {
+export function routingSugerencias(query, input, container,map) {
 
     fetch(`/api/puntos-interes/search?query=${encodeURIComponent(query)}`)
         .then(response => response.json())
@@ -221,7 +219,7 @@ export function routingSugerencias(query, input, container) {
                         input.value = punto.name; // Actualizar el input de búsqueda con el nombre seleccionado
                         container.style.display = 'none'; // Ocultar las sugerencias
                         container.innerHTML = ''; // Limpiar las sugerencias
-
+                        buscarPunto(punto.name,map)
                         // Aquí podrías llamar a la lógica específica para Punto A o Punto B dependiendo de si el input es `#start` o `#end`.
                         console.log(`Punto seleccionado: ${punto.name}`);
                     });
@@ -229,21 +227,26 @@ export function routingSugerencias(query, input, container) {
                     container.appendChild(suggestionItem);
                 });
             } else {
-                // Mostrar opciones para elegir ubicación actual o hacer clic en el mapa
-                mostrarOpcionesUbicacion(container);
+                if(container.classList.contains('sugerenciasRutaA')){
+
+                    mostrarOpcionesUbicacionA();
+                }else{
+                    mostrarOpcionesUbicacionB();
+                }
             }
         })
         .catch(error => {
             console.error('Error al buscar sugerencias:', error);
         });
 }
-export function mostrarOpcionesUbicacion(container) {
+export function mostrarOpcionesUbicacionA() {
+    const container =document.querySelector('.sugerenciasRutaA');
     container.style.display = 'block';
 
     // Verificar si los elementos ya existen en el contenedor
-    if (!document.getElementById('ubiSugerencia')) {
+    if (!document.getElementById('ubiSugerenciaA')) {
         const ubicacionActualItem = document.createElement('div');
-        ubicacionActualItem.id = 'ubiSugerencia';
+        ubicacionActualItem.id = 'ubiSugerenciaA';
         ubicacionActualItem.textContent = 'Usar mi ubicación actual';
         ubicacionActualItem.style.padding = '10px';
         ubicacionActualItem.style.cursor = 'pointer';
@@ -259,9 +262,9 @@ export function mostrarOpcionesUbicacion(container) {
         container.appendChild(ubicacionActualItem);
     }
 
-    if (!document.getElementById('clickOnMap')) {
+    if (!document.getElementById('clickOnMapA')) {
         const clicMapaItem = document.createElement('div');
-        clicMapaItem.id = 'clickOnMap';
+        clicMapaItem.id = 'clickOnMapA';
         clicMapaItem.textContent = 'Hacer clic en el mapa para seleccionar ubicación';
         clicMapaItem.style.padding = '10px';
         clicMapaItem.style.cursor = 'pointer';
@@ -276,6 +279,86 @@ export function mostrarOpcionesUbicacion(container) {
         container.appendChild(clicMapaItem);
     }
 }
+
+export function mostrarOpcionesUbicacionB() {
+const container = document.querySelector('.sugerenciasRutaB');
+    container.style.display = 'block';
+
+    // Verificar si los elementos ya existen en el contenedor
+    if (!document.getElementById('ubiSugerenciaB')) {
+        const ubicacionActualItem = document.createElement('div');
+        ubicacionActualItem.id = 'ubiSugerenciaB';
+        ubicacionActualItem.textContent = 'Usar mi ubicación actual';
+        ubicacionActualItem.style.padding = '10px';
+        ubicacionActualItem.style.cursor = 'pointer';
+        ubicacionActualItem.style.backgroundColor = 'white';
+        ubicacionActualItem.style.borderBottom = '1px solid #ccc';
+
+        ubicacionActualItem.addEventListener('click', () => {
+            console.log('Usar mi ubicación actual');
+            // Aquí puedes agregar la lógica para obtener la ubicación actual del usuario
+            container.style.display = 'none';
+        });
+
+        container.appendChild(ubicacionActualItem);
+    }
+
+    if (!document.getElementById('clickOnMapB')) {
+        const clicMapaItem = document.createElement('div');
+        clicMapaItem.id = 'clickOnMapB';
+        clicMapaItem.textContent = 'Hacer clic en el mapa para seleccionar ubicación';
+        clicMapaItem.style.padding = '10px';
+        clicMapaItem.style.cursor = 'pointer';
+        clicMapaItem.style.backgroundColor = 'white';
+
+        clicMapaItem.addEventListener('click', () => {
+            console.log('Hacer clic en el mapa para seleccionar ubicación');
+            // Aquí puedes agregar la lógica para permitir que el usuario seleccione la ubicación en el mapa
+            container.style.display = 'none';
+        });
+
+        container.appendChild(clicMapaItem);
+    }
+}
+export function obtenerPuntosDeInteres(nameA, nameB,graph,map) {
+    const url = `/api/routing?nameA=${encodeURIComponent(nameA)}&nameB=${encodeURIComponent(nameB)}`;
+
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error al obtener los puntos de interés');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Datos recibidos:', data);
+
+            if (data.length >= 2) {
+                const puntoA = data.find(p => p.name === nameA);
+                const puntoB = data.find(p => p.name === nameB);
+
+                if (puntoA && puntoB) {
+                    // Guardar las coordenadas para aplicar Dijkstra
+                    const puntoACoords = findClosestPoint([parseFloat(puntoA.longitud), parseFloat(puntoA.latitud)],graph,100);
+                    const puntoBCoords = findClosestPoint([parseFloat(puntoB.longitud), parseFloat(puntoB.latitud)],graph,100);
+
+                    console.log('Coordenadas de Punto A:', puntoACoords);
+                    console.log('Coordenadas de Punto B:', puntoBCoords);
+                    console.log(graph)
+                    const path = dijkstra(graph,puntoACoords,puntoBCoords);
+                    if (path.length > 0) {
+                        drawRoute(map, path);                  
+                    }
+                }
+            } else {
+                console.error('No se encontraron ambos puntos de interés.');
+            }
+        })
+        .catch(error => {
+            console.error('Error al realizar la solicitud:', error);
+        });
+}
+
 export function abrirAside(event){
     const asideInfo = document.getElementById('aside-info');
     const closeButton = document.getElementById('close-aside');

@@ -10,11 +10,6 @@ import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 
 dotenv.config();
-dotenv.config();
-console.log("DB_HOST:", process.env.DB_HOST);
-console.log("DB_NAME_USER:", process.env.DB_NAME_USER);
-console.log("DB_NAME:", process.env.DB_NAME);
-console.log("PORT:", process.env.PORT);
 
 export const pool = mysql.createPool({
     user: process.env.DB_NAME_USER,
@@ -26,6 +21,17 @@ export const pool = mysql.createPool({
     connectionLimit: 10,
     queueLimit: 0
 });
+
+// export const pool = mysql.createPool({
+//     user: process.env.DB_NAME_USER,
+//     host: process.env.DB_HOST,
+//     password: process.env.DB_PASSWORD,
+//     database: process.env.DB_NAME,
+//     port: process.env.DB_PORT,
+//     waitForConnections: true,
+//     connectionLimit: 10,
+//     queueLimit: 0
+// });
 pool.getConnection()
     .then(conn => {
         console.log("Conexión a la base de datos exitosa");
@@ -109,6 +115,22 @@ app.get("/CorreoValido", async function (req, res) {
 
 app.get("/ValidarCorreo", function (req, res) {
     res.sendFile(path.join(__dirname, "/public/pages/Email/validarEmail.html"));
+});
+app.get('/api/routing', async (req, res) => {
+    const { nameA, nameB } = req.query;
+
+    if (!nameA || !nameB) {
+        return res.status(400).json({ error: 'Faltan parámetros de consulta: nameA o nameB' });
+    }
+
+    const query = 'SELECT name, latitud, longitud FROM puntos_interes WHERE name = ? OR name = ?';
+    try {
+        const [results] = await pool.query(query, [nameA, nameB]); // Pasa los parámetros al query
+        res.json(results);
+    } catch (err) {
+        console.error('Error en la consulta:', err);
+        res.status(500).json({ error: 'Error en el servidor' });
+    }
 });
 
 app.get('/api/puntos-interes', async (req, res) => {

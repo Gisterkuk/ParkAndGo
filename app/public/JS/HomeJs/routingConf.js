@@ -1,4 +1,4 @@
-import { mostrarOpcionesUbicacion, routingSugerencias } from "../../../controllers/SettingMap/Search.js";
+import {mostrarOpcionesUbicacionB,mostrarOpcionesUbicacionA, routingSugerencias } from "../../../controllers/SettingMap/Search.js";
 document.addEventListener('DOMContentLoaded', function() {
 
     const routingMenuBtn = document.getElementById("Routing");
@@ -12,8 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const inputA = document.querySelector('#start');
     const inputB = document.querySelector('#end');
     let query = '';
-    let ubiSugerencia;
-    let clickOnMap;
 
     routingMenuBtn.addEventListener("click", () => {
         routingMenuBtn.style.display = "none";
@@ -25,23 +23,10 @@ document.addEventListener('DOMContentLoaded', function() {
         routingMenuBtn.style.display = "block";
     });
 
-    inputA.addEventListener('input', () => {
-        query = inputA.value;
-        console.log(query);
-        if (query.length > 0) { 
-            routingSugerencias(query, inputA, sugerenciasA);
-            sugerenciaAContainer.style.visibility = 'visible';
-        } else {
-            sugerenciasA.innerHTML = ''; // Limpiar sugerencias anteriores
-            mostrarOpcionesUbicacion(sugerenciasA);
-            sugerenciaAContainer.style.visibility = 'visible';
-        }
-    });
-
     inputA.addEventListener('focus', () => {
 
         if (inputA.value.trim() === '') {
-            mostrarOpcionesUbicacion(sugerenciasA);
+            mostrarOpcionesUbicacionA();
         }
         sugerenciaAContainer.style.visibility = 'visible';
         sugerenciaBContainer.style.visibility = 'hidden';
@@ -49,22 +34,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
 
-    inputB.addEventListener('input', () => {
-        query = inputB.value;
-        console.log(query);
-        if (query.length > 0) {
-            routingSugerencias(query, inputB, sugerenciasB);
-            sugerenciaBContainer.style.visibility = 'visible';
-        } else {
-            sugerenciasB.innerHTML = ''; // Limpiar sugerencias anteriores
-            mostrarOpcionesUbicacion(sugerenciasB);
-            sugerenciaBContainer.style.visibility = 'visible';
-        }
-    });
 
     inputB.addEventListener('focus', () => {
         if (inputB.value.trim() === '') {
-            mostrarOpcionesUbicacion(sugerenciasB);
+            mostrarOpcionesUbicacionB();
         }
         sugerenciaBContainer.style.visibility = 'visible';
         sugerenciaAContainer.style.visibility = 'hidden';

@@ -23,10 +23,10 @@ export function getPOI(){
     return POI;
 }
 
-export function getMap(map){
-    const mapa = map;
-}
+// export function getMap(){
+//     return mapa;
+// }
 
-export function setMap(mapa){
-    return mapa;
-}
+// export function setMap(mapa){
+//     return mapa;
+// }

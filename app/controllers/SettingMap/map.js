@@ -1,14 +1,15 @@
 import {createGraph,dijkstra,findClosestPoint,setupMapEvents,drawRoute} from "./Routing.js";
 import { trackUserLocation } from "./LiveLocation.js";
 import { addPOI, agregarMarcador } from "../../public/JS/HomeJs/POI.js";
-import {actualizarSugerencias,buscarPunto} from "./Search.js";
+import {actualizarSugerencias,buscarPunto, obtenerPuntosDeInteres} from "./Search.js";
 import { getCoordenadasSeleccionadas, getLiveLocation} from "./intermediariosVAR.js";
-
+import {mostrarOpcionesUbicacionB,mostrarOpcionesUbicacionA, routingSugerencias } from "./Search.js";
 let graph;
 let map; // Declarar map de manera global
 let geojsonData; // También almacenar el GeoJSON de manera global
 const TOLERANCE_RADIUS = 100; // Tolerancia en metros
 let Informacion;
+let query;
 
 
 //CODIGO
@@ -49,9 +50,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // });
 
     // map.addControl(geocoder, 'top-right');
-    
+
+
     map.on('load', function() {
 
+        document.dispatchEvent(new Event('mapReady'));
+        
         map.addSource('geojsonSource', {
             type: 'geojson',
             data: {
@@ -202,8 +206,65 @@ document.addEventListener('DOMContentLoaded', () => {
 
         })
 
-        
+        const sugerenciaAContainer = document.querySelector('.scrollContainerA');
+        const sugerenciaBContainer = document.querySelector('.scrollContainerB');
+        const sugerenciasA = document.querySelector('.sugerenciasRutaA');
+        const sugerenciasB = document.querySelector('.sugerenciasRutaB');
+        const routingBtn = document.querySelector('#routeButton');
+        const inputA = document.querySelector('#start');
+        const inputB = document.querySelector('#end');
+        let end; let start;
+
+        inputA.addEventListener('input', () => {
+            query = inputA.value;
+            inputA.style.border = '1px solid black';
+            console.log(query);
+            sugerenciasA.innerHTML = ''; // Limpiar sugerencias anteriores
+            
+            if (query.length > 0) { 
+                start = routingSugerencias(query, inputA, sugerenciasA,map);
+                sugerenciaAContainer.style.visibility = 'visible';
+            } else {
+                mostrarOpcionesUbicacionA();
+                sugerenciaAContainer.style.visibility = 'visible';
+            }
+        });
+
+        inputB.addEventListener('input', () => {
+            query = inputB.value;
+            inputA.style.border = '1px solid black';
+            sugerenciasB.innerHTML = ''; // Limpiar sugerencias anteriores
+            console.log(query);
+            if (query.length > 0) {
+                end = routingSugerencias(query, inputB, sugerenciasB,map);
+                console.log(end);
+                sugerenciaBContainer.style.visibility = 'visible';
+            } else {
+                mostrarOpcionesUbicacionB();
+                sugerenciaBContainer.style.visibility = 'visible';
+            }
+        });
+
+        routingBtn.addEventListener('click',()=>{
+            if(inputA.value == ''){
+                inputA.style.border = "2px solid red";
+                inputA.placeholder = 'Ingrese una ubicacion'
+            }
+            if(inputB.value == ''){
+                inputB.style.border = "2px solid red";
+                inputB.placeholder = 'Ingrese una ubicacion'
+            }
+
+            obtenerPuntosDeInteres(inputA.value,inputB.value,graph,map)
+        })
 
     });
 
 });
+export function getMap() {
+    if (!map) {
+        console.error("El mapa no está listo aún.");
+        return null;
+    }
+    return map;
+}
