@@ -236,8 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
             sugerenciasB.innerHTML = ''; // Limpiar sugerencias anteriores
             console.log(query);
             if (query.length > 0) {
-                end = routingSugerencias(query, inputB, sugerenciasB,map);
-                console.log(end);
+                routingSugerencias(query, inputB, sugerenciasB,map);
                 sugerenciaBContainer.style.visibility = 'visible';
             } else {
                 mostrarOpcionesUbicacionB();
