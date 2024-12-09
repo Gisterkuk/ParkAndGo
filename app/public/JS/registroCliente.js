@@ -27,7 +27,5 @@ document.addEventListener("DOMContentLoaded", function() {
         errorDiv.style.borderBottom = '1px solid red';
         errorDiv.style.textAlign = 'center'; 
         labelError.style.fontSize = '13px';
-    }
-
-    
+    } 
 });

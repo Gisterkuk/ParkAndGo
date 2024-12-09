@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="/Style/StyleHome/Routing.css">
 
   <!-- ESTILOS DEL RESPONSIVE -->
-   <link rel="stylesheet" href="/Style/StyleHome/Responsive.css">
+   <link rel="stylesheet" href="/Style/StyleHome/home-resp.css">
   <!-- Mapbox GL JS -->
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
   <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
@@ -106,8 +106,8 @@
 
     <!-- CAJA FLOTANTE -->
 
-    <div class="blur-background"></div>
-    <div class="floating-box">
+    <!-- <div class="blur-background"></div> -->
+    <!-- <div class="floating-box">
       <button class="close-btn" id="Siguiente">Siguiente</button>
       <h1>Bienvenido a Path and Go</h1>
       <h2>¡Explorá el Parque Nacional Iguazú a tu medida!</h2>
@@ -130,7 +130,7 @@
             <p class="parrafos-offer"><strong>Conexión con la naturaleza:</strong> Descubrí senderos ocultos, miradores impresionantes y lugares icónicos como las Cataratas del Iguazú.</p>
         </li>
     </ul>
-  </div>
+  </div> -->
   
   <div id="routingForm" style="display: none;">
     <div class="scrollContainerA"><div class="sugerenciasRutaA"></div></div>
@@ -157,17 +157,20 @@
 
     </div>   
   </div>
-
-
+  
   <!-- RESPONSIVE -->
-   <nav class="navres">
+  <div class="search-resp">
+    <input type="text" id="search-resp" placeholder="Busca en el parque..." autocomplete="off" />
+    <button type="button" id="direction-resp" data-feather="compass"></button>
+  </div>
+  <nav class="navres">
     <ul class="navres_menu">
       <li class=".navres_item"><a href=""> <i class="feather_icons" data-feather="settings"></i></a></li>
       <li class=".navres_item"><a href=""><i class="feather_icons" data-feather="map"></i></a></li>
       <li class=".navres_item"><a href="" ><i class="feather_icons" data-feather="users"></i></a></li>
     </ul>
-   </nav>
-    </main>
+  </nav>
+</main>
     
     
     

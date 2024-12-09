@@ -11,17 +11,6 @@ import cookieParser from 'cookie-parser';
 
 dotenv.config();
 
-export const pool = mysql.createPool({
-    user: process.env.DB_NAME_USER,
-    host: process.env.DB_HOST,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    port: process.env.DB_PORT,
-    waitForConnections: true,
-    connectionLimit: 10,
-    queueLimit: 0
-});
-
 // export const pool = mysql.createPool({
 //     user: process.env.DB_NAME_USER,
 //     host: process.env.DB_HOST,
@@ -32,6 +21,16 @@ export const pool = mysql.createPool({
 //     connectionLimit: 10,
 //     queueLimit: 0
 // });
+
+export const pool = mysql.createPool({
+    user: process.env.LOCALHOST_USER_NAME,
+    host: process.env.LOCALHOST_NAME,
+    password: process.env.LOCALHOST_PASSWORD,
+    database: process.env.LOCALHOST_DB_NAME,
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
+});
 pool.getConnection()
     .then(conn => {
         console.log("Conexión a la base de datos exitosa");
@@ -56,7 +55,7 @@ app.use(express.static(path.join(__dirname, '/')));
  
 const PORT = process.env.PORT || 8200; // Cambia a 8101 o otro puerto
 app.listen(PORT, () => {
-    console.log(`Servidor escuchando en http://${process.env.DB_HOST}:${PORT}`);
+    console.log(`Servidor escuchando en http://${process.env.LOCALHOST_NAME}:${PORT}`);
 });
 app.get("/login", function (req, res) {
     res.sendFile(path.join(__dirname, "/public/pages/Entrada/login.html"));
