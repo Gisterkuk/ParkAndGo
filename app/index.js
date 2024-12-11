@@ -148,8 +148,7 @@ app.get('/api/puntos-interes/search', async (req, res) => {
     const sql = `
         SELECT name, descrip, latitud, longitud, categoria,Ubicacion,Accesibilidad, Visibilidad, zoom, sector, imagen_url 
         FROM puntos_interes
-        WHERE (name LIKE ? OR categoria LIKE ? OR sector LIKE ?)
-        AND Visibilidad = 1
+        WHERE (name LIKE ?)
     `;
     const params = [`%${query}%`, `%${query}%`, `%${query}%`]; // Usa el término de búsqueda para name, categoria, y sector
     

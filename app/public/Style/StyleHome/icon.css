@@ -1,0 +1,19 @@
+.marker-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%; /* Forma circular */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Animación suave */
+    opacity: 0; /* Por defecto oculto */
+    transform: scale(0); /* Inicialmente pequeño */
+}
+
+.marker-icon.visible {
+    opacity: 1; /* Totalmente visible */
+    transform: scale(1); /* Tamaño normal */
+}

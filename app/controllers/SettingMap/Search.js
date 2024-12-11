@@ -75,17 +75,12 @@ export function actualizarSugerencias(query,map) {
         suggestionsContainer.innerHTML = '';  // Limpiar el contenedor de sugerencias
 
         if (data && data.length > 0) {
+            document.getElementById("searchContainer").style.height = '500px';
             suggestionsContainer.style.display = 'block';  // Mostrar el contenedor de sugerencias
             suggestionsContainer.style.borderRadius = '0px 0px 0px 20px';
-            suggestionsContainer.style.maxHeight = '300px';
             suggestionsContainer.style.overflow = 'scroll';
-            searchContainer.style.borderRadius = '15px 15px 0px 0px';
             suggestionsContainer.style.overflowX ='hidden';
 
-            const openBtn = document.getElementById('open-aside');
-            const routingBtn = document.getElementById('Routing');
-            openBtn.style.top = '355px';
-            routingBtn.style.top = '400px'; 
 
             data.forEach(punto => {
                 console.log('Procesando punto:', punto);  // Ver los datos de cada punto

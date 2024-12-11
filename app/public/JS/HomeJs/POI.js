@@ -116,25 +116,51 @@ export function addPOI(map) {
                     console.log("Coordenadas del punto:", latitudParsed, longitudParsed);
                 });
             });
-            
-            
-            
 
-            // Evento para controlar la visibilidad según el zoom
+            // // Evento para controlar la visibilidad según el zoom
+            // map.on('zoom', () => {
+            //     const currentZoom = map.getZoom();
+            //     console.log(currentZoom);
+            //     markers.forEach(({ marker, zoom }) => {
+            //         marker.getElement().style.display = currentZoom >= zoom ? 'flex' : 'none';
+            //     });
+            //     document.querySelectorAll('.marker-icon span').forEach(nameElement => {
+            //         nameElement.style.display = currentZoom >= 16 ? 'block' : 'none';  // Mostrar a partir de zoom 16
+            //     });
+            
+            //     // Ajustar el tamaño de los íconos con un límite máximo
+            //     document.querySelectorAll('.marker-icon i').forEach(icon => {
+            //         const scale = Math.min(2, currentZoom / 20);  // Límite máximo de escala a 2x
+            //         icon.style.transform = `scale(${scale})`;  // Escala con suavidad
+            //     });
+            // });
             map.on('zoom', () => {
                 const currentZoom = map.getZoom();
-                console.log(currentZoom);
+                console.log(`Zoom actual: ${currentZoom}`);
+            
+                // Iterar sobre los marcadores para actualizar su visibilidad
                 markers.forEach(({ marker, zoom }) => {
-                    marker.getElement().style.display = currentZoom >= zoom ? 'flex' : 'none';
-                });
-                document.querySelectorAll('.marker-icon span').forEach(nameElement => {
-                    nameElement.style.display = currentZoom >= 16 ? 'block' : 'none';  // Mostrar a partir de zoom 16
+                    const element = marker.getElement();
+                    if (currentZoom >= zoom) {
+                        element.classList.add('visible'); // Añade clase para mostrar
+                    } else {
+                        element.classList.remove('visible'); // Elimina clase para ocultar
+                    }
                 });
             
-                // Ajustar el tamaño de los íconos con un límite máximo
+                // Mostrar u ocultar los nombres según el nivel de zoom
+                document.querySelectorAll('.marker-icon span').forEach(nameElement => {
+                    if (currentZoom >= 16) {
+                        nameElement.classList.add('visible');
+                    } else {
+                        nameElement.classList.remove('visible');
+                    }
+                });
+            
+                // Ajustar tamaño de los íconos
                 document.querySelectorAll('.marker-icon i').forEach(icon => {
-                    const scale = Math.min(2, currentZoom / 20);  // Límite máximo de escala a 2x
-                    icon.style.transform = `scale(${scale})`;  // Escala con suavidad
+                    const scale = Math.min(2, currentZoom / 20); // Límite máximo de escala a 2x
+                    icon.style.transform = `scale(${scale})`; // Escalar con suavidad
                 });
             });
             

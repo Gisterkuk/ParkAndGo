@@ -10,11 +10,11 @@
 
   
   <!-- ESTILOS DEL HOME -->
-  <link rel="stylesheet" href="/Style/StyleHome/Nav.css">
   <link rel="stylesheet" href="/Style/StyleHome/Search.css">
   <link rel="stylesheet" href="/Style/StyleHome/Aside.css">
   <link rel="stylesheet" href="/Style/StyleHome/Home.css">
   <link rel="stylesheet" href="/Style/StyleHome/Routing.css">
+  <link rel="stylesheet" href="/Style/StyleHome/icon.css">
 
   <!-- ESTILOS DEL RESPONSIVE -->
    <link rel="stylesheet" href="/Style/Responsive/home-resp.css">
@@ -30,80 +30,29 @@
   <!-- SCRIPTS  -->
   
   <script type="module" src="/JS/HomeJs/Home.js" ></script>
-  <script src="/JS/HomeJs/SearchBox.js" type="module"></script>
   <script type="module" src="/controllers/SettingMap/map.js"></script>
-  <script src="/JS/HomeJs/Responsive.js" ></script>
   <script type="module" src="/JS/HomeJs/routingConf.js" ></script>
   <script type="module" src="/JS/Responsivo/HomeResp.js" ></script>
 
 </head>
 <body>
   <main class="padre-container"> 
-    <div class="mapa-container" id="mapa"></div>
+    <div class="mapa-container" id="mapa" style="width: 100vw; height: 100vh;"></div>
 
     <!-- NAVEGADOR -->
-    <nav class="navbar">
-        <ul class="navbar__menu">
-          <li class="navbar__item">
-            <a href="#" class="navbar__link"><i data-feather="map"></i><span>Home</span></a>
-          </li>
-          <li class="navbar__item">
-            <a href="#" class="navbar__link"><i data-feather="message-square"></i><span>Messages</span></a>        
-          </li>
-          <li class="navbar__item">
-            <a href="#" class="navbar__link"><i data-feather="users"></i><span>Customers</span></a>        
-          </li>
-          <li class="navbar__item">
-            <a href="#" class="navbar__link"><i data-feather="folder"></i><span>Projects</span></a>        
-          </li>
-          <li class="navbar__item">
-            <a href="#" class="navbar__link"><i data-feather="archive"></i><span>Resources</span></a>        
-          </li>
-          <li class="navbar__item">
-            <a href="#" class="navbar__link"><i data-feather="help-circle"></i><span>Help</span></a>        
-          </li>
-          <li class="navbar__item">
-            <a href="#" class="navbar__link"><i data-feather="settings"></i><span>Settings</span></a>        
-          </li>
-          <li class="navbar__item" id="logout-container">
-            <a href="#" id="logout" class="navbar__link"><i data-feather="log-out"></i><span>Logout</span></a>      
-          </li>
-        </ul>
-    </nav>
+
     <!-- SEARCH -->
-    <div class="search-container expanded" id="searchContainer">
-      <input type="text" id="search-input" placeholder="Busca en el parque..." autocomplete="off" />
-      <button id="search-btn"><i data-feather="search"></i></button>
+    <div class="search-container" id="searchContainer">
+      <div class="buscador">
+        <input type="text" id="search-input" placeholder="Busca en el parque..." autocomplete="off" />
+      </div>
+      
+      <div id="suggestions-container" style="display: none;"></div>
     </div>
 
     
     <!-- SUGERENCIAS DE SEARCH -->
-    <div id="suggestions-container" style="display: none;"></div>
-
-    <!-- ASIDE INFORMATIVO -->
-     <aside id="aside-info" class="aside-info" style="display: flex;">
-      <div class="Imagen-container">
-        <img id='imagen' src="https://media.traveler.es/photos/613768f03decec3303bab7da/16:9/w_1856,h_1044,c_limit/158835.jpg" alt="">
-      </div>
-      <!-- INFORMACION  -->
-      <div class="Nombre-container">
-        <h1 id="name">Cataratas Del Iguazu</h1>
-      </div>
-      <div class="descrip-container">
-        <div class="" id="descrip">
-          <h3 id="ubicacion" ><span class="Subtitulo">Ubicacion:<br></span><span id="TxtUbi" class="info-span">Ubicado en Misiones Argentina</span></h3>
-          <h3 id="Dificultad" ><span class="Subtitulo">Accesibilidad:<br></span> <span id="TxtDif" class="info-span">El Parque Nacional Iguazú es mayormente accesible, con el Circuito Superior completamente adaptado y rampas en el Circuito Inferior para puntos clave como el Salto Bossetti. Además, el Tren Ecológico de la Selva facilita el acceso, y se ofrecen sillas de ruedas para quienes las necesiten</span></h3>
-          <h3 id="Sector"><span class="Subtitulo">Sector:<br></span><span id="TxtSec" class="info-span">Parque Nacional Cataratas Del Iguazu</span></h3>
-          <h4 id="Info" ><span class="Subtitulo">Sobre el lugar:<br></span><span id="TxtInfo" class="info-span">Las Cataratas del Iguazú, situadas en el Parque Nacional Iguazú, son una de las maravillas naturales más impresionantes del mundo. Ubicadas en la frontera entre Argentina y Brasil, estas cataratas están compuestas por aproximadamente 275 saltos de agua que se extienden a lo largo de 2.7 kilómetros del río Iguazú.</span></h4>
-        </div>
-          <button id="Direction" style="display: flex;">Como llegar?</button>
-      </div>
-      <!-- BOTON PARA ABRIR EL ASIDE -->
-      
-    </aside>
-    <button id="open-aside" class="open-button" style="display: none;"> <i data-feather="info"></i></button>
-    <button id="close-aside" class="close-button" style="display: block;"><i data-feather="x"></i></button>
-
+    
     <button id="Routing" class="routing-button" style="display: flex;" ><i data-feather="trending-up"></i></button>
 
     <!-- CAJA FLOTANTE -->
@@ -134,7 +83,7 @@
     </ul>
   </div> -->
   
-  <div id="routingForm" style="display: none;">
+  <!-- <div id="routingForm" style="display: none;">
     <div class="scrollContainerA"><div class="sugerenciasRutaA"></div></div>
     <div class="scrollContainerB"><div class="sugerenciasRutaB"></div></div>
 
@@ -158,7 +107,7 @@
       </div>
 
     </div>   
-  </div>
+  </div> -->
   
   <!-- RESPONSIVE -->
    <div class="sugerencias-Resp" ></div>

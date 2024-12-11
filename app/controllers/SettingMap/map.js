@@ -35,23 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
         container: 'mapa',
         style: 'mapbox://styles/alcandejs/cm2oxvu73008801qifmae69zs',
         center: [-54.449985515005594,-25.682853268597665],   
-        zoom: 14.5
+        zoom: 15
         ,maxBounds: [
             [-54.500, -25.720],
             [-54.400, -25.630]
         ]
     });
-
-    // const geocoder = new MapboxGeocoder({
-    //     accessToken: mapboxgl.accessToken,
-    //     mapboxgl: mapboxgl,
-    //     marker: false,
-    //     placeholder: 'Busca un lugar en el mapa'
-    // });
-
-    // map.addControl(geocoder, 'top-right');
-
-
     map.on('load', function() {
 
         document.dispatchEvent(new Event('mapReady'));
@@ -95,8 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // fs.access(filePath, fs.constants.F_OK, (err) => {
         //     console.log(err ? 'El archivo no existe' : 'El archivo está presente');
         // });
-        // fetch('http://localhost:8000/UltimateRoad4.5.geojson')
-        fetch('https://pathandgo.com/UltimateRoad4.5.geojson')
+        fetch('http://localhost:8000/UltimateRoad4.5.geojson')
+        // fetch('https://pathandgo.com/UltimateRoad4.5.geojson')
         .then(response => {
             console.log(response);
             if (!response.ok) {
@@ -180,32 +169,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        const routeBtn = document.querySelector("#Direction")
-        routeBtn.addEventListener('click',()=>{
-            // let PuntoA = [-54.45460685091212,-25.68292920945988];
-            let PuntoA = getLiveLocation();
-            let PuntoB = getCoordenadasSeleccionadas();
-            console.log("PUNTO A; ",PuntoA);
-            console.log("PUNTO B; ",PuntoB);
-            agregarMarcador(map,PuntoA);
-            agregarMarcador(map,PuntoB);
-            let start = findClosestPoint(PuntoA,graph,TOLERANCE_RADIUS);
-            let end = findClosestPoint(PuntoB,graph,TOLERANCE_RADIUS);
-            
-            if (start && end) {
-                const path = dijkstra(graph, start, end);
-                if (path.length > 0) {
-                    drawRoute(map, path); // Dibujar la ruta
-                    //clearMarkers(); // Limpiar los marcadores después de dibujar la ruta
-                    // startPoint = null;
-                    // endPoint = null; // Resetear los puntos
-                }
-            } else {
-                console.error("No se encontraron puntos dentro del radio de tolerancia.");
-               // resetPoints(); // Llamar a la función para resetear puntos
-            }
-
-        })
 
         const sugerenciaAContainer = document.querySelector('.scrollContainerA');
         const sugerenciaBContainer = document.querySelector('.scrollContainerB');
@@ -245,29 +208,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        routingBtn.addEventListener('click',()=>{
-            if(inputA.value == ''){
-                inputA.style.border = "2px solid red";
-                inputA.placeholder = 'Ingrese una ubicacion'
-            }
-            if(inputB.value == ''){
-                inputB.style.border = "2px solid red";
-                inputB.placeholder = 'Ingrese una ubicacion'
-            }
-
-            obtenerPuntosDeInteres(inputA.value,inputB.value,graph,map)
-        })
         const searchResp = document.getElementById('search-resp');
         // Responsive
-        searchResp.addEventListener('input', () => {
-            const query = searchInput.value;
-            if (query.length > 1) { // Evitar búsquedas demasiado frecuentes por cada letra
-                actualizarSugerencias(query,map);
-                console.log(Informacion);
-            } else {
-                suggestionsContainer.style.display = 'none'; // Ocultar las sugerencias si el texto es muy corto
-            }
-        });
+        // searchResp.addEventListener('input', () => {
+        //     const query = searchInput.value;
+        //     if (query.length > 1) { // Evitar búsquedas demasiado frecuentes por cada letra
+        //         actualizarSugerencias(query,map);
+        //         console.log(Informacion);
+        //     } else {
+        //         suggestionsContainer.style.display = 'none'; // Ocultar las sugerencias si el texto es muy corto
+        //     }
+        // });
 
     });
 
