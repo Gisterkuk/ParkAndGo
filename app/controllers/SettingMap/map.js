@@ -257,14 +257,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
             obtenerPuntosDeInteres(inputA.value,inputB.value,graph,map)
         })
+        const searchResp = document.getElementById('search-resp');
+        // Responsive
+        searchResp.addEventListener('input', () => {
+            const query = searchInput.value;
+            if (query.length > 1) { // Evitar búsquedas demasiado frecuentes por cada letra
+                actualizarSugerencias(query,map);
+                console.log(Informacion);
+            } else {
+                suggestionsContainer.style.display = 'none'; // Ocultar las sugerencias si el texto es muy corto
+            }
+        });
 
     });
 
 });
-export function getMap() {
-    if (!map) {
-        console.error("El mapa no está listo aún.");
-        return null;
-    }
-    return map;
-}
+

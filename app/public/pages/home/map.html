@@ -17,7 +17,8 @@
   <link rel="stylesheet" href="/Style/StyleHome/Routing.css">
 
   <!-- ESTILOS DEL RESPONSIVE -->
-   <link rel="stylesheet" href="/Style/StyleHome/home-resp.css">
+   <link rel="stylesheet" href="/Style/Responsive/home-resp.css">
+   <link rel="stylesheet" href="/Style/Responsive/searchResp.css">
   <!-- Mapbox GL JS -->
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
   <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
@@ -33,6 +34,7 @@
   <script type="module" src="/controllers/SettingMap/map.js"></script>
   <script src="/JS/HomeJs/Responsive.js" ></script>
   <script type="module" src="/JS/HomeJs/routingConf.js" ></script>
+  <script type="module" src="/JS/Responsivo/HomeResp.js" ></script>
 
 </head>
 <body>
@@ -159,11 +161,12 @@
   </div>
   
   <!-- RESPONSIVE -->
-  <div class="search-resp">
-    <input type="text" id="search-resp" placeholder="Busca en el parque..." autocomplete="off" />
-    <button type="button" id="direction-resp" data-feather="compass"></button>
+   <div class="sugerencias-Resp" ></div>
+  <div class="search-resp" style="display: none;">
+    <img id="logo-search" src="/image/Path_and_Go_Logo_Transparent.png" >
+    <input type="text" id="searchR-input" placeholder="Busca en el parque..." autocomplete="off" />
   </div>
-  <nav class="navres">
+  <nav class="navres" style="display: none;">
     <ul class="navres_menu">
       <li class=".navres_item"><a href=""> <i class="feather_icons" data-feather="settings"></i></a></li>
       <li class=".navres_item"><a href=""><i class="feather_icons" data-feather="map"></i></a></li>

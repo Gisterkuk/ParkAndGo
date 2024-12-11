@@ -14,7 +14,6 @@ export function addPOI(map) {
         .then(data => {
             const markers = []; // Array para almacenar los marcadores
             const iconosPorCategoria = {
-                "Saltos": "fas fa-water",
                 "Sendero": "fas fa-hiking",
                 "Sanitarios": "fas fa-restroom",
                 "CajeroAutomatico": "fas fa-money-bill-wave",
@@ -33,7 +32,6 @@ export function addPOI(map) {
                 "VentaTicket" : "fas fa-ticket"
             };
             const coloresPorCategoria = {
-                "Saltos": "blue",
                 "Sendero": "green",
                 "Sanitarios": "purple",
                 "CajeroAutomatico": "gold",
@@ -62,28 +60,39 @@ export function addPOI(map) {
                 markerContainer.style.display = 'flex';
                 markerContainer.style.flexDirection = 'column';
                 markerContainer.style.alignItems = 'center';
-                
             
-                // Seleccionar el ícono y el color basados en la categoría
-                const iconClass = iconosPorCategoria[punto.categoria] || 'fas fa-map-marker-alt';
-                const iconColor = coloresPorCategoria[punto.categoria] || 'black';
+                if (punto.categoria === 'Saltos') {
+                    // Insertar una imagen SVG personalizada como ícono para la categoría "Saltos"
+                    const svgElement = document.createElement('img');
+                    svgElement.src = '/image/improved_cataratas_icon.svg'; // Reemplaza con la ruta a tu SVG
+                    svgElement.alt = 'Icono Saltos';
+                    svgElement.style.width = '30px'; // Ajusta el tamaño según sea necesario
+                    svgElement.style.height = '30px';
             
-                const iconElement = document.createElement('i');
-                iconElement.className = iconClass;
-                iconElement.style.fontSize = '30px';
-                iconElement.style.color = iconColor;  // Asignar color según la categoría
+                    markerContainer.appendChild(svgElement);
+                } else {
+                    // Seleccionar el ícono y el color basados en la categoría
+                    const iconClass = iconosPorCategoria[punto.categoria] || 'fas fa-map-marker-alt';
+                    const iconColor = coloresPorCategoria[punto.categoria] || 'black';
+            
+                    const iconElement = document.createElement('i');
+                    iconElement.className = iconClass;
+                    iconElement.style.fontSize = '30px';
+                    iconElement.style.color = iconColor; // Asignar color según la categoría
+            
+                    markerContainer.appendChild(iconElement);
+                }
             
                 // Crear el elemento para el nombre del POI
                 const nameElement = document.createElement('span');
                 nameElement.textContent = punto.name;
                 nameElement.style.marginTop = '5px';
                 nameElement.style.fontSize = '12px';
-                nameElement.style.color = 'grey';  // Nombre en negro para mayor legibilidad
+                nameElement.style.color = 'grey'; // Nombre en negro para mayor legibilidad
                 nameElement.style.textAlign = 'center';
-                nameElement.style.display = "none";
+                nameElement.style.display = 'none';
             
-                // Añadir ícono y nombre al contenedor del marcador
-                markerContainer.appendChild(iconElement);
+                // Añadir nombre al contenedor del marcador
                 markerContainer.appendChild(nameElement);
             
                 // Crear y agregar el marcador al mapa
@@ -96,15 +105,18 @@ export function addPOI(map) {
                     marker: marker,
                     zoom: punto.zoom || 0
                 });
-                markerContainer.addEventListener('click',(event)=>{
+            
+                // Agregar evento de clic al contenedor del marcador
+                markerContainer.addEventListener('click', (event) => {
                     abrirInfo(punto);
                     abrirAside(event);
                     const longitudParsed = parseFloat(punto.longitud.trim());
                     const latitudParsed = parseFloat(punto.latitud.trim());
-                    setCoordenadasSeleccionadas(longitudParsed,latitudParsed,);
-                    console.log("Coordenadas del punto:",latitudParsed,longitudParsed);
-                })
+                    setCoordenadasSeleccionadas(longitudParsed, latitudParsed);
+                    console.log("Coordenadas del punto:", latitudParsed, longitudParsed);
+                });
             });
+            
             
             
 
